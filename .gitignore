@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# next.js
+.next/
+out/
+
+# env files
+.env
+.env.local
+.env.production
+
+# debug
+npm-debug.log*
+
+# misc
+.DS_Store
+*.pem
+
+# docker volumes
+postgres-data/
+
+# prisma
+app/prisma/*.db

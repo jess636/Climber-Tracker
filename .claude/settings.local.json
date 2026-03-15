@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:usac.results.info)",
+      "WebFetch(domain:results.usac.org)",
+      "WebFetch(domain:api.usac.results.info)"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PushSubscription {
+  id           String   @id @default(cuid())
+  sessionId    String
+  endpoint     String   @unique
+  keys         String   // JSON: { p256dh, auth }
+  createdAt    DateTime @default(now())
+  watchedItems WatchlistEntry[]
+}
+
+model WatchlistEntry {
+  id               String            @id @default(cuid())
+  sessionId        String
+  climberId        String            // USA Climbing member ID
+  climberName      String
+  competitionId    String
+  pushSubscription PushSubscription? @relation(fields: [pushSubId], references: [id])
+  pushSubId        String?
+  createdAt        DateTime          @default(now())
+
+  @@unique([sessionId, climberId, competitionId])
+}
