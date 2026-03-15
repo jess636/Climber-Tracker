@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
           send("results", result);
 
           // Compute diffs
-          const current: ResultSnapshot[] = result.ranking.map(
+          const current: ResultSnapshot[] = (result.ranking ?? []).map(
             (a: USACRankedAthlete) => ({
               climberId: String(a.athlete_id),
               climberName: a.name,

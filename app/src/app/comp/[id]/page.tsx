@@ -42,10 +42,15 @@ interface EventData {
 
 interface Ascent {
   route_name: string;
-  score: string;
-  rank: number;
+  score?: string;
+  rank?: number;
   top: boolean;
   status: string;
+  // Boulder-specific
+  top_tries?: number;
+  zone?: boolean;
+  zone_tries?: number;
+  points?: number;
 }
 
 interface Athlete {
@@ -63,6 +68,22 @@ interface Athlete {
   qualified: boolean;
 }
 
+interface RouteStartPosition {
+  route_name: string;
+  route_id: number;
+  position: number;
+}
+
+interface StartlistEntry {
+  athlete_id: number;
+  name: string;
+  firstname: string;
+  lastname: string;
+  bib: string;
+  country: string;
+  route_start_positions: RouteStartPosition[];
+}
+
 interface RoundResults {
   id: number;
   event: string;
@@ -71,7 +92,9 @@ interface RoundResults {
   category: string;
   round: string;
   format: string;
-  ranking: Athlete[];
+  ranking?: Athlete[];
+  startlist?: StartlistEntry[];
+  routes?: { id: number; name: string }[];
 }
 
 export default function CompetitionPage({
@@ -300,92 +323,205 @@ export default function CompetitionPage({
             {roundResults.discipline} · {roundResults.format}
           </p>
 
-          <div className="overflow-x-auto rounded-lg border border-gray-200">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-gray-50 text-left">
-                  <th className="p-2 w-8"></th>
-                  <th className="p-2 w-12">#</th>
-                  <th className="p-2">Climber</th>
-                  <th className="p-2">Team</th>
-                  <th className="p-2 text-center">Score</th>
-                  {roundResults.ranking[0]?.ascents?.length > 0 && (
-                    <th className="p-2 text-center">Routes</th>
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {roundResults.ranking.map((athlete) => {
-                  const isTracked = tracked.has(athlete.athlete_id);
-                  return (
-                    <tr
-                      key={athlete.athlete_id}
-                      className={`border-t ${
-                        isTracked
-                          ? "bg-yellow-50 font-medium"
-                          : athlete.active
-                            ? "bg-blue-50"
-                            : "hover:bg-gray-50"
-                      } ${athlete.under_appeal ? "opacity-70" : ""}`}
-                    >
-                      <td className="p-2">
-                        <button
-                          onClick={() => toggleTrack(athlete.athlete_id)}
-                          className="text-lg leading-none"
-                          title={isTracked ? "Untrack" : "Track this climber"}
+          {/* Show startlist when no results yet */}
+          {(!roundResults.ranking || roundResults.ranking.length === 0) &&
+          roundResults.startlist &&
+          roundResults.startlist.length > 0 ? (
+            <div className="space-y-3">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <p className="text-sm text-blue-800">
+                  No results yet — showing startlist & rotation order
+                </p>
+              </div>
+              <div className="overflow-x-auto rounded-lg border border-gray-200">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-gray-50 text-left">
+                      <th className="p-2 w-8"></th>
+                      <th className="p-2">Bib</th>
+                      <th className="p-2">Climber</th>
+                      <th className="p-2">Team</th>
+                      {roundResults.routes?.map((r) => (
+                        <th
+                          key={r.id}
+                          className="p-2 text-center"
+                          title={`Starting position on ${r.name}`}
                         >
-                          {isTracked ? "★" : "☆"}
-                        </button>
-                      </td>
-                      <td className="p-2 text-gray-500 font-mono">
-                        {athlete.rank || "—"}
-                      </td>
-                      <td className="p-2">
-                        <span className="font-medium">{athlete.name}</span>
-                        {athlete.active && (
-                          <span className="ml-2 text-xs text-blue-600 animate-pulse">
-                            Climbing
-                          </span>
-                        )}
-                        {athlete.under_appeal && (
-                          <span className="ml-2 text-xs text-orange-600">
-                            Appeal
-                          </span>
-                        )}
-                      </td>
-                      <td className="p-2 text-gray-500 text-xs">
-                        {athlete.country}
-                      </td>
-                      <td className="p-2 text-center font-mono font-semibold">
-                        {athlete.score || "—"}
-                      </td>
-                      {roundResults.ranking[0]?.ascents?.length > 0 && (
-                        <td className="p-2">
-                          <div className="flex gap-1 justify-center">
-                            {athlete.ascents.map((a, i) => (
-                              <span
-                                key={i}
-                                className={`inline-block px-1.5 py-0.5 rounded text-xs ${
-                                  a.top
-                                    ? "bg-green-100 text-green-800"
-                                    : a.score
-                                      ? "bg-gray-100 text-gray-700"
-                                      : "bg-gray-50 text-gray-400"
-                                }`}
-                                title={`Route ${a.route_name}: ${a.score}`}
-                              >
-                                {a.score || "—"}
-                              </span>
-                            ))}
-                          </div>
-                        </td>
-                      )}
+                          B{r.name}
+                        </th>
+                      ))}
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                  </thead>
+                  <tbody>
+                    {roundResults.startlist.map((entry) => {
+                      const isTracked = tracked.has(entry.athlete_id);
+                      return (
+                        <tr
+                          key={entry.athlete_id}
+                          className={`border-t ${
+                            isTracked
+                              ? "bg-yellow-50 font-medium"
+                              : "hover:bg-gray-50"
+                          }`}
+                        >
+                          <td className="p-2">
+                            <button
+                              onClick={() => toggleTrack(entry.athlete_id)}
+                              className="text-lg leading-none"
+                              title={isTracked ? "Untrack" : "Track"}
+                            >
+                              {isTracked ? "★" : "☆"}
+                            </button>
+                          </td>
+                          <td className="p-2 text-gray-500 font-mono">
+                            {entry.bib}
+                          </td>
+                          <td className="p-2">
+                            <span className="font-medium">{entry.name}</span>
+                          </td>
+                          <td className="p-2 text-gray-500 text-xs">
+                            {entry.country}
+                          </td>
+                          {entry.route_start_positions.map((rsp) => (
+                            <td
+                              key={rsp.route_id}
+                              className="p-2 text-center font-mono text-xs"
+                            >
+                              {rsp.position}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-400">
+                Numbers show rotation position on each boulder. Lower
+                number = earlier in the rotation.
+              </p>
+            </div>
+          ) : (roundResults.ranking?.length ?? 0) > 0 ? (
+            <div className="overflow-x-auto rounded-lg border border-gray-200">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-gray-50 text-left">
+                    <th className="p-2 w-8"></th>
+                    <th className="p-2 w-12">#</th>
+                    <th className="p-2">Climber</th>
+                    <th className="p-2">Team</th>
+                    <th className="p-2 text-center">Score</th>
+                    {roundResults.ranking![0]?.ascents?.length > 0 && (
+                      <th className="p-2 text-center">Routes</th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {roundResults.ranking!.map((athlete) => {
+                    const isTracked = tracked.has(athlete.athlete_id);
+                    return (
+                      <tr
+                        key={athlete.athlete_id}
+                        className={`border-t ${
+                          isTracked
+                            ? "bg-yellow-50 font-medium"
+                            : athlete.active
+                              ? "bg-blue-50"
+                              : "hover:bg-gray-50"
+                        } ${athlete.under_appeal ? "opacity-70" : ""}`}
+                      >
+                        <td className="p-2">
+                          <button
+                            onClick={() => toggleTrack(athlete.athlete_id)}
+                            className="text-lg leading-none"
+                            title={isTracked ? "Untrack" : "Track"}
+                          >
+                            {isTracked ? "★" : "☆"}
+                          </button>
+                        </td>
+                        <td className="p-2 text-gray-500 font-mono">
+                          {athlete.rank || "—"}
+                        </td>
+                        <td className="p-2">
+                          <span className="font-medium">{athlete.name}</span>
+                          {athlete.active && (
+                            <span className="ml-2 text-xs text-blue-600 animate-pulse">
+                              Climbing
+                            </span>
+                          )}
+                          {athlete.under_appeal && (
+                            <span className="ml-2 text-xs text-orange-600">
+                              Appeal
+                            </span>
+                          )}
+                        </td>
+                        <td className="p-2 text-gray-500 text-xs">
+                          {athlete.country}
+                        </td>
+                        <td className="p-2 text-center font-mono font-semibold">
+                          {athlete.score || "—"}
+                        </td>
+                        {roundResults.ranking![0]?.ascents?.length > 0 && (
+                          <td className="p-2">
+                            <div className="flex gap-1 justify-center">
+                              {athlete.ascents.map((a, i) => {
+                                const isBoulder = a.zone !== undefined;
+                                const notStarted =
+                                  isBoulder && a.top_tries == null;
+                                const attempted =
+                                  isBoulder &&
+                                  !notStarted &&
+                                  !a.top &&
+                                  !a.zone;
+                                const label = isBoulder
+                                  ? notStarted
+                                    ? ""
+                                    : a.top
+                                      ? `T${a.top_tries ?? ""}`
+                                      : a.zone
+                                        ? `Z${a.zone_tries ?? ""}`
+                                        : `${a.top_tries ?? 0}att`
+                                  : a.score || "—";
+                                const tooltip = isBoulder
+                                  ? notStarted
+                                    ? `B${a.route_name}: Not started`
+                                    : `B${a.route_name}: ${a.top ? `Top in ${a.top_tries}` : a.zone ? `Zone in ${a.zone_tries}` : `${a.top_tries} attempts, no zone`}${a.points ? ` · ${a.points}pts` : ""}`
+                                  : `Route ${a.route_name}: ${a.score}`;
+                                const style = notStarted
+                                  ? "bg-gray-100 text-gray-400"
+                                  : a.top
+                                    ? "bg-green-100 text-green-800"
+                                    : a.zone
+                                      ? "bg-yellow-100 text-yellow-800"
+                                      : attempted
+                                        ? "bg-red-50 text-red-400"
+                                        : a.score
+                                          ? "bg-gray-100 text-gray-700"
+                                          : "bg-gray-50 text-gray-400";
+                                return (
+                                  <span
+                                    key={i}
+                                    className={`inline-block px-1.5 py-0.5 rounded text-xs ${style}`}
+                                    title={tooltip}
+                                  >
+                                    {label}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          </td>
+                        )}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p className="text-gray-500 text-sm">
+              No results or startlist available yet.
+            </p>
+          )}
         </div>
       ) : (
         <p className="text-gray-500">
