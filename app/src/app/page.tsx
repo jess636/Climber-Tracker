@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 
 interface Season {
@@ -21,11 +21,51 @@ interface LiveEvent {
 }
 
 interface EventSummary {
-  id: number;
-  name: string;
+  event_id: number;
+  event: string;
   local_start_date: string;
   local_end_date: string;
   location: string;
+}
+
+// --- localStorage helpers for favorite events ---
+
+function loadFavoriteEvents(): Set<number> {
+  try {
+    const saved = localStorage.getItem("favorite-events");
+    if (!saved) return new Set();
+    return new Set(JSON.parse(saved));
+  } catch {
+    return new Set();
+  }
+}
+
+function saveFavoriteEvents(favs: Set<number>) {
+  localStorage.setItem("favorite-events", JSON.stringify([...favs]));
+}
+
+// --- Date helpers ---
+
+function getDateRange(): { today: string; tomorrow: string; weekEnd: string } {
+  const now = new Date();
+  const today = now.toISOString().split("T")[0];
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const weekEnd = new Date(now);
+  weekEnd.setDate(weekEnd.getDate() + 7);
+  return {
+    today,
+    tomorrow: tomorrow.toISOString().split("T")[0],
+    weekEnd: weekEnd.toISOString().split("T")[0],
+  };
+}
+
+function isCurrentOrUpcoming(ev: EventSummary, today: string): boolean {
+  return ev.local_end_date >= today;
+}
+
+function isThisWeekend(ev: EventSummary, today: string, weekEnd: string): boolean {
+  return ev.local_start_date <= weekEnd && ev.local_end_date >= today;
 }
 
 export default function Home() {
@@ -35,7 +75,25 @@ export default function Home() {
   const [events, setEvents] = useState<EventSummary[]>([]);
   const [liveEvents, setLiveEvents] = useState<LiveEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [eventId, setEventId] = useState("");
+  const [favorites, setFavorites] = useState<Set<number>>(new Set());
+
+  // Load favorites from localStorage
+  useEffect(() => {
+    setFavorites(loadFavoriteEvents());
+  }, []);
+
+  const toggleFavorite = useCallback((eventId: number) => {
+    setFavorites((prev) => {
+      const next = new Set(prev);
+      if (next.has(eventId)) {
+        next.delete(eventId);
+      } else {
+        next.add(eventId);
+      }
+      saveFavoriteEvents(next);
+      return next;
+    });
+  }, []);
 
   // Load seasons + live events on mount
   useEffect(() => {
@@ -64,74 +122,129 @@ export default function Home() {
     fetch(`/api/competitions?seasonId=${selectedSeasonId}`)
       .then((r) => r.json())
       .then((data) => {
-        if (data.events) setEvents(data.events);
+        if (data.events) {
+          const sorted = [...data.events].sort(
+            (a: EventSummary, b: EventSummary) =>
+              b.local_start_date.localeCompare(a.local_start_date)
+          );
+          setEvents(sorted);
+        }
       })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, [selectedSeasonId]);
 
+  // Dedupe live events by event_id for the "Live Now" section
+  const liveEventIds = new Set(liveEvents.map((ev) => ev.event_id));
+  const uniqueLiveEvents = Array.from(
+    liveEvents.reduce((map, ev) => {
+      if (!map.has(ev.event_id)) map.set(ev.event_id, ev);
+      return map;
+    }, new Map<number, LiveEvent>()).values()
+  );
+
+  // Split events into sections
+  const { today, weekEnd } = getDateRange();
+
+  const favoriteEvents = events.filter(
+    (ev) => favorites.has(ev.event_id) && !liveEventIds.has(ev.event_id)
+  );
+  const thisWeekEvents = events.filter(
+    (ev) =>
+      isThisWeekend(ev, today, weekEnd) &&
+      !favorites.has(ev.event_id) &&
+      !liveEventIds.has(ev.event_id)
+  );
+  const upcomingEvents = events.filter(
+    (ev) =>
+      isCurrentOrUpcoming(ev, today) &&
+      !isThisWeekend(ev, today, weekEnd) &&
+      !favorites.has(ev.event_id) &&
+      !liveEventIds.has(ev.event_id)
+  );
+  const pastEvents = events.filter(
+    (ev) =>
+      !isCurrentOrUpcoming(ev, today) &&
+      !favorites.has(ev.event_id) &&
+      !liveEventIds.has(ev.event_id)
+  );
+
   return (
-    <div className="space-y-8">
-      {/* Live events banner */}
-      {liveEvents.length > 0 && (
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold">Competitions</h1>
+
+      {/* Live events */}
+      {uniqueLiveEvents.length > 0 && (
         <section className="bg-green-50 border border-green-200 rounded-lg p-4">
           <h2 className="text-lg font-semibold text-green-800 mb-3">
             Live Now
           </h2>
           <div className="grid gap-2">
-            {liveEvents.map((ev) => (
-              <Link
-                key={ev.category_round_id}
-                href={`/comp/${ev.event_id}?round=${ev.category_round_id}`}
-                className="flex items-center justify-between bg-white rounded-lg p-3 border border-green-100 hover:border-green-400 transition-all"
-              >
-                <div>
-                  <div className="font-medium">{ev.event_name}</div>
-                  <div className="text-sm text-gray-500">
-                    {ev.category} · {ev.round_name} · {ev.discipline_kind}
+            {uniqueLiveEvents.map((ev) => (
+              <div key={ev.event_id} className="flex items-center gap-2">
+                <button
+                  onClick={() => toggleFavorite(ev.event_id)}
+                  className="text-lg leading-none shrink-0"
+                >
+                  {favorites.has(ev.event_id) ? "★" : "☆"}
+                </button>
+                <Link
+                  href={`/comp/${ev.event_id}`}
+                  className="flex-1 flex items-center justify-between bg-white rounded-lg p-3 border border-green-100 hover:border-green-400 transition-all"
+                >
+                  <div>
+                    <div className="font-medium">{ev.event_name}</div>
+                    <div className="text-sm text-gray-500">
+                      {ev.event_location} · {ev.local_start_date}
+                      {ev.local_end_date !== ev.local_start_date
+                        ? ` – ${ev.local_end_date}`
+                        : ""}
+                    </div>
                   </div>
-                </div>
-                <span className="text-green-600 text-sm font-medium animate-pulse">
-                  LIVE
-                </span>
-              </Link>
+                  <span className="text-green-600 text-sm font-medium animate-pulse">
+                    LIVE
+                  </span>
+                </Link>
+              </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* Quick nav */}
-      <section>
-        <h1 className="text-2xl font-bold mb-2">Competition Browser</h1>
-        <div className="flex gap-3 mb-4">
-          <input
-            type="text"
-            placeholder="Event ID (e.g. 475)"
-            value={eventId}
-            onChange={(e) => setEventId(e.target.value)}
-            className="border border-gray-300 rounded-lg px-4 py-2 flex-1 max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && eventId)
-                window.location.href = `/comp/${eventId}`;
-            }}
-          />
-          <Link
-            href={eventId ? `/comp/${eventId}` : "#"}
-            className={`px-5 py-2 rounded-lg font-medium text-white ${
-              eventId
-                ? "bg-blue-700 hover:bg-blue-800"
-                : "bg-gray-400 cursor-not-allowed"
-            }`}
-          >
-            View Event
-          </Link>
-        </div>
-      </section>
+      {/* Favorite events */}
+      {favoriteEvents.length > 0 && (
+        <EventSection
+          title="My Events"
+          events={favoriteEvents}
+          favorites={favorites}
+          onToggleFavorite={toggleFavorite}
+        />
+      )}
 
-      {/* Season selector + events */}
+      {/* This week */}
+      {!loading && thisWeekEvents.length > 0 && (
+        <EventSection
+          title="This Week"
+          events={thisWeekEvents}
+          favorites={favorites}
+          onToggleFavorite={toggleFavorite}
+        />
+      )}
+
+      {/* Upcoming */}
+      {!loading && upcomingEvents.length > 0 && (
+        <EventSection
+          title="Upcoming"
+          events={upcomingEvents}
+          favorites={favorites}
+          onToggleFavorite={toggleFavorite}
+        />
+      )}
+
+      {/* Season selector + past events */}
       <section>
         <div className="flex items-center gap-4 mb-4">
-          <h2 className="text-lg font-semibold">Events</h2>
+          <h2 className="text-lg font-semibold">Past Events</h2>
           {seasons.length > 0 && (
             <select
               value={selectedSeasonId ?? ""}
@@ -153,26 +266,19 @@ export default function Home() {
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-700" />
             <span className="ml-3 text-gray-600">Loading...</span>
           </div>
-        ) : events.length > 0 ? (
+        ) : pastEvents.length > 0 ? (
           <div className="grid gap-2">
-            {events.map((ev) => (
-              <Link
-                key={ev.id}
-                href={`/comp/${ev.id}`}
-                className="block border border-gray-200 rounded-lg p-3 hover:border-blue-400 hover:shadow-sm transition-all"
-              >
-                <div className="font-medium">{ev.name}</div>
-                <div className="text-sm text-gray-500">
-                  {ev.location} · {ev.local_start_date}
-                  {ev.local_end_date !== ev.local_start_date
-                    ? ` – ${ev.local_end_date}`
-                    : ""}
-                </div>
-              </Link>
+            {pastEvents.map((ev) => (
+              <EventRow
+                key={ev.event_id}
+                ev={ev}
+                isFavorite={favorites.has(ev.event_id)}
+                onToggleFavorite={toggleFavorite}
+              />
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-sm">No events found.</p>
+          <p className="text-gray-500 text-sm">No past events.</p>
         )}
       </section>
 
@@ -188,6 +294,69 @@ export default function Home() {
         </a>
         . Not affiliated with USA Climbing.
       </footer>
+    </div>
+  );
+}
+
+// --- Reusable components ---
+
+function EventSection({
+  title,
+  events,
+  favorites,
+  onToggleFavorite,
+}: {
+  title: string;
+  events: EventSummary[];
+  favorites: Set<number>;
+  onToggleFavorite: (id: number) => void;
+}) {
+  return (
+    <section>
+      <h2 className="text-lg font-semibold mb-3">{title}</h2>
+      <div className="grid gap-2">
+        {events.map((ev) => (
+          <EventRow
+            key={ev.event_id}
+            ev={ev}
+            isFavorite={favorites.has(ev.event_id)}
+            onToggleFavorite={onToggleFavorite}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EventRow({
+  ev,
+  isFavorite,
+  onToggleFavorite,
+}: {
+  ev: EventSummary;
+  isFavorite: boolean;
+  onToggleFavorite: (id: number) => void;
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <button
+        onClick={() => onToggleFavorite(ev.event_id)}
+        className="text-lg leading-none shrink-0"
+      >
+        {isFavorite ? "★" : "☆"}
+      </button>
+      <Link
+        href={`/comp/${ev.event_id}`}
+        className="flex-1 block border border-gray-200 rounded-lg p-3 hover:border-blue-400 hover:shadow-sm transition-all"
+      >
+        <div className="font-medium">{ev.event}</div>
+        <div className="text-sm text-gray-500">
+          {ev.location} · {ev.local_start_date}
+          {ev.local_end_date !== ev.local_start_date
+            ? ` – ${ev.local_end_date}`
+            : ""}
+        </div>
+      </Link>
     </div>
   );
 }

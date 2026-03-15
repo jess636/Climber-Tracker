@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { getRoundResults, USACRankedAthlete } from "@/lib/usac-api";
 import { diffResults, ResultSnapshot } from "@/lib/diff";
+import { canOpenSSE, sseOpened, sseClosed, isRateLimited } from "@/lib/rate-limit";
 
 /**
  * GET /api/events?roundId=11515
@@ -11,9 +12,20 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const roundId = searchParams.get("roundId");
 
-  if (!roundId) {
-    return new Response("roundId is required", { status: 400 });
+  if (!roundId || isNaN(Number(roundId))) {
+    return new Response("roundId must be a valid number", { status: 400 });
   }
+
+  const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+  if (isRateLimited(`sse:${ip}`, 10, 60_000)) {
+    return new Response("Too many connections", { status: 429 });
+  }
+
+  if (!canOpenSSE()) {
+    return new Response("Server at capacity", { status: 503 });
+  }
+
+  sseOpened();
 
   const encoder = new TextEncoder();
   let previousResults: ResultSnapshot[] = [];
@@ -67,6 +79,7 @@ export async function GET(request: NextRequest) {
       request.signal.addEventListener("abort", () => {
         running = false;
         clearInterval(interval);
+        sseClosed();
         controller.close();
       });
     },
