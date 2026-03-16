@@ -125,9 +125,9 @@ curl -s 'http://localhost:3000/api/competitions/EVENT_ID/ROUND_ID' > app/src/lib
 
 The USAC API returns three zone levels per ascent: `top`, `zone`, and `low_zone`. Display rules:
 - **Top** (green): `T{top_tries}` — topped the boulder
-- **Zone** (yellow): `Z{zone_tries}` — reached the zone hold
-- **Low Zone** (orange): `LZ{low_zone_tries}` — reached the low zone hold
-- **Attempts** (red): `A{top_tries}` — only shown when NO hold was reached (no top, no zone, no low zone)
+- **Zone** (gold/amber): `Z{zone_tries}` — reached the zone hold
+- **Low Zone** (blue): `LZ{low_zone_tries}` — reached the low zone hold
+- **Attempts** (gray): `A{top_tries}` — only shown when NO hold was reached (no top, no zone, no low zone)
 
 ## Climber Status / Queue Depth
 
@@ -148,6 +148,7 @@ Queue depth is computed from `route_start_positions` in the startlist. The posit
 - Athlete search by name or team with bulk tracking
 - Boulder scoring (top/zone/low zone/attempts), lead/speed scoring
 - Climber status with queue depth (on wall, on deck, N away)
+- Live activity feed in My Climbers (topped, zone, on wall, rank changes detected via client-side diff)
 - Single-round categories hide redundant "Final" label
 - Event favorites with localStorage persistence
 - Status bar with live connection indicator, staleness timer, and refresh button (PWA-friendly)
@@ -164,7 +165,7 @@ No test framework yet. The mock system and fixtures are the foundation for addin
 
 ## Future Plans
 
-- **Live activity history**: real-time feed per climber showing attempts as they happen (diff successive polls to detect changes)
+- Live activity history feed in My Climbers view (client-side diff of successive polls detects ascent changes)
 - Push notifications for tracked climber updates (webpush was scaffolded then removed)
 - Athlete profiles using `/api/v1/athletes/:id` (competition history, podiums, bio)
 - Database persistence (PostgreSQL/Prisma schema exists but was removed for simplicity)
