@@ -1,0 +1,903 @@
+{
+  "id": 11632,
+  "event": "Mock Regional Youth Boulder Championship",
+  "event_id": 503,
+  "dcat_id": 393,
+  "discipline": "Boulder",
+  "status": "not_started",
+  "status_as_of": "2026-03-11 20:34:14 UTC",
+  "category": "M/O-17",
+  "round": "Final",
+  "points_per_boulder_settings": {
+    "fall_deduction": 0.1,
+    "points_per_low_zone": 5,
+    "points_per_top": 25,
+    "points_per_zone": 10,
+    "use_low_zone": true
+  },
+  "format": "IFSC: 1 group 2025 (points)",
+  "routes": [
+    {
+      "id": 235441,
+      "name": "F-19 #1",
+      "startlist": "/api/v1/routes/235441/startlist"
+    },
+    {
+      "id": 235442,
+      "name": "F-19 #2",
+      "startlist": "/api/v1/routes/235442/startlist"
+    },
+    {
+      "id": 235443,
+      "name": "F-19 #3",
+      "startlist": "/api/v1/routes/235443/startlist"
+    },
+    {
+      "id": 235444,
+      "name": "F-19 #4",
+      "startlist": "/api/v1/routes/235444/startlist"
+    }
+  ],
+  "ranking": [],
+  "show_advancement_line": true,
+  "startlist": [
+    {
+      "athlete_id": 58395,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 1
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 3
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 5
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 7
+        }
+      ],
+      "name": "LARK Kai",
+      "firstname": "Kai",
+      "lastname": "LARK",
+      "bib": "5395",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 895,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 53418,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 2
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 4
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 6
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 8
+        }
+      ],
+      "name": "RIVER Zara",
+      "firstname": "Zara",
+      "lastname": "RIVER",
+      "bib": "9418",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 418,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56594,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 3
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 5
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 7
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 9
+        }
+      ],
+      "name": "FERN Winter",
+      "firstname": "Winter",
+      "lastname": "FERN",
+      "bib": "3594",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 894,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 57047,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 4
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 6
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 8
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 10
+        }
+      ],
+      "name": "GROVE Blake",
+      "firstname": "Blake",
+      "lastname": "GROVE",
+      "bib": "4047",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 447,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 59633,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 5
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 7
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 9
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 11
+        }
+      ],
+      "name": "DALE Kai",
+      "firstname": "Kai",
+      "lastname": "DALE",
+      "bib": "6633",
+      "country": "Redpoint Gym",
+      "flag_url": null,
+      "federation_id": 333,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 57257,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 6
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 8
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 10
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 12
+        }
+      ],
+      "name": "ASPEN Parker",
+      "firstname": "Parker",
+      "lastname": "ASPEN",
+      "bib": "4257",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 657,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56101,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 7
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 9
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 11
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 13
+        }
+      ],
+      "name": "STONE Dana",
+      "firstname": "Dana",
+      "lastname": "STONE",
+      "bib": "3101",
+      "country": "Crux Climbing Club",
+      "flag_url": null,
+      "federation_id": 401,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 52898,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 8
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 10
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 12
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 14
+        }
+      ],
+      "name": "BOULDER Avery",
+      "firstname": "Avery",
+      "lastname": "BOULDER",
+      "bib": "8898",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 798,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 52547,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 9
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 11
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 13
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 15
+        }
+      ],
+      "name": "FIELD Cameron",
+      "firstname": "Cameron",
+      "lastname": "FIELD",
+      "bib": "8547",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 447,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 55667,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 10
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 12
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 14
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 16
+        }
+      ],
+      "name": "DOVE Winter",
+      "firstname": "Winter",
+      "lastname": "DOVE",
+      "bib": "2667",
+      "country": "Redpoint Gym",
+      "flag_url": null,
+      "federation_id": 867,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 57786,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 11
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 13
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 15
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 17
+        }
+      ],
+      "name": "LARK Lane",
+      "firstname": "Lane",
+      "lastname": "LARK",
+      "bib": "4786",
+      "country": "Basecamp Climbing",
+      "flag_url": null,
+      "federation_id": 286,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 59426,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 12
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 14
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 16
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 18
+        }
+      ],
+      "name": "FERN Sage",
+      "firstname": "Sage",
+      "lastname": "FERN",
+      "bib": "6426",
+      "country": "Crux Climbing Club",
+      "flag_url": null,
+      "federation_id": 126,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56410,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 13
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 15
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 17
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 19
+        }
+      ],
+      "name": "MARSH Avery",
+      "firstname": "Avery",
+      "lastname": "MARSH",
+      "bib": "3410",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 710,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 57923,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 14
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 16
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 18
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 20
+        }
+      ],
+      "name": "BROOK Nova",
+      "firstname": "Nova",
+      "lastname": "BROOK",
+      "bib": "4923",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 423,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56563,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 15
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 17
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 19
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 21
+        }
+      ],
+      "name": "RAIN Reese",
+      "firstname": "Reese",
+      "lastname": "RAIN",
+      "bib": "3563",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 863,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 59500,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 16
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 18
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 20
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 22
+        }
+      ],
+      "name": "MESA Indigo",
+      "firstname": "Indigo",
+      "lastname": "MESA",
+      "bib": "6500",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 200,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 57865,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 17
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 19
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 21
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 23
+        }
+      ],
+      "name": "CRANE Vale",
+      "firstname": "Vale",
+      "lastname": "CRANE",
+      "bib": "4865",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 365,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 53795,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 18
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 20
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 22
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 24
+        }
+      ],
+      "name": "GROVE Taylor",
+      "firstname": "Taylor",
+      "lastname": "GROVE",
+      "bib": "9795",
+      "country": "Granite Climbing Co",
+      "flag_url": null,
+      "federation_id": 795,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 50530,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 19
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 21
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 23
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 25
+        }
+      ],
+      "name": "RIDGE Morgan",
+      "firstname": "Morgan",
+      "lastname": "RIDGE",
+      "bib": "6530",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 230,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56496,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 20
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 22
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 24
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 26
+        }
+      ],
+      "name": "RAIN Dana",
+      "firstname": "Dana",
+      "lastname": "RAIN",
+      "bib": "3496",
+      "country": "Basecamp Climbing",
+      "flag_url": null,
+      "federation_id": 796,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 61316,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 21
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 23
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 25
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 27
+        }
+      ],
+      "name": "LAKE Finley",
+      "firstname": "Finley",
+      "lastname": "LAKE",
+      "bib": "8316",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 216,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56240,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 22
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 24
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 26
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 28
+        }
+      ],
+      "name": "LARK Ellis",
+      "firstname": "Ellis",
+      "lastname": "LARK",
+      "bib": "3240",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 540,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 55825,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 23
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 25
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 27
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 29
+        }
+      ],
+      "name": "FERN Jordan",
+      "firstname": "Jordan",
+      "lastname": "FERN",
+      "bib": "2825",
+      "country": "Basecamp Climbing",
+      "flag_url": null,
+      "federation_id": 125,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 53311,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 24
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 26
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 28
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 30
+        }
+      ],
+      "name": "DALE Oakley",
+      "firstname": "Oakley",
+      "lastname": "DALE",
+      "bib": "9311",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 311,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 61317,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 25
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 27
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 29
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 31
+        }
+      ],
+      "name": "FERN Kai",
+      "firstname": "Kai",
+      "lastname": "FERN",
+      "bib": "8317",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 217,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 56867,
+      "route_start_positions": [
+        {
+          "route_name": "M/O-17 ##1",
+          "route_id": 235441,
+          "position": 26
+        },
+        {
+          "route_name": "M/O-17 ##2",
+          "route_id": 235442,
+          "position": 28
+        },
+        {
+          "route_name": "M/O-17 ##3",
+          "route_id": 235443,
+          "position": 30
+        },
+        {
+          "route_name": "M/O-17 ##4",
+          "route_id": 235444,
+          "position": 32
+        }
+      ],
+      "name": "FROST Harper",
+      "firstname": "Harper",
+      "lastname": "FROST",
+      "bib": "3867",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 267,
+      "paraclimbing_guide": null
+    }
+  ]
+}

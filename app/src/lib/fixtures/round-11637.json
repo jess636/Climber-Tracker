@@ -1,0 +1,2881 @@
+{
+  "id": 11631,
+  "event": "Mock Regional Youth Boulder Championship",
+  "event_id": 503,
+  "dcat_id": 388,
+  "discipline": "Boulder",
+  "status": "finished",
+  "status_as_of": "2026-03-15 23:26:30 UTC",
+  "category": "U-11",
+  "round": "Final",
+  "points_per_boulder_settings": {
+    "fall_deduction": 0.1,
+    "points_per_low_zone": 5,
+    "points_per_top": 25,
+    "points_per_zone": 10,
+    "use_low_zone": true
+  },
+  "format": "IFSC: 1 group 2025 (points)",
+  "routes": [
+    {
+      "id": 235437,
+      "name": "F-17 #1",
+      "startlist": "/api/v1/routes/235437/startlist"
+    },
+    {
+      "id": 235438,
+      "name": "F-17 #2",
+      "startlist": "/api/v1/routes/235438/startlist"
+    },
+    {
+      "id": 235439,
+      "name": "F-17 #3",
+      "startlist": "/api/v1/routes/235439/startlist"
+    },
+    {
+      "id": 235440,
+      "name": "F-17 #4",
+      "startlist": "/api/v1/routes/235440/startlist"
+    }
+  ],
+  "ranking": [
+    {
+      "athlete_id": 74142,
+      "name": "LARK Oakley",
+      "firstname": "Oakley",
+      "lastname": "LARK",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 442,
+      "bib": "3142",
+      "rank": 1,
+      "score": "100.0",
+      "start_order": 21,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:56:36 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:04:37 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:13:35 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:22:52 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 74399,
+      "name": "DOVE Morgan",
+      "firstname": "Morgan",
+      "lastname": "DOVE",
+      "country": "Redpoint Gym",
+      "flag_url": null,
+      "federation_id": 699,
+      "bib": "3399",
+      "rank": 2,
+      "score": "99.4",
+      "start_order": 23,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": true,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 24.8,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:10:33 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 5,
+          "zone": true,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 24.6,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:14:58 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:22:08 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:30:54 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76692,
+      "name": "SUMMIT Reese",
+      "firstname": "Reese",
+      "lastname": "SUMMIT",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 292,
+      "bib": "5692",
+      "rank": 3,
+      "score": "79.5",
+      "start_order": 7,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 3,
+          "zone": false,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:59:27 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 2,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 24.9,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:06:30 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 4,
+          "zone": true,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 24.7,
+          "low_zone_tries": 4,
+          "modified": "2026-03-15 20:16:26 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": true,
+          "top_tries": 2,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 24.9,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:24:47 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 73688,
+      "name": "ASPEN Blair",
+      "firstname": "Blair",
+      "lastname": "ASPEN",
+      "country": "Granite Climbing Co",
+      "flag_url": null,
+      "federation_id": 888,
+      "bib": "2688",
+      "rank": 4,
+      "score": "79.3",
+      "start_order": 2,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 4.8,
+          "low_zone_tries": 3,
+          "modified": "2026-03-15 19:38:17 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:43:38 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 6,
+          "zone": true,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 24.5,
+          "low_zone_tries": 6,
+          "modified": "2026-03-15 19:55:11 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:01:21 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 79163,
+      "name": "HILL Casey",
+      "firstname": "Casey",
+      "lastname": "HILL",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 963,
+      "bib": "8163",
+      "rank": 5,
+      "score": "69.4",
+      "start_order": 12,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:18:41 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 24.8,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:27:36 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 4,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 9.9,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:37:37 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 4,
+          "zone": true,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 9.7,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:46:00 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 73188,
+      "name": "PINE Lane",
+      "firstname": "Lane",
+      "lastname": "PINE",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 388,
+      "bib": "2188",
+      "rank": 6,
+      "score": "64.8",
+      "start_order": 6,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 3,
+          "zone": false,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:54:59 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 24.8,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:01:56 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:09:57 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 10,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:20:34 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 78788,
+      "name": "RIDGE Vale",
+      "firstname": "Vale",
+      "lastname": "RIDGE",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 588,
+      "bib": "7788",
+      "rank": 7,
+      "score": "64.6",
+      "start_order": 11,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:16:31 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 5,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 24.6,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:24:29 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:30:35 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 6,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 10,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:41:49 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 79367,
+      "name": "GROVE Parker",
+      "firstname": "Parker",
+      "lastname": "GROVE",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 267,
+      "bib": "8367",
+      "rank": 8,
+      "score": "59.8",
+      "start_order": 1,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 19:34:03 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:39:24 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 2,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 24.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 19:49:09 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:59:33 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 74632,
+      "name": "RIDGE Taylor",
+      "firstname": "Taylor",
+      "lastname": "RIDGE",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 932,
+      "bib": "3632",
+      "rank": 9,
+      "score": "59.2",
+      "start_order": 24,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 4.7,
+          "low_zone_tries": 4,
+          "modified": "2026-03-15 22:17:38 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 24.8,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:17:53 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 24.8,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:27:17 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 8,
+          "zone": false,
+          "zone_tries": 8,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:37:16 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76419,
+      "name": "FIELD Morgan",
+      "firstname": "Morgan",
+      "lastname": "FIELD",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 919,
+      "bib": "5419",
+      "rank": 10,
+      "score": "44.9",
+      "start_order": 22,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 4,
+          "zone": false,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:03:16 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:11:44 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 23:00:40 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 2,
+          "low_zone": true,
+          "points": 9.9,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:28:45 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76511,
+      "name": "MESA Yael",
+      "firstname": "Yael",
+      "lastname": "MESA",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 111,
+      "bib": "5511",
+      "rank": 11,
+      "score": "44.7",
+      "start_order": 5,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:50:28 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 8,
+          "zone": false,
+          "zone_tries": 8,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:59:26 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:05:14 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 6,
+          "zone": true,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 9.7,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 20:16:14 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76586,
+      "name": "LARK Unity",
+      "firstname": "Unity",
+      "lastname": "LARK",
+      "country": "Crux Climbing Club",
+      "flag_url": null,
+      "federation_id": 186,
+      "bib": "5586",
+      "rank": 12,
+      "score": "39.5",
+      "start_order": 14,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 20:29:07 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 20:37:45 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": true,
+          "top_tries": 1,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 25,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:43:52 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": true,
+          "points": 4.7,
+          "low_zone_tries": 4,
+          "modified": "2026-03-15 20:54:51 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 74376,
+      "name": "SUMMIT Drew",
+      "firstname": "Drew",
+      "lastname": "SUMMIT",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 676,
+      "bib": "3376",
+      "rank": 13,
+      "score": "34.5",
+      "start_order": 18,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 4.8,
+          "low_zone_tries": 3,
+          "modified": "2026-03-15 20:46:17 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": true,
+          "top_tries": 3,
+          "zone": true,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 24.8,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:54:17 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 6,
+          "modified": "2026-03-15 21:03:16 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:11:47 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76507,
+      "name": "WREN Winter",
+      "firstname": "Winter",
+      "lastname": "WREN",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 107,
+      "bib": "5507",
+      "rank": 14,
+      "score": "29.5",
+      "start_order": 4,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:46:27 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:55:06 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 2,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 10,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:03:29 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 6,
+          "zone": true,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 9.5,
+          "low_zone_tries": 3,
+          "modified": "2026-03-15 20:12:07 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76601,
+      "name": "WREN Ellis",
+      "firstname": "Ellis",
+      "lastname": "WREN",
+      "country": "Redpoint Gym",
+      "flag_url": null,
+      "federation_id": 201,
+      "bib": "5601",
+      "rank": 15,
+      "score": "24.4",
+      "start_order": 19,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 4,
+          "zone": false,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:50:32 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:58:59 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 6,
+          "zone": true,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 9.5,
+          "low_zone_tries": 6,
+          "modified": "2026-03-15 21:07:34 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 3,
+          "zone": false,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:15:58 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 76478,
+      "name": "RAIN Oakley",
+      "firstname": "Oakley",
+      "lastname": "RAIN",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 978,
+      "bib": "5478",
+      "rank": 16,
+      "score": "19.9",
+      "start_order": 16,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 9,
+          "zone": false,
+          "zone_tries": 9,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 9,
+          "modified": "2026-03-15 20:37:43 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:46:14 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 4,
+          "zone": true,
+          "zone_tries": 1,
+          "low_zone": true,
+          "points": 10,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:54:47 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:03:11 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": true
+    },
+    {
+      "athlete_id": 74237,
+      "name": "SHAW Vale",
+      "firstname": "Vale",
+      "lastname": "SHAW",
+      "country": "Basecamp Climbing",
+      "flag_url": null,
+      "federation_id": 537,
+      "bib": "3237",
+      "rank": 17,
+      "score": "19.5",
+      "start_order": 3,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 4.8,
+          "low_zone_tries": 3,
+          "modified": "2026-03-15 19:42:35 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 4,
+          "zone": true,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 9.7,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 19:50:58 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 6,
+          "modified": "2026-03-15 19:59:34 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:08:04 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 77737,
+      "name": "PEAK Indigo",
+      "firstname": "Indigo",
+      "lastname": "PEAK",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 437,
+      "bib": "6737",
+      "rank": 18,
+      "score": "10.0",
+      "start_order": 9,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 7,
+          "modified": "2026-03-15 20:07:57 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 4,
+          "zone": false,
+          "zone_tries": 4,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:16:17 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 7,
+          "modified": "2026-03-15 20:24:46 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 3,
+          "zone": false,
+          "zone_tries": 3,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:33:09 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 76329,
+      "name": "STONE Sage",
+      "firstname": "Sage",
+      "lastname": "STONE",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 829,
+      "bib": "5329",
+      "rank": 18,
+      "score": "10.0",
+      "start_order": 15,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 18,
+          "zone": false,
+          "zone_tries": 18,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 18,
+          "modified": "2026-03-15 20:33:30 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:42:02 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 12,
+          "zone": false,
+          "zone_tries": 12,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 12,
+          "modified": "2026-03-15 20:50:34 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 11,
+          "zone": false,
+          "zone_tries": 11,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:59:08 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 78783,
+      "name": "REED Oakley",
+      "firstname": "Oakley",
+      "lastname": "REED",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 583,
+      "bib": "7783",
+      "rank": 20,
+      "score": "9.9",
+      "start_order": 27,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 7,
+          "modified": "2026-03-15 21:24:26 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:32:54 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 12,
+          "zone": false,
+          "zone_tries": 12,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 12,
+          "modified": "2026-03-15 21:41:47 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 21:49:53 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 74128,
+      "name": "CREST Alex",
+      "firstname": "Alex",
+      "lastname": "CREST",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 428,
+      "bib": "3128",
+      "rank": 21,
+      "score": "9.6",
+      "start_order": 8,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 7,
+          "modified": "2026-03-15 20:03:20 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:11:58 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 6,
+          "modified": "2026-03-15 20:20:05 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 11,
+          "zone": false,
+          "zone_tries": 11,
+          "low_zone": true,
+          "points": 4.6,
+          "low_zone_tries": 5,
+          "modified": "2026-03-15 20:28:54 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 75039,
+      "name": "WREN Ellis",
+      "firstname": "Ellis",
+      "lastname": "WREN",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 439,
+      "bib": "4039",
+      "rank": 21,
+      "score": "9.6",
+      "start_order": 10,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 9,
+          "zone": false,
+          "zone_tries": 9,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 9,
+          "modified": "2026-03-15 20:12:18 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 8,
+          "zone": false,
+          "zone_tries": 8,
+          "low_zone": true,
+          "points": 5,
+          "low_zone_tries": 1,
+          "modified": "2026-03-15 20:20:45 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 10,
+          "zone": false,
+          "zone_tries": 10,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 10,
+          "modified": "2026-03-15 20:29:11 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 9,
+          "zone": false,
+          "zone_tries": 9,
+          "low_zone": true,
+          "points": 4.6,
+          "low_zone_tries": 5,
+          "modified": "2026-03-15 20:37:47 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 81813,
+      "name": "SHAW Quinn",
+      "firstname": "Quinn",
+      "lastname": "SHAW",
+      "country": "Granite Climbing Co",
+      "flag_url": null,
+      "federation_id": 913,
+      "bib": "1813",
+      "rank": 23,
+      "score": "9.5",
+      "start_order": 26,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 8,
+          "zone": false,
+          "zone_tries": 8,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 8,
+          "modified": "2026-03-15 21:19:30 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 8,
+          "zone": false,
+          "zone_tries": 8,
+          "low_zone": true,
+          "points": 4.8,
+          "low_zone_tries": 3,
+          "modified": "2026-03-15 21:28:31 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 6,
+          "zone": false,
+          "zone_tries": 6,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 6,
+          "modified": "2026-03-15 21:35:54 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": true,
+          "points": 4.7,
+          "low_zone_tries": 4,
+          "modified": "2026-03-15 22:15:08 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 76646,
+      "name": "WOOD Morgan",
+      "firstname": "Morgan",
+      "lastname": "WOOD",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 246,
+      "bib": "5646",
+      "rank": 24,
+      "score": "9.3",
+      "start_order": 13,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 13,
+          "zone": false,
+          "zone_tries": 13,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 13,
+          "modified": "2026-03-15 20:25:02 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 10,
+          "zone": false,
+          "zone_tries": 10,
+          "low_zone": true,
+          "points": 4.6,
+          "low_zone_tries": 5,
+          "modified": "2026-03-15 20:33:29 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 11,
+          "zone": false,
+          "zone_tries": 11,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 11,
+          "modified": "2026-03-15 20:42:00 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 12,
+          "zone": false,
+          "zone_tries": 12,
+          "low_zone": true,
+          "points": 4.7,
+          "low_zone_tries": 4,
+          "modified": "2026-03-15 20:50:40 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 76705,
+      "name": "SWIFT Drew",
+      "firstname": "Drew",
+      "lastname": "SWIFT",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 305,
+      "bib": "5705",
+      "rank": 25,
+      "score": "9.2",
+      "start_order": 20,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 16,
+          "zone": false,
+          "zone_tries": 16,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 16,
+          "modified": "2026-03-15 20:54:47 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 5,
+          "zone": false,
+          "zone_tries": 5,
+          "low_zone": true,
+          "points": 4.9,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:03:13 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 7,
+          "modified": "2026-03-15 21:11:45 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 12,
+          "zone": false,
+          "zone_tries": 12,
+          "low_zone": true,
+          "points": 4.3,
+          "low_zone_tries": 8,
+          "modified": "2026-03-15 21:20:24 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 75351,
+      "name": "CLIFF Dana",
+      "firstname": "Dana",
+      "lastname": "CLIFF",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 751,
+      "bib": "4351",
+      "rank": 26,
+      "score": "4.2",
+      "start_order": 17,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 11,
+          "zone": false,
+          "zone_tries": 11,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 11,
+          "modified": "2026-03-15 20:41:58 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 21,
+          "zone": false,
+          "zone_tries": 21,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 21,
+          "modified": "2026-03-15 20:50:30 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 11,
+          "zone": false,
+          "zone_tries": 11,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 11,
+          "modified": "2026-03-15 20:59:01 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": 10,
+          "zone": false,
+          "zone_tries": 10,
+          "low_zone": true,
+          "points": 4.2,
+          "low_zone_tries": 9,
+          "modified": "2026-03-15 21:07:30 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    },
+    {
+      "athlete_id": 76746,
+      "name": "RAIN Alex",
+      "firstname": "Alex",
+      "lastname": "RAIN",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 346,
+      "bib": "5746",
+      "rank": 27,
+      "score": "0",
+      "start_order": 25,
+      "extra_advancement": false,
+      "ascents": [
+        {
+          "route_id": 235437,
+          "route_name": "U-11 ##1",
+          "top": false,
+          "top_tries": 7,
+          "zone": false,
+          "zone_tries": 7,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 7,
+          "modified": "2026-03-15 21:15:48 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235438,
+          "route_name": "U-11 ##2",
+          "top": false,
+          "top_tries": 4,
+          "zone": false,
+          "zone_tries": 4,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 4,
+          "modified": "2026-03-15 21:22:17 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235439,
+          "route_name": "U-11 ##3",
+          "top": false,
+          "top_tries": 2,
+          "zone": false,
+          "zone_tries": 2,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": 2,
+          "modified": "2026-03-15 21:30:54 +00:00",
+          "status": "confirmed"
+        },
+        {
+          "route_id": 235440,
+          "route_name": "U-11 ##4",
+          "top": false,
+          "top_tries": null,
+          "zone": false,
+          "zone_tries": null,
+          "low_zone": false,
+          "points": 0,
+          "low_zone_tries": null,
+          "modified": "2026-03-15 21:38:36 +00:00",
+          "status": "confirmed"
+        }
+      ],
+      "combined_stages": null,
+      "active": false,
+      "under_appeal": false,
+      "qualified": false
+    }
+  ],
+  "show_advancement_line": true,
+  "startlist": [
+    {
+      "athlete_id": 79367,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 1
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 3
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 5
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 7
+        }
+      ],
+      "name": "GROVE Parker",
+      "firstname": "Parker",
+      "lastname": "GROVE",
+      "bib": "8367",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 267,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 73688,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 2
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 4
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 6
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 8
+        }
+      ],
+      "name": "ASPEN Blair",
+      "firstname": "Blair",
+      "lastname": "ASPEN",
+      "bib": "2688",
+      "country": "Granite Climbing Co",
+      "flag_url": null,
+      "federation_id": 888,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 74237,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 3
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 5
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 7
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 9
+        }
+      ],
+      "name": "SHAW Vale",
+      "firstname": "Vale",
+      "lastname": "SHAW",
+      "bib": "3237",
+      "country": "Basecamp Climbing",
+      "flag_url": null,
+      "federation_id": 537,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76507,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 4
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 6
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 8
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 10
+        }
+      ],
+      "name": "WREN Winter",
+      "firstname": "Winter",
+      "lastname": "WREN",
+      "bib": "5507",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 107,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76511,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 5
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 7
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 9
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 11
+        }
+      ],
+      "name": "MESA Yael",
+      "firstname": "Yael",
+      "lastname": "MESA",
+      "bib": "5511",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 111,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 73188,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 6
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 8
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 10
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 12
+        }
+      ],
+      "name": "PINE Lane",
+      "firstname": "Lane",
+      "lastname": "PINE",
+      "bib": "2188",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 388,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76692,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 7
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 9
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 11
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 13
+        }
+      ],
+      "name": "SUMMIT Reese",
+      "firstname": "Reese",
+      "lastname": "SUMMIT",
+      "bib": "5692",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 292,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 74128,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 8
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 10
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 12
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 14
+        }
+      ],
+      "name": "CREST Alex",
+      "firstname": "Alex",
+      "lastname": "CREST",
+      "bib": "3128",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 428,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 77737,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 9
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 11
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 13
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 15
+        }
+      ],
+      "name": "PEAK Indigo",
+      "firstname": "Indigo",
+      "lastname": "PEAK",
+      "bib": "6737",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 437,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 75039,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 10
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 12
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 14
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 16
+        }
+      ],
+      "name": "WREN Ellis",
+      "firstname": "Ellis",
+      "lastname": "WREN",
+      "bib": "4039",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 439,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 78788,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 11
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 13
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 15
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 17
+        }
+      ],
+      "name": "RIDGE Vale",
+      "firstname": "Vale",
+      "lastname": "RIDGE",
+      "bib": "7788",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 588,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 79163,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 12
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 14
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 16
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 18
+        }
+      ],
+      "name": "HILL Casey",
+      "firstname": "Casey",
+      "lastname": "HILL",
+      "bib": "8163",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 963,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76646,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 13
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 15
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 17
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 19
+        }
+      ],
+      "name": "WOOD Morgan",
+      "firstname": "Morgan",
+      "lastname": "WOOD",
+      "bib": "5646",
+      "country": "Crag Athletics",
+      "flag_url": null,
+      "federation_id": 246,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76586,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 14
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 16
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 18
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 20
+        }
+      ],
+      "name": "LARK Unity",
+      "firstname": "Unity",
+      "lastname": "LARK",
+      "bib": "5586",
+      "country": "Crux Climbing Club",
+      "flag_url": null,
+      "federation_id": 186,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76329,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 15
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 17
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 19
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 21
+        }
+      ],
+      "name": "STONE Sage",
+      "firstname": "Sage",
+      "lastname": "STONE",
+      "bib": "5329",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 829,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76478,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 16
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 18
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 20
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 22
+        }
+      ],
+      "name": "RAIN Oakley",
+      "firstname": "Oakley",
+      "lastname": "RAIN",
+      "bib": "5478",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 978,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 75351,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 17
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 19
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 21
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 23
+        }
+      ],
+      "name": "CLIFF Dana",
+      "firstname": "Dana",
+      "lastname": "CLIFF",
+      "bib": "4351",
+      "country": "Apex Climbing Center",
+      "flag_url": null,
+      "federation_id": 751,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 74376,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 18
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 20
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 22
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 24
+        }
+      ],
+      "name": "SUMMIT Drew",
+      "firstname": "Drew",
+      "lastname": "SUMMIT",
+      "bib": "3376",
+      "country": "Boulder Valley Gym",
+      "flag_url": null,
+      "federation_id": 676,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76601,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 19
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 21
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 23
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 25
+        }
+      ],
+      "name": "WREN Ellis",
+      "firstname": "Ellis",
+      "lastname": "WREN",
+      "bib": "5601",
+      "country": "Redpoint Gym",
+      "flag_url": null,
+      "federation_id": 201,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76705,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 20
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 22
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 24
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 26
+        }
+      ],
+      "name": "SWIFT Drew",
+      "firstname": "Drew",
+      "lastname": "SWIFT",
+      "bib": "5705",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 305,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 74142,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 21
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 23
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 25
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 27
+        }
+      ],
+      "name": "LARK Oakley",
+      "firstname": "Oakley",
+      "lastname": "LARK",
+      "bib": "3142",
+      "country": "Peak Performance Climbing",
+      "flag_url": null,
+      "federation_id": 442,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76419,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 22
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 24
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 26
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 28
+        }
+      ],
+      "name": "FIELD Morgan",
+      "firstname": "Morgan",
+      "lastname": "FIELD",
+      "bib": "5419",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 919,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 74399,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 23
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 25
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 27
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 29
+        }
+      ],
+      "name": "DOVE Morgan",
+      "firstname": "Morgan",
+      "lastname": "DOVE",
+      "bib": "3399",
+      "country": "Redpoint Gym",
+      "flag_url": null,
+      "federation_id": 699,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 74632,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 24
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 26
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 28
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 30
+        }
+      ],
+      "name": "RIDGE Taylor",
+      "firstname": "Taylor",
+      "lastname": "RIDGE",
+      "bib": "3632",
+      "country": "Vertical Limit Training",
+      "flag_url": null,
+      "federation_id": 932,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 76746,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 25
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 27
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 29
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 31
+        }
+      ],
+      "name": "RAIN Alex",
+      "firstname": "Alex",
+      "lastname": "RAIN",
+      "bib": "5746",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 346,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 81813,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 26
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 28
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 30
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 32
+        }
+      ],
+      "name": "SHAW Quinn",
+      "firstname": "Quinn",
+      "lastname": "SHAW",
+      "bib": "1813",
+      "country": "Granite Climbing Co",
+      "flag_url": null,
+      "federation_id": 913,
+      "paraclimbing_guide": null
+    },
+    {
+      "athlete_id": 78783,
+      "route_start_positions": [
+        {
+          "route_name": "U-11 ##1",
+          "route_id": 235437,
+          "position": 27
+        },
+        {
+          "route_name": "U-11 ##2",
+          "route_id": 235438,
+          "position": 29
+        },
+        {
+          "route_name": "U-11 ##3",
+          "route_id": 235439,
+          "position": 31
+        },
+        {
+          "route_name": "U-11 ##4",
+          "route_id": 235440,
+          "position": 33
+        }
+      ],
+      "name": "REED Oakley",
+      "firstname": "Oakley",
+      "lastname": "REED",
+      "bib": "7783",
+      "country": "Summit Climbing Academy",
+      "flag_url": null,
+      "federation_id": 583,
+      "paraclimbing_guide": null
+    }
+  ]
+}

@@ -1,37 +1,42 @@
 /**
  * Mock API layer for testing without hitting USAC.
  *
- * Enable with MOCK_MODE=true in .env.local
+ * Enable with MOCK_MODE=true
  *
- * Fixture files in src/lib/fixtures/ represent different comp states:
- *   event.json          — event overview with mixed round statuses
- *   round-not-started   — startlist only, no results
- *   round-just-started  — 3 climbers ranked, 1 actively climbing
- *   round-active        — mid-comp, some climbing, partial results
- *   round-finished      — complete results
- *
- * Round ID → fixture mapping:
- *   11635, 11636        → not-started
- *   11634               → just-started
- *   11632               → active
- *   everything else     → finished
+ * Each round ID has its own fixture file with unique athletes per category.
+ * Fixture states:
+ *   11629 F-13    finished     11633 M/O-13  finished
+ *   11630 F-15    finished     11634 M/O-15  just started
+ *   11631 F-17    finished     11635 M/O-17  not started
+ *   11632 F-19    active       11636 M/O-19  not started
+ *                              11637 U-11    finished
  */
 
 import eventFixture from "./fixtures/event.json";
-import roundNotStarted from "./fixtures/round-not-started.json";
-import roundJustStarted from "./fixtures/round-just-started.json";
-import roundActive from "./fixtures/round-active.json";
-import roundFinished from "./fixtures/round-finished.json";
+import round11629 from "./fixtures/round-11629.json";
+import round11630 from "./fixtures/round-11630.json";
+import round11631 from "./fixtures/round-11631.json";
+import round11632 from "./fixtures/round-11632.json";
+import round11633 from "./fixtures/round-11633.json";
+import round11634 from "./fixtures/round-11634.json";
+import round11635 from "./fixtures/round-11635.json";
+import round11636 from "./fixtures/round-11636.json";
+import round11637 from "./fixtures/round-11637.json";
 
 export function isMockMode(): boolean {
   return process.env.MOCK_MODE === "true";
 }
 
-const roundFixtureMap: Record<number, unknown> = {
-  11635: roundNotStarted,
-  11636: roundNotStarted,
-  11634: roundJustStarted,
-  11632: roundActive,
+const roundFixtures: Record<number, unknown> = {
+  11629: round11629,
+  11630: round11630,
+  11631: round11631,
+  11632: round11632,
+  11633: round11633,
+  11634: round11634,
+  11635: round11635,
+  11636: round11636,
+  11637: round11637,
 };
 
 // Simulate network delay (50-200ms)
@@ -47,11 +52,11 @@ export async function mockGetEvent(): Promise<unknown> {
 
 export async function mockGetRoundResults(roundId: number): Promise<unknown> {
   await delay();
-  const fixture = roundFixtureMap[roundId] ?? roundFinished;
-  const data = structuredClone(fixture) as Record<string, unknown>;
-  // Override the ID to match the requested round
-  data.id = roundId;
-  return data;
+  const fixture = roundFixtures[roundId];
+  if (!fixture) {
+    throw new Error(`No mock fixture for round ${roundId}`);
+  }
+  return structuredClone(fixture);
 }
 
 export async function mockGetSeasons(): Promise<unknown> {

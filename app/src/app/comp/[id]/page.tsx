@@ -115,6 +115,7 @@ interface TrackedRoundData {
   athlete: Athlete | null;
   entry: StartlistEntry | null;
   routes: Route[];
+  currentPositions: Map<number, number>;
 }
 
 // --- localStorage helpers ---
@@ -277,6 +278,8 @@ export default function CompetitionPage({
       const routes: Route[] = data.routes ?? [];
       const rankedIds = new Set(ranking.map((a) => a.athlete_id));
 
+      const currentPositions = computeCurrentPositions(ranking, startlist);
+
       for (const [id] of tracked) {
         const athlete = ranking.find((a) => a.athlete_id === id) ?? null;
         const entry = startlist.find((e) => e.athlete_id === id) ?? null;
@@ -290,6 +293,7 @@ export default function CompetitionPage({
           athlete,
           entry,
           routes,
+          currentPositions,
         });
       }
     }
@@ -754,10 +758,53 @@ interface ClimberStatus {
   sortKey: number; // lower = higher priority in display
 }
 
+function formatRouteName(routeName: string, includeCategory: boolean): string {
+  // "F-19 #3" -> "F-19 B3" (full) or "B3" (short)
+  if (includeCategory) {
+    return routeName.replace(/\s*#/, " B");
+  }
+  return routeName.replace(/.*#/, "B");
+}
+
+/**
+ * Compute the highest confirmed position on each route.
+ * This tells us roughly where the rotation is at — the climber at
+ * this position just finished or is finishing.
+ */
+function computeCurrentPositions(
+  ranking: Athlete[],
+  startlist: StartlistEntry[],
+): Map<number, number> {
+  // Map route_id -> highest position of a climber who has results or is active
+  const startlistMap = new Map(startlist.map((e) => [e.athlete_id, e]));
+  const routePositions = new Map<number, number>();
+
+  for (const athlete of ranking) {
+    const entry = startlistMap.get(athlete.athlete_id);
+    if (!entry) continue;
+
+    for (const ascent of athlete.ascents) {
+      if (ascent.top_tries != null || ascent.status === "active") {
+        const rsp = entry.route_start_positions.find(
+          (r) => r.route_name === ascent.route_name
+        );
+        if (rsp) {
+          const current = routePositions.get(rsp.route_id) ?? 0;
+          routePositions.set(rsp.route_id, Math.max(current, rsp.position));
+        }
+      }
+    }
+  }
+
+  return routePositions;
+}
+
 function computeClimberStatus(
   athlete: Athlete | null,
   startlistEntry: StartlistEntry | null,
   roundStatus: string,
+  includeCategory = false,
+  currentPositions?: Map<number, number>,
 ): ClimberStatus {
   // Finished round — everyone is done
   if (roundStatus === "finished") {
@@ -765,7 +812,7 @@ function computeClimberStatus(
   }
 
   // Not started round
-  if (roundStatus === "not_started" || !athlete) {
+  if (roundStatus === "not_started") {
     return {
       label: "Waiting",
       style: "text-gray-400",
@@ -774,9 +821,9 @@ function computeClimberStatus(
   }
 
   // Active on wall
-  if (athlete.active) {
+  if (athlete?.active) {
     const activeRoute = athlete.ascents.find((a) => a.status === "active");
-    const routeLabel = activeRoute ? activeRoute.route_name.replace(/.*#/, "B") : "";
+    const routeLabel = activeRoute ? formatRouteName(activeRoute.route_name, includeCategory) : "";
     return {
       label: `On wall${routeLabel ? ` — ${routeLabel}` : ""}`,
       style: "text-blue-600 font-medium animate-pulse",
@@ -784,21 +831,82 @@ function computeClimberStatus(
     };
   }
 
-  // Has results but not currently climbing
-  const doneCount = athlete.ascents.filter((a) => a.top_tries != null).length;
-  const totalRoutes = athlete.ascents.length;
+  if (athlete) {
+    // Has results but not currently climbing
+    const doneCount = athlete.ascents.filter((a) => a.top_tries != null).length;
+    const totalRoutes = athlete.ascents.length;
 
-  if (doneCount >= totalRoutes) {
-    return { label: "Done", style: "text-gray-400", sortKey: 3 };
+    if (doneCount >= totalRoutes) {
+      return { label: "Done", style: "text-gray-400", sortKey: 3 };
+    }
+
+    // Still has routes left — find next route and queue depth
+    const nextAscent = athlete.ascents.find((a) => a.top_tries == null);
+    if (nextAscent && startlistEntry && currentPositions) {
+      const rsp = startlistEntry.route_start_positions.find(
+        (r) => r.route_name === nextAscent.route_name
+      );
+      if (rsp) {
+        const currentPos = currentPositions.get(rsp.route_id) ?? 0;
+        const away = rsp.position - currentPos;
+        const routeLabel = formatRouteName(nextAscent.route_name, includeCategory);
+        if (away <= 1) {
+          return {
+            label: `On deck — ${routeLabel}`,
+            style: "text-orange-600 font-medium",
+            sortKey: 1,
+          };
+        }
+        return {
+          label: `${away} away — ${routeLabel}`,
+          style: "text-purple-600",
+          sortKey: 2,
+        };
+      }
+    }
+
+    const routeLabel = nextAscent ? formatRouteName(nextAscent.route_name, includeCategory) : "";
+    return {
+      label: `Next: ${routeLabel}`,
+      style: "text-purple-600",
+      sortKey: 2,
+    };
   }
 
-  // Still has routes left but not on wall — waiting for next rotation
-  const nextRoute = athlete.ascents.find((a) => a.top_tries == null);
-  const routeLabel = nextRoute ? nextRoute.route_name.replace(/.*#/, "B") : "";
+  // Not in ranking yet — use startlist position to estimate queue depth
+  if (startlistEntry && currentPositions) {
+    // Find the route where they have the lowest position (their first route)
+    let bestAway = Infinity;
+    let bestRoute = "";
+    for (const rsp of startlistEntry.route_start_positions) {
+      const currentPos = currentPositions.get(rsp.route_id) ?? 0;
+      const away = rsp.position - currentPos;
+      if (away > 0 && away < bestAway) {
+        bestAway = away;
+        bestRoute = rsp.route_name;
+      }
+    }
+    if (bestAway < Infinity) {
+      const routeLabel = formatRouteName(bestRoute, includeCategory);
+      if (bestAway <= 1) {
+        return {
+          label: `On deck — ${routeLabel}`,
+          style: "text-orange-600 font-medium",
+          sortKey: 1,
+        };
+      }
+      return {
+        label: `${bestAway} away — ${routeLabel}`,
+        style: "text-purple-600",
+        sortKey: 2,
+      };
+    }
+  }
+
   return {
-    label: `Next: ${routeLabel}`,
-    style: "text-purple-600",
-    sortKey: 2,
+    label: "Waiting",
+    style: "text-gray-400",
+    sortKey: 4,
   };
 }
 
@@ -837,6 +945,7 @@ function RoundTable({
   // Build unified rows: ranked athletes + unranked startlist entries
   const rankedIds = new Set(ranking.map((a) => a.athlete_id));
   const startlistMap = new Map(startlist.map((e) => [e.athlete_id, e]));
+  const currentPositions = computeCurrentPositions(ranking, startlist);
 
   const rows: UnifiedRow[] = [];
 
@@ -853,7 +962,7 @@ function RoundTable({
       ascents: athlete.ascents,
       active: athlete.active,
       under_appeal: athlete.under_appeal,
-      status: computeClimberStatus(athlete, entry ?? null, roundStatus),
+      status: computeClimberStatus(athlete, entry ?? null, roundStatus, false, currentPositions),
       startPositions: entry?.route_start_positions ?? [],
       hasResults: true,
     });
@@ -872,7 +981,7 @@ function RoundTable({
       ascents: [],
       active: false,
       under_appeal: false,
-      status: computeClimberStatus(null, entry, roundStatus),
+      status: computeClimberStatus(null, entry, roundStatus, false, currentPositions),
       startPositions: entry.route_start_positions,
       hasResults: false,
     });
@@ -1034,7 +1143,7 @@ function MyClimbersView({
             {/* Round cards */}
             <div className="divide-y divide-yellow-200">
               {rounds.map((r, i) => {
-                const status = computeClimberStatus(r.athlete, r.entry, r.roundStatus);
+                const status = computeClimberStatus(r.athlete, r.entry, r.roundStatus, true, r.currentPositions);
                 const hasAscents = (r.athlete?.ascents?.length ?? 0) > 0;
 
                 return (
