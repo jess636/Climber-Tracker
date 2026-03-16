@@ -1,0 +1,1898 @@
+{
+  "id": 503,
+  "name": "Mock Regional Youth Boulder Championship",
+  "type": "classic",
+  "league_id": 10,
+  "rounds": [
+    {
+      "id": 1235,
+      "name": "Final"
+    }
+  ],
+  "league_season_id": 19,
+  "season_id": 5,
+  "starts_at": "2026-03-15 07:00:00 UTC",
+  "ends_at": "2026-03-16 06:59:00 UTC",
+  "local_start_date": "2026-03-15",
+  "local_end_date": "2026-03-15",
+  "timezone": {
+    "value": "America/Los_Angeles"
+  },
+  "location": "Anytown, ST",
+  "registration_url": "/api/v1/events/503/registrations",
+  "public_information": {
+    "organiser_name": "Mock Climbing Organization",
+    "organiser_url": "",
+    "venue_name": "Mock Climbing Gym",
+    "description": ""
+  },
+  "cup_name": "",
+  "country": "USA",
+  "registration_deadline": "2026-03-09T18:00:00.000Z",
+  "registration_opens_at": "2026-03-02T19:00:00.000Z",
+  "removal_deadline": "2026-03-09T18:00:00.000Z",
+  "athlete_self_registration": true,
+  "team_official_self_registration": false,
+  "event_logo": null,
+  "series_logo": null,
+  "cover": null,
+  "infosheet_url": null,
+  "additional_info_url": null,
+  "is_paraclimbing_event": false,
+  "self_judged": false,
+  "d_cats": [
+    {
+      "dcat_id": 378,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-13",
+      "discipline_kind": "boulder",
+      "category_id": 5991,
+      "category_name": "F-13",
+      "status": "finished",
+      "status_as_of": "2026-03-15 17:14:50 UTC",
+      "ranking_as_of": "2026-03-15 16:30:07 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11629,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-13",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 17:14:40 UTC",
+          "result_url": "/api/v1/category_rounds/11629/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235429,
+              "name": "F-13 #1",
+              "startlist": "/api/v1/routes/235429/startlist"
+            },
+            {
+              "id": 235430,
+              "name": "F-13 #2",
+              "startlist": "/api/v1/routes/235430/startlist"
+            },
+            {
+              "id": 235431,
+              "name": "F-13 #3",
+              "startlist": "/api/v1/routes/235431/startlist"
+            },
+            {
+              "id": 235432,
+              "name": "F-13 #4",
+              "startlist": "/api/v1/routes/235432/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/378",
+      "top_3_results": [
+        {
+          "athlete_id": 4851,
+          "rank": 1,
+          "name": "FERN Xiomara",
+          "firstname": "Xiomara",
+          "lastname": "FERN",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5851",
+          "country": "Basecamp Climbing",
+          "flag_url": null,
+          "federation_id": 451,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4574,
+          "rank": 2,
+          "name": "LARK Gray",
+          "firstname": "Gray",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5574",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 174,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6442,
+          "rank": 2,
+          "name": "WREN Zara",
+          "firstname": "Zara",
+          "lastname": "WREN",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7442",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 242,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 383,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-15",
+      "discipline_kind": "boulder",
+      "category_id": 5992,
+      "category_name": "F-15",
+      "status": "finished",
+      "status_as_of": "2026-03-15 23:42:28 UTC",
+      "ranking_as_of": "2026-03-15 22:04:05 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11630,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-15",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 23:22:19 UTC",
+          "result_url": "/api/v1/category_rounds/11630/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235433,
+              "name": "F-15 #1",
+              "startlist": "/api/v1/routes/235433/startlist"
+            },
+            {
+              "id": 235434,
+              "name": "F-15 #2",
+              "startlist": "/api/v1/routes/235434/startlist"
+            },
+            {
+              "id": 235435,
+              "name": "F-15 #3",
+              "startlist": "/api/v1/routes/235435/startlist"
+            },
+            {
+              "id": 235436,
+              "name": "F-15 #4",
+              "startlist": "/api/v1/routes/235436/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/383",
+      "top_3_results": [
+        {
+          "athlete_id": 2592,
+          "rank": 1,
+          "name": "LAKE Drew",
+          "firstname": "Drew",
+          "lastname": "LAKE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3592",
+          "country": "Basecamp Climbing",
+          "flag_url": null,
+          "federation_id": 892,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 5149,
+          "rank": 2,
+          "name": "DALE Cameron",
+          "firstname": "Cameron",
+          "lastname": "DALE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "6149",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 749,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4870,
+          "rank": 2,
+          "name": "LARK Jordan",
+          "firstname": "Jordan",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5870",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 470,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 388,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-17",
+      "discipline_kind": "boulder",
+      "category_id": 5993,
+      "category_name": "F-17",
+      "status": "finished",
+      "status_as_of": "2026-03-15 23:41:55 UTC",
+      "ranking_as_of": "2026-03-15 21:22:53 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11631,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-17",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 23:26:30 UTC",
+          "result_url": "/api/v1/category_rounds/11631/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235437,
+              "name": "F-17 #1",
+              "startlist": "/api/v1/routes/235437/startlist"
+            },
+            {
+              "id": 235438,
+              "name": "F-17 #2",
+              "startlist": "/api/v1/routes/235438/startlist"
+            },
+            {
+              "id": 235439,
+              "name": "F-17 #3",
+              "startlist": "/api/v1/routes/235439/startlist"
+            },
+            {
+              "id": 235440,
+              "name": "F-17 #4",
+              "startlist": "/api/v1/routes/235440/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/388",
+      "top_3_results": [
+        {
+          "athlete_id": 4142,
+          "rank": 1,
+          "name": "CRANE Casey",
+          "firstname": "Casey",
+          "lastname": "CRANE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5142",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 642,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4399,
+          "rank": 2,
+          "name": "HILL Quinn",
+          "firstname": "Quinn",
+          "lastname": "HILL",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5399",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 899,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6692,
+          "rank": 3,
+          "name": "LAKE Lane",
+          "firstname": "Lane",
+          "lastname": "LAKE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7692",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 492,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 393,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-19",
+      "discipline_kind": "boulder",
+      "category_id": 5994,
+      "category_name": "F-19",
+      "status": "active",
+      "status_as_of": "2026-03-10 17:03:17 UTC",
+      "ranking_as_of": "2026-03-15 20:00:00",
+      "category_rounds": [
+        {
+          "category_round_id": 11632,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-19",
+          "schedule": null,
+          "status": "active",
+          "status_as_of": "2026-03-11 20:34:14 UTC",
+          "result_url": "/api/v1/category_rounds/11632/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235441,
+              "name": "F-19 #1",
+              "startlist": "/api/v1/routes/235441/startlist"
+            },
+            {
+              "id": 235442,
+              "name": "F-19 #2",
+              "startlist": "/api/v1/routes/235442/startlist"
+            },
+            {
+              "id": 235443,
+              "name": "F-19 #3",
+              "startlist": "/api/v1/routes/235443/startlist"
+            },
+            {
+              "id": 235444,
+              "name": "F-19 #4",
+              "startlist": "/api/v1/routes/235444/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/393",
+      "top_3_results": [
+        {
+          "athlete_id": 3418,
+          "rank": 1,
+          "name": "RIDGE Ellis",
+          "firstname": "Ellis",
+          "lastname": "RIDGE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4418",
+          "country": "Boulder Valley Gym",
+          "flag_url": null,
+          "federation_id": 818,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 2547,
+          "rank": 2,
+          "name": "FROST Kai",
+          "firstname": "Kai",
+          "lastname": "FROST",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3547",
+          "country": "Redpoint Gym",
+          "flag_url": null,
+          "federation_id": 847,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 7257,
+          "rank": 3,
+          "name": "BROOK Zara",
+          "firstname": "Zara",
+          "lastname": "BROOK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "8257",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 157,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 408,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-13",
+      "discipline_kind": "boulder",
+      "category_id": 5996,
+      "category_name": "M/O-13",
+      "status": "finished",
+      "status_as_of": "2026-03-15 17:14:22 UTC",
+      "ranking_as_of": "2026-03-15 15:35:21 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11633,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-13",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 17:08:05 UTC",
+          "result_url": "/api/v1/category_rounds/11633/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235445,
+              "name": "M/O 13 #1",
+              "startlist": "/api/v1/routes/235445/startlist"
+            },
+            {
+              "id": 235446,
+              "name": "M/O 13 #2",
+              "startlist": "/api/v1/routes/235446/startlist"
+            },
+            {
+              "id": 235447,
+              "name": "M/O 13 #3",
+              "startlist": "/api/v1/routes/235447/startlist"
+            },
+            {
+              "id": 235448,
+              "name": "M/O 13 #4",
+              "startlist": "/api/v1/routes/235448/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/408",
+      "top_3_results": [
+        {
+          "athlete_id": 6418,
+          "rank": 1,
+          "name": "MESA Kai",
+          "firstname": "Kai",
+          "lastname": "MESA",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7418",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 218,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6639,
+          "rank": 2,
+          "name": "MESA Blake",
+          "firstname": "Blake",
+          "lastname": "MESA",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7639",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 439,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 11330,
+          "rank": 3,
+          "name": "FIELD Ellis",
+          "firstname": "Ellis",
+          "lastname": "FIELD",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3330",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 630,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 413,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-15",
+      "discipline_kind": "boulder",
+      "category_id": 5997,
+      "category_name": "M/O-15",
+      "status": "active",
+      "status_as_of": "2026-03-10 17:04:15 UTC",
+      "ranking_as_of": "2026-03-15 20:00:00",
+      "category_rounds": [
+        {
+          "category_round_id": 11634,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-15",
+          "schedule": null,
+          "status": "active",
+          "status_as_of": "2026-03-11 20:34:26 UTC",
+          "result_url": "/api/v1/category_rounds/11634/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235449,
+              "name": "M/O 15 #1",
+              "startlist": "/api/v1/routes/235449/startlist"
+            },
+            {
+              "id": 235450,
+              "name": "M/O 15 #2",
+              "startlist": "/api/v1/routes/235450/startlist"
+            },
+            {
+              "id": 235451,
+              "name": "M/O 15 #3",
+              "startlist": "/api/v1/routes/235451/startlist"
+            },
+            {
+              "id": 235452,
+              "name": "M/O 15 #4",
+              "startlist": "/api/v1/routes/235452/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/413",
+      "top_3_results": [
+        {
+          "athlete_id": 3229,
+          "rank": 1,
+          "name": "BROOK Nova",
+          "firstname": "Nova",
+          "lastname": "BROOK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4229",
+          "country": "Boulder Valley Gym",
+          "flag_url": null,
+          "federation_id": 629,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6487,
+          "rank": 2,
+          "name": "CLIFF Taylor",
+          "firstname": "Taylor",
+          "lastname": "CLIFF",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7487",
+          "country": "Boulder Valley Gym",
+          "flag_url": null,
+          "federation_id": 287,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4263,
+          "rank": 3,
+          "name": "SUMMIT Alex",
+          "firstname": "Alex",
+          "lastname": "SUMMIT",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5263",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 763,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 418,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-17",
+      "discipline_kind": "boulder",
+      "category_id": 5998,
+      "category_name": "M/O-17",
+      "status": "not_started",
+      "status_as_of": "2026-03-15 23:42:10 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 11635,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-17",
+          "schedule": null,
+          "status": "not_started",
+          "status_as_of": "2026-03-15 23:10:25 UTC",
+          "result_url": "/api/v1/category_rounds/11635/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235453,
+              "name": "M/O 17 #1",
+              "startlist": "/api/v1/routes/235453/startlist"
+            },
+            {
+              "id": 235454,
+              "name": "M/O 17 #2",
+              "startlist": "/api/v1/routes/235454/startlist"
+            },
+            {
+              "id": 235455,
+              "name": "M/O 17 #3",
+              "startlist": "/api/v1/routes/235455/startlist"
+            },
+            {
+              "id": 235456,
+              "name": "M/O 17 #4",
+              "startlist": "/api/v1/routes/235456/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/418",
+      "top_3_results": [
+        {
+          "athlete_id": 4476,
+          "rank": 1,
+          "name": "DALE Harper",
+          "firstname": "Harper",
+          "lastname": "DALE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5476",
+          "country": "Crag Athletics",
+          "flag_url": null,
+          "federation_id": 976,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 5099,
+          "rank": 1,
+          "name": "CRANE Morgan",
+          "firstname": "Morgan",
+          "lastname": "CRANE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "6099",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 699,
+          "rounds": [],
+          "extra_advancement": true,
+          "qualified": true
+        },
+        {
+          "athlete_id": 3187,
+          "rank": 3,
+          "name": "PINE Reese",
+          "firstname": "Reese",
+          "lastname": "PINE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4187",
+          "country": "Redpoint Gym",
+          "flag_url": null,
+          "federation_id": 587,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 423,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-19",
+      "discipline_kind": "boulder",
+      "category_id": 5999,
+      "category_name": "M/O-19",
+      "status": "not_started",
+      "status_as_of": "2026-03-10 17:05:47 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 11636,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-19",
+          "schedule": null,
+          "status": "not_started",
+          "status_as_of": "2026-03-11 20:34:39 UTC",
+          "result_url": "/api/v1/category_rounds/11636/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235457,
+              "name": "M/O 19 #1",
+              "startlist": "/api/v1/routes/235457/startlist"
+            },
+            {
+              "id": 235458,
+              "name": "M/O 19 #2",
+              "startlist": "/api/v1/routes/235458/startlist"
+            },
+            {
+              "id": 235459,
+              "name": "M/O 19 #3",
+              "startlist": "/api/v1/routes/235459/startlist"
+            },
+            {
+              "id": 235460,
+              "name": "M/O 19 #4",
+              "startlist": "/api/v1/routes/235460/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/423",
+      "top_3_results": [
+        {
+          "athlete_id": 2439,
+          "rank": 1,
+          "name": "SWIFT Alex",
+          "firstname": "Alex",
+          "lastname": "SWIFT",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3439",
+          "country": "Redpoint Gym",
+          "flag_url": null,
+          "federation_id": 739,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 3790,
+          "rank": 2,
+          "name": "MARSH Dana",
+          "firstname": "Dana",
+          "lastname": "MARSH",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4790",
+          "country": "Basecamp Climbing",
+          "flag_url": null,
+          "federation_id": 290,
+          "rounds": [],
+          "extra_advancement": true,
+          "qualified": true
+        },
+        {
+          "athlete_id": 2401,
+          "rank": 3,
+          "name": "LARK Blake",
+          "firstname": "Blake",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3401",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 701,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 433,
+      "event_id": 503,
+      "dcat_name": "BOULDER U-11",
+      "discipline_kind": "boulder",
+      "category_id": 6001,
+      "category_name": "U-11",
+      "status": "finished",
+      "status_as_of": "2026-03-15 17:14:32 UTC",
+      "ranking_as_of": "2026-03-15 15:46:32 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11637,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "U-11",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 16:17:23 UTC",
+          "result_url": "/api/v1/category_rounds/11637/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235461,
+              "name": "U11 #1",
+              "startlist": "/api/v1/routes/235461/startlist"
+            },
+            {
+              "id": 235462,
+              "name": "U11 #2",
+              "startlist": "/api/v1/routes/235462/startlist"
+            },
+            {
+              "id": 235463,
+              "name": "U11 #3",
+              "startlist": "/api/v1/routes/235463/startlist"
+            },
+            {
+              "id": 235464,
+              "name": "U11 #4",
+              "startlist": "/api/v1/routes/235464/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/433",
+      "top_3_results": [
+        {
+          "athlete_id": 5564,
+          "rank": 1,
+          "name": "LARK Winter",
+          "firstname": "Winter",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "6564",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 264,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": null
+        },
+        {
+          "athlete_id": 7928,
+          "rank": 2,
+          "name": "CRANE Unity",
+          "firstname": "Unity",
+          "lastname": "CRANE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "8928",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 828,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": null
+        },
+        {
+          "athlete_id": 7790,
+          "rank": 3,
+          "name": "PEAK Oakley",
+          "firstname": "Oakley",
+          "lastname": "PEAK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "8790",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 690,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": null
+        }
+      ]
+    }
+  ],
+  "dcats": [
+    {
+      "dcat_id": 378,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-13",
+      "discipline_kind": "boulder",
+      "category_id": 5991,
+      "category_name": "F-13",
+      "status": "finished",
+      "status_as_of": "2026-03-15 17:14:50 UTC",
+      "ranking_as_of": "2026-03-15 16:30:07 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11629,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-13",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 17:14:40 UTC",
+          "result_url": "/api/v1/category_rounds/11629/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235429,
+              "name": "F-13 #1",
+              "startlist": "/api/v1/routes/235429/startlist"
+            },
+            {
+              "id": 235430,
+              "name": "F-13 #2",
+              "startlist": "/api/v1/routes/235430/startlist"
+            },
+            {
+              "id": 235431,
+              "name": "F-13 #3",
+              "startlist": "/api/v1/routes/235431/startlist"
+            },
+            {
+              "id": 235432,
+              "name": "F-13 #4",
+              "startlist": "/api/v1/routes/235432/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/378",
+      "top_3_results": [
+        {
+          "athlete_id": 4851,
+          "rank": 1,
+          "name": "FERN Xiomara",
+          "firstname": "Xiomara",
+          "lastname": "FERN",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5851",
+          "country": "Basecamp Climbing",
+          "flag_url": null,
+          "federation_id": 451,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4574,
+          "rank": 2,
+          "name": "LARK Gray",
+          "firstname": "Gray",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5574",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 174,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6442,
+          "rank": 2,
+          "name": "WREN Zara",
+          "firstname": "Zara",
+          "lastname": "WREN",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7442",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 242,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 383,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-15",
+      "discipline_kind": "boulder",
+      "category_id": 5992,
+      "category_name": "F-15",
+      "status": "finished",
+      "status_as_of": "2026-03-15 23:42:28 UTC",
+      "ranking_as_of": "2026-03-15 22:04:05 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11630,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-15",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 23:22:19 UTC",
+          "result_url": "/api/v1/category_rounds/11630/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235433,
+              "name": "F-15 #1",
+              "startlist": "/api/v1/routes/235433/startlist"
+            },
+            {
+              "id": 235434,
+              "name": "F-15 #2",
+              "startlist": "/api/v1/routes/235434/startlist"
+            },
+            {
+              "id": 235435,
+              "name": "F-15 #3",
+              "startlist": "/api/v1/routes/235435/startlist"
+            },
+            {
+              "id": 235436,
+              "name": "F-15 #4",
+              "startlist": "/api/v1/routes/235436/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/383",
+      "top_3_results": [
+        {
+          "athlete_id": 2592,
+          "rank": 1,
+          "name": "LAKE Drew",
+          "firstname": "Drew",
+          "lastname": "LAKE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3592",
+          "country": "Basecamp Climbing",
+          "flag_url": null,
+          "federation_id": 892,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 5149,
+          "rank": 2,
+          "name": "DALE Cameron",
+          "firstname": "Cameron",
+          "lastname": "DALE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "6149",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 749,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4870,
+          "rank": 2,
+          "name": "LARK Jordan",
+          "firstname": "Jordan",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5870",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 470,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 388,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-17",
+      "discipline_kind": "boulder",
+      "category_id": 5993,
+      "category_name": "F-17",
+      "status": "finished",
+      "status_as_of": "2026-03-15 23:41:55 UTC",
+      "ranking_as_of": "2026-03-15 21:22:53 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11631,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-17",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 23:26:30 UTC",
+          "result_url": "/api/v1/category_rounds/11631/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235437,
+              "name": "F-17 #1",
+              "startlist": "/api/v1/routes/235437/startlist"
+            },
+            {
+              "id": 235438,
+              "name": "F-17 #2",
+              "startlist": "/api/v1/routes/235438/startlist"
+            },
+            {
+              "id": 235439,
+              "name": "F-17 #3",
+              "startlist": "/api/v1/routes/235439/startlist"
+            },
+            {
+              "id": 235440,
+              "name": "F-17 #4",
+              "startlist": "/api/v1/routes/235440/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/388",
+      "top_3_results": [
+        {
+          "athlete_id": 4142,
+          "rank": 1,
+          "name": "CRANE Casey",
+          "firstname": "Casey",
+          "lastname": "CRANE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5142",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 642,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4399,
+          "rank": 2,
+          "name": "HILL Quinn",
+          "firstname": "Quinn",
+          "lastname": "HILL",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5399",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 899,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6692,
+          "rank": 3,
+          "name": "LAKE Lane",
+          "firstname": "Lane",
+          "lastname": "LAKE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7692",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 492,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 393,
+      "event_id": 503,
+      "dcat_name": "BOULDER F-19",
+      "discipline_kind": "boulder",
+      "category_id": 5994,
+      "category_name": "F-19",
+      "status": "active",
+      "status_as_of": "2026-03-10 17:03:17 UTC",
+      "ranking_as_of": "2026-03-16 00:32:49 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11632,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "F-19",
+          "schedule": null,
+          "status": "active",
+          "status_as_of": "2026-03-11 20:34:14 UTC",
+          "result_url": "/api/v1/category_rounds/11632/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235441,
+              "name": "F-19 #1",
+              "startlist": "/api/v1/routes/235441/startlist"
+            },
+            {
+              "id": 235442,
+              "name": "F-19 #2",
+              "startlist": "/api/v1/routes/235442/startlist"
+            },
+            {
+              "id": 235443,
+              "name": "F-19 #3",
+              "startlist": "/api/v1/routes/235443/startlist"
+            },
+            {
+              "id": 235444,
+              "name": "F-19 #4",
+              "startlist": "/api/v1/routes/235444/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/393",
+      "top_3_results": [
+        {
+          "athlete_id": 3418,
+          "rank": 1,
+          "name": "RIDGE Ellis",
+          "firstname": "Ellis",
+          "lastname": "RIDGE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4418",
+          "country": "Boulder Valley Gym",
+          "flag_url": null,
+          "federation_id": 818,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 2547,
+          "rank": 2,
+          "name": "FROST Kai",
+          "firstname": "Kai",
+          "lastname": "FROST",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3547",
+          "country": "Redpoint Gym",
+          "flag_url": null,
+          "federation_id": 847,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 7257,
+          "rank": 3,
+          "name": "BROOK Zara",
+          "firstname": "Zara",
+          "lastname": "BROOK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "8257",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 157,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 408,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-13",
+      "discipline_kind": "boulder",
+      "category_id": 5996,
+      "category_name": "M/O-13",
+      "status": "finished",
+      "status_as_of": "2026-03-15 17:14:22 UTC",
+      "ranking_as_of": "2026-03-15 15:35:21 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11633,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-13",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 17:08:05 UTC",
+          "result_url": "/api/v1/category_rounds/11633/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235445,
+              "name": "M/O 13 #1",
+              "startlist": "/api/v1/routes/235445/startlist"
+            },
+            {
+              "id": 235446,
+              "name": "M/O 13 #2",
+              "startlist": "/api/v1/routes/235446/startlist"
+            },
+            {
+              "id": 235447,
+              "name": "M/O 13 #3",
+              "startlist": "/api/v1/routes/235447/startlist"
+            },
+            {
+              "id": 235448,
+              "name": "M/O 13 #4",
+              "startlist": "/api/v1/routes/235448/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/408",
+      "top_3_results": [
+        {
+          "athlete_id": 6418,
+          "rank": 1,
+          "name": "MESA Kai",
+          "firstname": "Kai",
+          "lastname": "MESA",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7418",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 218,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6639,
+          "rank": 2,
+          "name": "MESA Blake",
+          "firstname": "Blake",
+          "lastname": "MESA",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7639",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 439,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 11330,
+          "rank": 3,
+          "name": "FIELD Ellis",
+          "firstname": "Ellis",
+          "lastname": "FIELD",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3330",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 630,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 413,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-15",
+      "discipline_kind": "boulder",
+      "category_id": 5997,
+      "category_name": "M/O-15",
+      "status": "active",
+      "status_as_of": "2026-03-10 17:04:15 UTC",
+      "ranking_as_of": "2026-03-16 00:55:43 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11634,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-15",
+          "schedule": null,
+          "status": "active",
+          "status_as_of": "2026-03-11 20:34:26 UTC",
+          "result_url": "/api/v1/category_rounds/11634/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235449,
+              "name": "M/O 15 #1",
+              "startlist": "/api/v1/routes/235449/startlist"
+            },
+            {
+              "id": 235450,
+              "name": "M/O 15 #2",
+              "startlist": "/api/v1/routes/235450/startlist"
+            },
+            {
+              "id": 235451,
+              "name": "M/O 15 #3",
+              "startlist": "/api/v1/routes/235451/startlist"
+            },
+            {
+              "id": 235452,
+              "name": "M/O 15 #4",
+              "startlist": "/api/v1/routes/235452/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/413",
+      "top_3_results": [
+        {
+          "athlete_id": 3229,
+          "rank": 1,
+          "name": "BROOK Nova",
+          "firstname": "Nova",
+          "lastname": "BROOK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4229",
+          "country": "Boulder Valley Gym",
+          "flag_url": null,
+          "federation_id": 629,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 6487,
+          "rank": 2,
+          "name": "CLIFF Taylor",
+          "firstname": "Taylor",
+          "lastname": "CLIFF",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "7487",
+          "country": "Boulder Valley Gym",
+          "flag_url": null,
+          "federation_id": 287,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 4263,
+          "rank": 3,
+          "name": "SUMMIT Alex",
+          "firstname": "Alex",
+          "lastname": "SUMMIT",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5263",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 763,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 418,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-17",
+      "discipline_kind": "boulder",
+      "category_id": 5998,
+      "category_name": "M/O-17",
+      "status": "finished",
+      "status_as_of": "2026-03-15 23:42:10 UTC",
+      "ranking_as_of": "2026-03-15 23:10:21 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11635,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-17",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 23:10:25 UTC",
+          "result_url": "/api/v1/category_rounds/11635/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235453,
+              "name": "M/O 17 #1",
+              "startlist": "/api/v1/routes/235453/startlist"
+            },
+            {
+              "id": 235454,
+              "name": "M/O 17 #2",
+              "startlist": "/api/v1/routes/235454/startlist"
+            },
+            {
+              "id": 235455,
+              "name": "M/O 17 #3",
+              "startlist": "/api/v1/routes/235455/startlist"
+            },
+            {
+              "id": 235456,
+              "name": "M/O 17 #4",
+              "startlist": "/api/v1/routes/235456/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/418",
+      "top_3_results": [
+        {
+          "athlete_id": 4476,
+          "rank": 1,
+          "name": "DALE Harper",
+          "firstname": "Harper",
+          "lastname": "DALE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "5476",
+          "country": "Crag Athletics",
+          "flag_url": null,
+          "federation_id": 976,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 5099,
+          "rank": 1,
+          "name": "CRANE Morgan",
+          "firstname": "Morgan",
+          "lastname": "CRANE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "6099",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 699,
+          "rounds": [],
+          "extra_advancement": true,
+          "qualified": true
+        },
+        {
+          "athlete_id": 3187,
+          "rank": 3,
+          "name": "PINE Reese",
+          "firstname": "Reese",
+          "lastname": "PINE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4187",
+          "country": "Redpoint Gym",
+          "flag_url": null,
+          "federation_id": 587,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 423,
+      "event_id": 503,
+      "dcat_name": "BOULDER M/O-19",
+      "discipline_kind": "boulder",
+      "category_id": 5999,
+      "category_name": "M/O-19",
+      "status": "active",
+      "status_as_of": "2026-03-10 17:05:47 UTC",
+      "ranking_as_of": "2026-03-16 00:37:34 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11636,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "M/O-19",
+          "schedule": null,
+          "status": "active",
+          "status_as_of": "2026-03-11 20:34:39 UTC",
+          "result_url": "/api/v1/category_rounds/11636/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235457,
+              "name": "M/O 19 #1",
+              "startlist": "/api/v1/routes/235457/startlist"
+            },
+            {
+              "id": 235458,
+              "name": "M/O 19 #2",
+              "startlist": "/api/v1/routes/235458/startlist"
+            },
+            {
+              "id": 235459,
+              "name": "M/O 19 #3",
+              "startlist": "/api/v1/routes/235459/startlist"
+            },
+            {
+              "id": 235460,
+              "name": "M/O 19 #4",
+              "startlist": "/api/v1/routes/235460/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/423",
+      "top_3_results": [
+        {
+          "athlete_id": 2439,
+          "rank": 1,
+          "name": "SWIFT Alex",
+          "firstname": "Alex",
+          "lastname": "SWIFT",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3439",
+          "country": "Redpoint Gym",
+          "flag_url": null,
+          "federation_id": 739,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        },
+        {
+          "athlete_id": 3790,
+          "rank": 2,
+          "name": "MARSH Dana",
+          "firstname": "Dana",
+          "lastname": "MARSH",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "4790",
+          "country": "Basecamp Climbing",
+          "flag_url": null,
+          "federation_id": 290,
+          "rounds": [],
+          "extra_advancement": true,
+          "qualified": true
+        },
+        {
+          "athlete_id": 2401,
+          "rank": 3,
+          "name": "LARK Blake",
+          "firstname": "Blake",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "3401",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 701,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": true
+        }
+      ]
+    },
+    {
+      "dcat_id": 433,
+      "event_id": 503,
+      "dcat_name": "BOULDER U-11",
+      "discipline_kind": "boulder",
+      "category_id": 6001,
+      "category_name": "U-11",
+      "status": "finished",
+      "status_as_of": "2026-03-15 17:14:32 UTC",
+      "ranking_as_of": "2026-03-15 15:46:32 UTC",
+      "category_rounds": [
+        {
+          "category_round_id": 11637,
+          "kind": "boulder",
+          "name": "Final",
+          "category": "U-11",
+          "schedule": null,
+          "status": "finished",
+          "status_as_of": "2026-03-15 16:17:23 UTC",
+          "result_url": "/api/v1/category_rounds/11637/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 22
+          },
+          "format": "IFSC: 1 group 2025 (points)",
+          "routes": [
+            {
+              "id": 235461,
+              "name": "U11 #1",
+              "startlist": "/api/v1/routes/235461/startlist"
+            },
+            {
+              "id": 235462,
+              "name": "U11 #2",
+              "startlist": "/api/v1/routes/235462/startlist"
+            },
+            {
+              "id": 235463,
+              "name": "U11 #3",
+              "startlist": "/api/v1/routes/235463/startlist"
+            },
+            {
+              "id": 235464,
+              "name": "U11 #4",
+              "startlist": "/api/v1/routes/235464/startlist"
+            }
+          ]
+        }
+      ],
+      "full_results_url": "/api/v1/events/503/result/433",
+      "top_3_results": [
+        {
+          "athlete_id": 5564,
+          "rank": 1,
+          "name": "LARK Winter",
+          "firstname": "Winter",
+          "lastname": "LARK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "6564",
+          "country": "Summit Climbing Academy",
+          "flag_url": null,
+          "federation_id": 264,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": null
+        },
+        {
+          "athlete_id": 7928,
+          "rank": 2,
+          "name": "CRANE Unity",
+          "firstname": "Unity",
+          "lastname": "CRANE",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "8928",
+          "country": "Granite Climbing Co",
+          "flag_url": null,
+          "federation_id": 828,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": null
+        },
+        {
+          "athlete_id": 7790,
+          "rank": 3,
+          "name": "PEAK Oakley",
+          "firstname": "Oakley",
+          "lastname": "PEAK",
+          "paraclimbing_sport_class": null,
+          "sport_class_status": null,
+          "bib": "8790",
+          "country": "Peak Performance Climbing",
+          "flag_url": null,
+          "federation_id": 690,
+          "rounds": [],
+          "extra_advancement": false,
+          "qualified": null
+        }
+      ]
+    }
+  ],
+  "disciplines": [
+    {
+      "id": 584,
+      "kind": "boulder",
+      "settings": null
+    }
+  ],
+  "computed_combined_categories": [],
+  "team_ranking_disciplines": [
+    "boulder"
+  ],
+  "team_ranking_url": "/api/v1/events/503/team_results/",
+  "time_rankings": false,
+  "time_ranking_url": null,
+  "custom_event_registration_fields": []
+}

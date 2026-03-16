@@ -52,6 +52,8 @@ interface Ascent {
   top_tries?: number;
   zone?: boolean;
   zone_tries?: number;
+  low_zone?: boolean;
+  low_zone_tries?: number;
   points?: number;
 }
 
@@ -105,20 +107,13 @@ interface TrackedClimber {
   country: string;
 }
 
-interface TrackedResult {
+interface TrackedRoundData {
   category: string;
   round: string;
   discipline: string;
-  status: string;
-  athlete: Athlete;
-}
-
-interface TrackedStartlistResult {
-  category: string;
-  round: string;
-  discipline: string;
-  status: string;
-  entry: StartlistEntry;
+  roundStatus: string;
+  athlete: Athlete | null;
+  entry: StartlistEntry | null;
   routes: Route[];
 }
 
@@ -167,9 +162,14 @@ export default function CompetitionPage({
   );
   const [sseConnected, setSseConnected] = useState(false);
   const [filterTracked, setFilterTracked] = useState(false);
-  const [myClimbersResults, setMyClimbersResults] = useState<TrackedResult[]>([]);
-  const [myClimbersStartlist, setMyClimbersStartlist] = useState<TrackedStartlistResult[]>([]);
+  const [myClimbersData, setMyClimbersData] = useState<TrackedRoundData[]>([]);
   const [myClimbersLoading, setMyClimbersLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<{ athlete_id: number; name: string; country: string; category: string }[]>([]);
+  const [allAthletes, setAllAthletes] = useState<{ athlete_id: number; name: string; country: string; category: string }[]>([]);
+  const [batchData, setBatchData] = useState<Record<string, RoundResults> | null>(null);
+  const [batchLoading, setBatchLoading] = useState(false);
+  const [batchFetchedAt, setBatchFetchedAt] = useState<Date | null>(null);
 
   // Load tracked climbers from localStorage
   useEffect(() => {
@@ -218,6 +218,10 @@ export default function CompetitionPage({
       setLastUpdate(new Date());
     });
 
+    eventSource.addEventListener("heartbeat", () => {
+      setLastUpdate(new Date());
+    });
+
     eventSource.addEventListener("error", () => setSseConnected(false));
 
     return () => {
@@ -226,12 +230,34 @@ export default function CompetitionPage({
     };
   }, [selectedRoundId, eventId]);
 
-  // Fetch all rounds when "My Climbers" is active
-  useEffect(() => {
-    if (!filterTracked || !event || tracked.size === 0) return;
-
-    setMyClimbersLoading(true);
+  // Single batch fetch for all rounds — powers My Climbers, search, and refresh
+  const fetchAllRounds = useCallback(() => {
+    if (!event) return;
+    setBatchLoading(true);
     const allRoundIds = event.d_cats.flatMap((dcat) =>
+      dcat.category_rounds.map((cr) => cr.category_round_id)
+    );
+    const roundIdList = allRoundIds.join(",");
+    fetch(`/api/competitions/batch?rounds=${roundIdList}`)
+      .then((res) => res.json())
+      .then((data: Record<string, RoundResults>) => {
+        setBatchData(data);
+        setBatchFetchedAt(new Date());
+        setBatchLoading(false);
+      })
+      .catch(() => setBatchLoading(false));
+  }, [event]);
+
+  // Fetch all rounds once on page load
+  useEffect(() => {
+    fetchAllRounds();
+  }, [fetchAllRounds]);
+
+  // Derive My Climbers data from batch data
+  useEffect(() => {
+    if (!batchData || !event) return;
+
+    const allRoundMeta = event.d_cats.flatMap((dcat) =>
       dcat.category_rounds.map((cr) => ({
         id: cr.category_round_id,
         category: dcat.category_name,
@@ -241,57 +267,84 @@ export default function CompetitionPage({
       }))
     );
 
-    Promise.all(
-      allRoundIds.map((r) =>
-        fetch(`/api/competitions/${eventId}/${r.id}`)
-          .then((res) => res.json())
-          .then((data) => ({ ...r, data }))
-          .catch(() => ({ ...r, data: null }))
-      )
-    ).then((results) => {
-      const tracked_results: TrackedResult[] = [];
-      const tracked_startlist: TrackedStartlistResult[] = [];
+    const results: TrackedRoundData[] = [];
 
-      for (const r of results) {
-        if (!r.data) continue;
-        const ranking: Athlete[] = r.data.ranking ?? [];
-        const startlist: StartlistEntry[] = r.data.startlist ?? [];
-        const routes: Route[] = r.data.routes ?? [];
+    for (const r of allRoundMeta) {
+      const data = batchData[r.id];
+      if (!data) continue;
+      const ranking: Athlete[] = data.ranking ?? [];
+      const startlist: StartlistEntry[] = data.startlist ?? [];
+      const routes: Route[] = data.routes ?? [];
+      const rankedIds = new Set(ranking.map((a) => a.athlete_id));
 
-        for (const athlete of ranking) {
-          if (tracked.has(athlete.athlete_id)) {
-            tracked_results.push({
-              category: r.category,
-              round: r.round,
-              discipline: r.discipline,
-              status: r.status,
-              athlete,
-            });
-          }
-        }
+      for (const [id] of tracked) {
+        const athlete = ranking.find((a) => a.athlete_id === id) ?? null;
+        const entry = startlist.find((e) => e.athlete_id === id) ?? null;
+        if (!athlete && !entry) continue;
 
-        // Only show startlist entries if there's no ranking for this round
-        if (ranking.length === 0) {
-          for (const entry of startlist) {
-            if (tracked.has(entry.athlete_id)) {
-              tracked_startlist.push({
-                category: r.category,
-                round: r.round,
-                discipline: r.discipline,
-                status: r.status,
-                entry,
-                routes,
-              });
-            }
-          }
+        results.push({
+          category: r.category,
+          round: r.round,
+          discipline: r.discipline,
+          roundStatus: r.status,
+          athlete,
+          entry,
+          routes,
+        });
+      }
+    }
+
+    setMyClimbersData(results);
+    setMyClimbersLoading(false);
+  }, [batchData, event, tracked]);
+
+  // Build searchable athlete list from batch data
+  useEffect(() => {
+    if (!batchData || !event) return;
+
+    const allRoundMeta = event.d_cats.flatMap((dcat) =>
+      dcat.category_rounds.map((cr) => ({
+        id: cr.category_round_id,
+        category: dcat.category_name,
+      }))
+    );
+
+    const seen = new Set<number>();
+    const athletes: typeof allAthletes = [];
+    for (const r of allRoundMeta) {
+      const data = batchData[r.id];
+      if (!data) continue;
+      for (const a of [...(data.ranking ?? []), ...(data.startlist ?? [])]) {
+        if (!seen.has(a.athlete_id)) {
+          seen.add(a.athlete_id);
+          athletes.push({
+            athlete_id: a.athlete_id,
+            name: a.name,
+            country: a.country,
+            category: r.category,
+          });
         }
       }
+    }
+    athletes.sort((a, b) => a.name.localeCompare(b.name));
+    setAllAthletes(athletes);
+  }, [batchData, event]);
 
-      setMyClimbersResults(tracked_results);
-      setMyClimbersStartlist(tracked_startlist);
-      setMyClimbersLoading(false);
-    });
-  }, [filterTracked, event, tracked, eventId]);
+  // Filter athletes by search query
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      return;
+    }
+    const q = searchQuery.toLowerCase();
+    setSearchResults(
+      allAthletes.filter(
+        (a) =>
+          a.name.toLowerCase().includes(q) ||
+          a.country.toLowerCase().includes(q)
+      )
+    );
+  }, [searchQuery, allAthletes]);
 
   const toggleTrack = useCallback(
     (athleteId: number, name: string, country: string) => {
@@ -347,43 +400,54 @@ export default function CompetitionPage({
         )}
       </div>
 
-      {/* Status bar */}
-      <div className="flex items-center gap-4 text-sm">
-        {sseConnected && (
-          <span className="text-green-600 animate-pulse">
-            ● Live — polling every 30s
-          </span>
-        )}
-        {lastUpdate && (
-          <span className="text-gray-400">
-            Last update: {lastUpdate.toLocaleTimeString()}
-          </span>
-        )}
-      </div>
+      {/* Status bar + refresh */}
+      <StatusBar
+        sseConnected={sseConnected}
+        lastUpdate={lastUpdate}
+        batchFetchedAt={batchFetchedAt}
+        batchLoading={batchLoading}
+        onRefresh={() => {
+          fetchAllRounds();
+          if (selectedRoundId) {
+            setRoundLoading(true);
+            fetch(`/api/competitions/${eventId}/${selectedRoundId}`)
+              .then((r) => r.json())
+              .then((data) => {
+                if (!data.error) {
+                  setRoundResults(data);
+                  setLastUpdate(new Date());
+                }
+                setRoundLoading(false);
+              })
+              .catch(() => setRoundLoading(false));
+          }
+        }}
+      />
 
       {/* Category rounds selector */}
       <div className="space-y-3">
         <h2 className="text-lg font-semibold">Categories & Rounds</h2>
         <div className="flex flex-wrap gap-2">
-          {tracked.size > 0 && (
-            <button
-              onClick={() => setFilterTracked((v) => !v)}
-              // no need to clear selectedRoundId — we just visually deselect via filterTracked
-              className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${
-                filterTracked
-                  ? "bg-yellow-500 text-white border-yellow-500"
-                  : "bg-yellow-50 text-yellow-800 border-yellow-300 hover:border-yellow-500"
-              }`}
-            >
-              ★ My Climbers ({tracked.size})
-            </button>
-          )}
+          <button
+            onClick={() => setFilterTracked((v) => !v)}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${
+              filterTracked
+                ? "bg-yellow-500 text-white border-yellow-500"
+                : "bg-yellow-50 text-yellow-800 border-yellow-300 hover:border-yellow-500"
+            }`}
+          >
+            ★ My Climbers{tracked.size > 0 ? ` (${tracked.size})` : ""}
+          </button>
           {event.d_cats.map((dcat) =>
             dcat.category_rounds.map((cr) => {
               const isLive =
                 cr.status === "active" &&
                 dcat.ranking_as_of != null &&
                 dcat.ranking_as_of !== "NA";
+              const singleRound = dcat.category_rounds.length === 1;
+              const label = singleRound
+                ? dcat.category_name
+                : `${dcat.category_name} · ${cr.name}`;
               return (
                 <button
                   key={cr.category_round_id}
@@ -401,13 +465,47 @@ export default function CompetitionPage({
                           : "bg-white text-gray-700 border-gray-300 hover:border-blue-400"
                   }`}
                 >
-                  {dcat.category_name} · {cr.name}
+                  {label}
                   {isLive && <span className="ml-1 text-xs">●</span>}
                 </button>
               );
             })
           )}
         </div>
+      </div>
+
+      {/* Search */}
+      <div className="space-y-2">
+        <input
+          type="text"
+          placeholder="Search climbers or teams..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        {searchResults.length > 0 && (
+          <div className="border border-gray-200 rounded-lg max-h-64 overflow-y-auto divide-y">
+            {searchResults.map((a) => {
+              const isTracked = tracked.has(a.athlete_id);
+              return (
+                <div
+                  key={a.athlete_id}
+                  className={`flex items-center gap-2 px-3 py-2 text-sm ${isTracked ? "bg-yellow-50" : "hover:bg-gray-50"}`}
+                >
+                  <button
+                    onClick={() => toggleTrack(a.athlete_id, a.name, a.country)}
+                    className="text-lg leading-none shrink-0"
+                  >
+                    {isTracked ? "★" : "☆"}
+                  </button>
+                  <span className="font-medium">{a.name}</span>
+                  <span className="text-gray-400 text-xs">{a.country}</span>
+                  <span className="text-gray-400 text-xs ml-auto">{a.category}</span>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Results */}
@@ -419,8 +517,7 @@ export default function CompetitionPage({
           </div>
         ) : (
           <MyClimbersView
-            results={myClimbersResults}
-            startlistResults={myClimbersStartlist}
+            data={myClimbersData}
             tracked={tracked}
             onToggleTrack={toggleTrack}
           />
@@ -450,19 +547,13 @@ export default function CompetitionPage({
             {roundResults.discipline} · {roundResults.format}
           </p>
 
-          {/* Startlist (no results yet) */}
-          {(!roundResults.ranking || roundResults.ranking.length === 0) &&
-          roundResults.startlist &&
-          roundResults.startlist.length > 0 ? (
-            <StartlistTable
-              startlist={roundResults.startlist}
+          {(roundResults.ranking?.length ?? 0) > 0 ||
+          (roundResults.startlist?.length ?? 0) > 0 ? (
+            <RoundTable
+              ranking={roundResults.ranking ?? []}
+              startlist={roundResults.startlist ?? []}
               routes={roundResults.routes ?? []}
-              tracked={tracked}
-              onToggleTrack={toggleTrack}
-            />
-          ) : (roundResults.ranking?.length ?? 0) > 0 ? (
-            <RankingTable
-              ranking={roundResults.ranking!}
+              status={roundResults.status}
               tracked={tracked}
               onToggleTrack={toggleTrack}
             />
@@ -477,6 +568,95 @@ export default function CompetitionPage({
           Select a category round above to view results.
         </p>
       )}
+    </div>
+  );
+}
+
+// --- Status Bar ---
+
+function StatusBar({
+  sseConnected,
+  lastUpdate,
+  batchFetchedAt,
+  batchLoading,
+  onRefresh,
+}: {
+  sseConnected: boolean;
+  lastUpdate: Date | null;
+  batchFetchedAt: Date | null;
+  batchLoading: boolean;
+  onRefresh: () => void;
+}) {
+  const [now, setNow] = useState(new Date());
+
+  // Tick every second to keep staleness display current
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const mostRecent = lastUpdate && batchFetchedAt
+    ? (lastUpdate > batchFetchedAt ? lastUpdate : batchFetchedAt)
+    : lastUpdate || batchFetchedAt;
+
+  const secondsAgo = mostRecent ? Math.floor((now.getTime() - mostRecent.getTime()) / 1000) : null;
+
+  const isStale = secondsAgo !== null && secondsAgo > 60;
+  const isVeryStale = secondsAgo !== null && secondsAgo > 120;
+
+  const agoText = secondsAgo === null
+    ? null
+    : secondsAgo < 5
+      ? "just now"
+      : secondsAgo < 60
+        ? `${secondsAgo}s ago`
+        : `${Math.floor(secondsAgo / 60)}m ${secondsAgo % 60}s ago`;
+
+  return (
+    <div className={`flex items-center gap-3 text-sm rounded-lg px-3 py-2 ${
+      isVeryStale
+        ? "bg-red-50 border border-red-200"
+        : isStale
+          ? "bg-yellow-50 border border-yellow-200"
+          : "bg-gray-50 border border-gray-200"
+    }`}>
+      {/* Connection status */}
+      {sseConnected ? (
+        <span className="text-green-600 flex items-center gap-1">
+          <span className="animate-pulse">●</span> Live
+        </span>
+      ) : (
+        <span className="text-gray-400 flex items-center gap-1">
+          ○ Not live
+        </span>
+      )}
+
+      {/* Freshness */}
+      {agoText && (
+        <span className={
+          isVeryStale ? "text-red-600 font-medium" :
+          isStale ? "text-yellow-700" :
+          "text-gray-500"
+        }>
+          Updated {agoText}
+        </span>
+      )}
+
+      {/* Refresh button */}
+      <button
+        onClick={onRefresh}
+        disabled={batchLoading}
+        className="ml-auto px-3 py-1 rounded-md text-sm font-medium border border-gray-300 bg-white hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 transition-all"
+      >
+        {batchLoading ? (
+          <span className="flex items-center gap-1">
+            <span className="animate-spin inline-block w-3 h-3 border-2 border-gray-400 border-t-transparent rounded-full" />
+            Refreshing
+          </span>
+        ) : (
+          "Refresh"
+        )}
+      </button>
     </div>
   );
 }
@@ -566,18 +746,141 @@ function StartlistTable({
   );
 }
 
-// --- Ranking Table ---
+// --- Climber Status Helpers ---
 
-function RankingTable({
+interface ClimberStatus {
+  label: string;
+  style: string;
+  sortKey: number; // lower = higher priority in display
+}
+
+function computeClimberStatus(
+  athlete: Athlete | null,
+  startlistEntry: StartlistEntry | null,
+  roundStatus: string,
+): ClimberStatus {
+  // Finished round — everyone is done
+  if (roundStatus === "finished") {
+    return { label: "", style: "", sortKey: 3 };
+  }
+
+  // Not started round
+  if (roundStatus === "not_started" || !athlete) {
+    return {
+      label: "Waiting",
+      style: "text-gray-400",
+      sortKey: 4,
+    };
+  }
+
+  // Active on wall
+  if (athlete.active) {
+    const activeRoute = athlete.ascents.find((a) => a.status === "active");
+    const routeLabel = activeRoute ? activeRoute.route_name.replace(/.*#/, "B") : "";
+    return {
+      label: `On wall${routeLabel ? ` — ${routeLabel}` : ""}`,
+      style: "text-blue-600 font-medium animate-pulse",
+      sortKey: 0,
+    };
+  }
+
+  // Has results but not currently climbing
+  const doneCount = athlete.ascents.filter((a) => a.top_tries != null).length;
+  const totalRoutes = athlete.ascents.length;
+
+  if (doneCount >= totalRoutes) {
+    return { label: "Done", style: "text-gray-400", sortKey: 3 };
+  }
+
+  // Still has routes left but not on wall — waiting for next rotation
+  const nextRoute = athlete.ascents.find((a) => a.top_tries == null);
+  const routeLabel = nextRoute ? nextRoute.route_name.replace(/.*#/, "B") : "";
+  return {
+    label: `Next: ${routeLabel}`,
+    style: "text-purple-600",
+    sortKey: 2,
+  };
+}
+
+// --- Unified Round Table ---
+
+interface UnifiedRow {
+  athlete_id: number;
+  name: string;
+  country: string;
+  bib: string;
+  rank: number | null;
+  score: string;
+  ascents: Ascent[];
+  active: boolean;
+  under_appeal: boolean;
+  status: ClimberStatus;
+  startPositions: RouteStartPosition[];
+  hasResults: boolean;
+}
+
+function RoundTable({
   ranking,
+  startlist,
+  routes,
+  status: roundStatus,
   tracked,
   onToggleTrack,
 }: {
   ranking: Athlete[];
+  startlist: StartlistEntry[];
+  routes: Route[];
+  status: string;
   tracked: Map<number, TrackedClimber>;
   onToggleTrack: (id: number, name: string, country: string) => void;
 }) {
+  // Build unified rows: ranked athletes + unranked startlist entries
+  const rankedIds = new Set(ranking.map((a) => a.athlete_id));
+  const startlistMap = new Map(startlist.map((e) => [e.athlete_id, e]));
+
+  const rows: UnifiedRow[] = [];
+
+  // Ranked athletes
+  for (const athlete of ranking) {
+    const entry = startlistMap.get(athlete.athlete_id);
+    rows.push({
+      athlete_id: athlete.athlete_id,
+      name: athlete.name,
+      country: athlete.country,
+      bib: athlete.bib,
+      rank: athlete.rank,
+      score: athlete.score,
+      ascents: athlete.ascents,
+      active: athlete.active,
+      under_appeal: athlete.under_appeal,
+      status: computeClimberStatus(athlete, entry ?? null, roundStatus),
+      startPositions: entry?.route_start_positions ?? [],
+      hasResults: true,
+    });
+  }
+
+  // Unranked startlist entries (haven't started yet)
+  for (const entry of startlist) {
+    if (rankedIds.has(entry.athlete_id)) continue;
+    rows.push({
+      athlete_id: entry.athlete_id,
+      name: entry.name,
+      country: entry.country,
+      bib: entry.bib,
+      rank: null,
+      score: "",
+      ascents: [],
+      active: false,
+      under_appeal: false,
+      status: computeClimberStatus(null, entry, roundStatus),
+      startPositions: entry.route_start_positions,
+      hasResults: false,
+    });
+  }
+
   const hasAscents = ranking[0]?.ascents?.length > 0;
+  const isActive = roundStatus === "active";
+  const showStartPositions = startlist.length > 0 && routes.length > 0;
 
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-200">
@@ -588,32 +891,31 @@ function RankingTable({
             <th className="p-2 w-12">#</th>
             <th className="p-2">Climber</th>
             <th className="p-2">Team</th>
+            {isActive && <th className="p-2">Status</th>}
             <th className="p-2 text-center">Score</th>
             {hasAscents && <th className="p-2 text-center">Routes</th>}
           </tr>
         </thead>
         <tbody>
-          {ranking.map((athlete) => {
-            const isTracked = tracked.has(athlete.athlete_id);
+          {rows.map((row) => {
+            const isTracked = tracked.has(row.athlete_id);
             return (
               <tr
-                key={athlete.athlete_id}
+                key={row.athlete_id}
                 className={`border-t ${
                   isTracked
                     ? "bg-yellow-50 font-medium"
-                    : athlete.active
+                    : row.active
                       ? "bg-blue-50"
-                      : "hover:bg-gray-50"
-                } ${athlete.under_appeal ? "opacity-70" : ""}`}
+                      : !row.hasResults
+                        ? "text-gray-400"
+                        : "hover:bg-gray-50"
+                } ${row.under_appeal ? "opacity-70" : ""}`}
               >
                 <td className="p-2">
                   <button
                     onClick={() =>
-                      onToggleTrack(
-                        athlete.athlete_id,
-                        athlete.name,
-                        athlete.country
-                      )
+                      onToggleTrack(row.athlete_id, row.name, row.country)
                     }
                     className="text-lg leading-none"
                   >
@@ -621,26 +923,42 @@ function RankingTable({
                   </button>
                 </td>
                 <td className="p-2 text-gray-500 font-mono">
-                  {athlete.rank || "—"}
+                  {row.rank || "—"}
                 </td>
                 <td className="p-2">
-                  <span className="font-medium">{athlete.name}</span>
-                  {athlete.active && (
-                    <span className="ml-2 text-xs text-blue-600 animate-pulse">
-                      Climbing
-                    </span>
-                  )}
-                  {athlete.under_appeal && (
+                  <span className={row.hasResults ? "font-medium" : ""}>{row.name}</span>
+                  {row.under_appeal && (
                     <span className="ml-2 text-xs text-orange-600">Appeal</span>
                   )}
                 </td>
-                <td className="p-2 text-gray-500 text-xs">{athlete.country}</td>
+                <td className="p-2 text-gray-500 text-xs">{row.country}</td>
+                {isActive && (
+                  <td className="p-2">
+                    <span className={`text-xs ${row.status.style}`}>
+                      {row.status.label}
+                    </span>
+                  </td>
+                )}
                 <td className="p-2 text-center font-mono font-semibold">
-                  {athlete.score || "—"}
+                  {row.score || "—"}
                 </td>
                 {hasAscents && (
                   <td className="p-2">
-                    <AscentDisplay ascents={athlete.ascents} />
+                    {row.hasResults ? (
+                      <AscentDisplay ascents={row.ascents} />
+                    ) : showStartPositions ? (
+                      <div className="flex gap-1 justify-center">
+                        {row.startPositions.map((rsp) => (
+                          <span
+                            key={rsp.route_id}
+                            className="inline-block px-1.5 py-0.5 rounded text-xs bg-gray-100 text-gray-400"
+                            title={`Rotation position ${rsp.position}`}
+                          >
+                            #{rsp.position}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
                   </td>
                 )}
               </tr>
@@ -655,17 +973,23 @@ function RankingTable({
 // --- My Climbers View ---
 
 function MyClimbersView({
-  results,
-  startlistResults,
+  data,
   tracked,
   onToggleTrack,
 }: {
-  results: TrackedResult[];
-  startlistResults: TrackedStartlistResult[];
+  data: TrackedRoundData[];
   tracked: Map<number, TrackedClimber>;
   onToggleTrack: (id: number, name: string, country: string) => void;
 }) {
-  if (results.length === 0 && startlistResults.length === 0) {
+  if (tracked.size === 0) {
+    return (
+      <p className="text-gray-500 text-sm">
+        No climbers tracked yet. Tap the ☆ next to a climber&apos;s name in any round to start tracking them.
+      </p>
+    );
+  }
+
+  if (data.length === 0) {
     return (
       <p className="text-gray-500 text-sm">
         Your tracked climbers weren&apos;t found in any rounds yet.
@@ -673,169 +997,102 @@ function MyClimbersView({
     );
   }
 
-  // Group results by category + round
-  const grouped = new Map<string, TrackedResult[]>();
-  for (const r of results) {
-    const key = `${r.category} · ${r.round}`;
-    if (!grouped.has(key)) grouped.set(key, []);
-    grouped.get(key)!.push(r);
-  }
-
-  const startlistGrouped = new Map<string, TrackedStartlistResult[]>();
-  for (const r of startlistResults) {
-    const key = `${r.category} · ${r.round}`;
-    if (!startlistGrouped.has(key)) startlistGrouped.set(key, []);
-    startlistGrouped.get(key)!.push(r);
+  // Group by climber, then show each round they're in
+  const byClimber = new Map<number, TrackedRoundData[]>();
+  for (const d of data) {
+    const id = d.athlete?.athlete_id ?? d.entry?.athlete_id;
+    if (!id) continue;
+    if (!byClimber.has(id)) byClimber.set(id, []);
+    byClimber.get(id)!.push(d);
   }
 
   return (
-    <div className="space-y-6">
-      {[...grouped.entries()].map(([key, items]) => {
-        const first = items[0];
-        const hasAscents = items[0]?.athlete.ascents?.length > 0;
-        return (
-          <div key={key} className="space-y-2">
-            <div className="flex items-center gap-2">
-              <h3 className="font-semibold">{key}</h3>
-              <span className="text-xs text-gray-500 capitalize">{first.discipline}</span>
-              <span
-                className={`text-xs px-2 py-0.5 rounded-full ${
-                  first.status === "finished"
-                    ? "bg-gray-100 text-gray-600"
-                    : first.status === "active"
-                      ? "bg-green-100 text-green-700"
-                      : "bg-gray-100 text-gray-500"
-                }`}
-              >
-                {first.status}
-              </span>
-            </div>
-            <div className="overflow-x-auto rounded-lg border border-gray-200">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-gray-50 text-left">
-                    <th className="p-2 w-8"></th>
-                    <th className="p-2 w-12">#</th>
-                    <th className="p-2">Climber</th>
-                    <th className="p-2">Team</th>
-                    <th className="p-2 text-center">Score</th>
-                    {hasAscents && <th className="p-2 text-center">Routes</th>}
-                  </tr>
-                </thead>
-                <tbody>
-                  {items.map((item) => (
-                    <tr
-                      key={item.athlete.athlete_id}
-                      className="border-t bg-yellow-50 font-medium"
-                    >
-                      <td className="p-2">
-                        <button
-                          onClick={() =>
-                            onToggleTrack(
-                              item.athlete.athlete_id,
-                              item.athlete.name,
-                              item.athlete.country
-                            )
-                          }
-                          className="text-lg leading-none"
-                        >
-                          ★
-                        </button>
-                      </td>
-                      <td className="p-2 text-gray-500 font-mono">
-                        {item.athlete.rank || "—"}
-                      </td>
-                      <td className="p-2">
-                        <span className="font-medium">{item.athlete.name}</span>
-                        {item.athlete.active && (
-                          <span className="ml-2 text-xs text-blue-600 animate-pulse">
-                            Climbing
-                          </span>
-                        )}
-                      </td>
-                      <td className="p-2 text-gray-500 text-xs">
-                        {item.athlete.country}
-                      </td>
-                      <td className="p-2 text-center font-mono font-semibold">
-                        {item.athlete.score || "—"}
-                      </td>
-                      {hasAscents && (
-                        <td className="p-2">
-                          <AscentDisplay ascents={item.athlete.ascents} />
-                        </td>
-                      )}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        );
-      })}
+    <div className="space-y-4">
+      {[...byClimber.entries()].map(([athleteId, rounds]) => {
+        const climber = tracked.get(athleteId);
+        if (!climber) return null;
 
-      {[...startlistGrouped.entries()].map(([key, items]) => {
-        const first = items[0];
         return (
-          <div key={key} className="space-y-2">
-            <div className="flex items-center gap-2">
-              <h3 className="font-semibold">{key}</h3>
-              <span className="text-xs text-gray-500 capitalize">{first.discipline}</span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
-                {first.status}
-              </span>
+          <div
+            key={athleteId}
+            className="rounded-lg border border-yellow-200 bg-yellow-50 overflow-hidden"
+          >
+            {/* Climber header */}
+            <div className="flex items-center gap-2 px-3 py-2 bg-yellow-100 border-b border-yellow-200">
+              <button
+                onClick={() =>
+                  onToggleTrack(climber.athlete_id, climber.name, climber.country)
+                }
+                className="text-lg leading-none"
+              >
+                ★
+              </button>
+              <span className="font-semibold">{climber.name}</span>
+              <span className="text-xs text-gray-500">{climber.country}</span>
             </div>
-            <div className="overflow-x-auto rounded-lg border border-gray-200">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-gray-50 text-left">
-                    <th className="p-2 w-8"></th>
-                    <th className="p-2">Bib</th>
-                    <th className="p-2">Climber</th>
-                    <th className="p-2">Team</th>
-                    {first.routes.map((r) => (
-                      <th key={r.id} className="p-2 text-center">
-                        B{r.name}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {items.map((item) => (
-                    <tr
-                      key={item.entry.athlete_id}
-                      className="border-t bg-yellow-50 font-medium"
-                    >
-                      <td className="p-2">
-                        <button
-                          onClick={() =>
-                            onToggleTrack(
-                              item.entry.athlete_id,
-                              item.entry.name,
-                              item.entry.country
-                            )
-                          }
-                          className="text-lg leading-none"
-                        >
-                          ★
-                        </button>
-                      </td>
-                      <td className="p-2 text-gray-500 font-mono">{item.entry.bib}</td>
-                      <td className="p-2">
-                        <span className="font-medium">{item.entry.name}</span>
-                      </td>
-                      <td className="p-2 text-gray-500 text-xs">{item.entry.country}</td>
-                      {item.entry.route_start_positions.map((rsp) => (
-                        <td
-                          key={rsp.route_id}
-                          className="p-2 text-center font-mono text-xs"
-                        >
-                          {rsp.position}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+
+            {/* Round cards */}
+            <div className="divide-y divide-yellow-200">
+              {rounds.map((r, i) => {
+                const status = computeClimberStatus(r.athlete, r.entry, r.roundStatus);
+                const hasAscents = (r.athlete?.ascents?.length ?? 0) > 0;
+
+                return (
+                  <div key={i} className="px-3 py-2">
+                    {/* Round header line */}
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-medium">{r.category}</span>
+                      <span className="text-xs text-gray-400">{r.round}</span>
+                      <span
+                        className={`text-xs px-2 py-0.5 rounded-full ${
+                          r.roundStatus === "finished"
+                            ? "bg-gray-100 text-gray-500"
+                            : r.roundStatus === "active"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-gray-100 text-gray-400"
+                        }`}
+                      >
+                        {r.roundStatus}
+                      </span>
+                      {status.label && (
+                        <span className={`text-xs font-medium ${status.style}`}>
+                          {status.label}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Score + ascents */}
+                    {r.athlete ? (
+                      <div className="flex items-center gap-3">
+                        <span className="text-sm text-gray-500">
+                          Rank <span className="font-mono font-semibold text-gray-800">{r.athlete.rank || "—"}</span>
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          Score <span className="font-mono font-semibold text-gray-800">{r.athlete.score || "—"}</span>
+                        </span>
+                        {hasAscents && (
+                          <AscentDisplay ascents={r.athlete.ascents} />
+                        )}
+                      </div>
+                    ) : r.entry ? (
+                      <div className="flex items-center gap-2 text-xs text-gray-400">
+                        <span>Start positions:</span>
+                        <div className="flex gap-1">
+                          {r.entry.route_start_positions.map((rsp) => (
+                            <span
+                              key={rsp.route_id}
+                              className="inline-block px-1.5 py-0.5 rounded bg-gray-100"
+                              title={`Rotation position ${rsp.position}`}
+                            >
+                              #{rsp.position}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
             </div>
           </div>
         );
@@ -852,7 +1109,7 @@ function AscentDisplay({ ascents }: { ascents: Ascent[] }) {
       {ascents.map((a, i) => {
         const isBoulder = a.zone !== undefined;
         const notStarted = isBoulder && a.top_tries == null;
-        const attempted = isBoulder && !notStarted && !a.top && !a.zone;
+        const attempted = isBoulder && !notStarted && !a.top && !a.zone && !a.low_zone;
 
         const label = isBoulder
           ? notStarted
@@ -861,13 +1118,15 @@ function AscentDisplay({ ascents }: { ascents: Ascent[] }) {
               ? `T${a.top_tries ?? ""}`
               : a.zone
                 ? `Z${a.zone_tries ?? ""}`
-                : `${a.top_tries ?? 0}att`
+                : a.low_zone
+                  ? `LZ${a.low_zone_tries ?? ""}`
+                  : `A${a.top_tries ?? 0}`
           : a.score || "—";
 
         const tooltip = isBoulder
           ? notStarted
             ? `B${a.route_name}: Not started`
-            : `B${a.route_name}: ${a.top ? `Top in ${a.top_tries}` : a.zone ? `Zone in ${a.zone_tries}` : `${a.top_tries} attempts, no zone`}${a.points ? ` · ${a.points}pts` : ""}`
+            : `B${a.route_name}: ${a.top ? `Top in ${a.top_tries}` : a.zone ? `Zone in ${a.zone_tries}` : a.low_zone ? `Low zone in ${a.low_zone_tries}` : `${a.top_tries} attempts, no hold`}${a.points ? ` · ${a.points}pts` : ""}`
           : `Route ${a.route_name}: ${a.score}`;
 
         const style = notStarted
@@ -876,11 +1135,13 @@ function AscentDisplay({ ascents }: { ascents: Ascent[] }) {
             ? "bg-green-100 text-green-800"
             : a.zone
               ? "bg-yellow-100 text-yellow-800"
-              : attempted
-                ? "bg-red-50 text-red-400"
-                : a.score
-                  ? "bg-gray-100 text-gray-700"
-                  : "bg-gray-50 text-gray-400";
+              : a.low_zone
+                ? "bg-orange-100 text-orange-700"
+                : attempted
+                  ? "bg-red-50 text-red-400"
+                  : a.score
+                    ? "bg-gray-100 text-gray-700"
+                    : "bg-gray-50 text-gray-400";
 
         return (
           <span

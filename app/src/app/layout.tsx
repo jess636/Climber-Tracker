@@ -1,6 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+function MockBanner() {
+  // MOCK_MODE is a server-only env var (not NEXT_PUBLIC) so it's evaluated at runtime
+  if (process.env.MOCK_MODE !== "true") return null;
+  return (
+    <div className="bg-orange-500 text-white text-center text-xs py-1 font-medium">
+      MOCK MODE — using fixture data, not live API
+    </div>
+  );
+}
+
 export const metadata: Metadata = {
   title: "Climbing Tracker",
   description: "Track USA Climbing competition results in real-time",
@@ -33,6 +43,7 @@ export default function RootLayout({
             </nav>
           </div>
         </header>
+        <MockBanner />
         <main className="max-w-5xl mx-auto px-4 py-6">{children}</main>
       </body>
     </html>

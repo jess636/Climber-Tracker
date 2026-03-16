@@ -39,26 +39,37 @@ export async function GET(request: NextRequest) {
         );
       };
 
+      let lastJson = "";
+
       const poll = async () => {
         try {
           const result = await getRoundResults(Number(roundId));
-          send("results", result);
 
-          // Compute diffs
-          const current: ResultSnapshot[] = (result.ranking ?? []).map(
-            (a: USACRankedAthlete) => ({
-              climberId: String(a.athlete_id),
-              climberName: a.name,
-              rank: a.rank,
-              scores: { score: a.score },
-            })
-          );
+          // Only send if data actually changed
+          const json = JSON.stringify(result);
+          if (json !== lastJson) {
+            lastJson = json;
+            send("results", result);
 
-          const changes = diffResults(previousResults, current);
-          if (changes.length > 0) {
-            send("changes", changes);
+            // Compute diffs
+            const current: ResultSnapshot[] = (result.ranking ?? []).map(
+              (a: USACRankedAthlete) => ({
+                climberId: String(a.athlete_id),
+                climberName: a.name,
+                rank: a.rank,
+                scores: { score: a.score },
+              })
+            );
+
+            const changes = diffResults(previousResults, current);
+            if (changes.length > 0) {
+              send("changes", changes);
+            }
+            previousResults = current;
           }
-          previousResults = current;
+
+          // Always send heartbeat so client knows connection is alive
+          send("heartbeat", { time: new Date().toISOString() });
         } catch (err) {
           send("error", {
             message: err instanceof Error ? err.message : "Unknown error",
@@ -66,7 +77,9 @@ export async function GET(request: NextRequest) {
         }
       };
 
-      await poll();
+      // Skip initial poll — client fetches initial data separately
+      // Send a heartbeat to confirm connection is alive
+      send("heartbeat", { time: new Date().toISOString() });
 
       const interval = setInterval(async () => {
         if (!running) {

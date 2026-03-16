@@ -169,9 +169,45 @@ export default function Home() {
       !liveEventIds.has(ev.event_id)
   );
 
+  const refreshAll = useCallback(() => {
+    setLoading(true);
+    Promise.all([
+      fetch("/api/competitions").then((r) => r.json()),
+      fetch("/api/competitions?live=true").then((r) => r.json()),
+      selectedSeasonId
+        ? fetch(`/api/competitions?seasonId=${selectedSeasonId}`).then((r) => r.json())
+        : Promise.resolve(null),
+    ])
+      .then(([seasonsData, liveData, seasonEventsData]) => {
+        if (seasonsData.seasons) {
+          setSeasons(seasonsData.seasons);
+          setCurrentSeason(seasonsData.current);
+        }
+        if (liveData.live) setLiveEvents(liveData.live);
+        if (seasonEventsData?.events) {
+          const sorted = [...seasonEventsData.events].sort(
+            (a: EventSummary, b: EventSummary) =>
+              b.local_start_date.localeCompare(a.local_start_date)
+          );
+          setEvents(sorted);
+        }
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, [selectedSeasonId]);
+
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Competitions</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold">Competitions</h1>
+        <button
+          onClick={refreshAll}
+          disabled={loading}
+          className="px-3 py-1.5 rounded-md text-sm font-medium border border-gray-300 bg-white hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50 transition-all"
+        >
+          {loading ? "Refreshing..." : "Refresh"}
+        </button>
+      </div>
 
       {/* Live events */}
       {uniqueLiveEvents.length > 0 && (

@@ -30,6 +30,29 @@ interface USACSession {
 let cachedSession: USACSession | null = null;
 const SESSION_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
+// --- Response cache ---
+
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+}
+
+const responseCache = new Map<string, CacheEntry<unknown>>();
+const CACHE_TTL_MS = 15 * 1000; // 15 seconds — fresh enough for live events
+
+function getCached<T>(key: string): T | null {
+  const entry = responseCache.get(key);
+  if (entry && Date.now() - entry.timestamp < CACHE_TTL_MS) {
+    return entry.data as T;
+  }
+  responseCache.delete(key);
+  return null;
+}
+
+function setCache<T>(key: string, data: T): void {
+  responseCache.set(key, { data, timestamp: Date.now() });
+}
+
 /**
  * Get a valid session by loading an HTML page and extracting
  * the session cookie + CSRF token.
@@ -72,6 +95,9 @@ async function getSession(): Promise<USACSession> {
  * Make an authenticated API request to USAC.
  */
 async function usacApiFetch<T = unknown>(path: string): Promise<T> {
+  const cached = getCached<T>(path);
+  if (cached) return cached;
+
   const session = await getSession();
 
   const res = await fetch(`${USAC_BASE}${path}`, {
@@ -103,12 +129,16 @@ async function usacApiFetch<T = unknown>(path: string): Promise<T> {
       if (!retryRes.ok) {
         throw new Error(`USAC API error: ${retryRes.status} on ${path}`);
       }
-      return retryRes.json() as Promise<T>;
+      const retryData = await retryRes.json() as T;
+      setCache(path, retryData);
+      return retryData;
     }
     throw new Error(`USAC API error: ${res.status} on ${path}`);
   }
 
-  return res.json() as Promise<T>;
+  const data = await res.json() as T;
+  setCache(path, data);
+  return data;
 }
 
 // --- Public API ---
@@ -243,27 +273,41 @@ export interface USACRoundResults {
 
 // --- Fetch functions ---
 
+import {
+  isMockMode,
+  mockGetSeasons,
+  mockGetLiveEvents,
+  mockGetSeasonEvents,
+  mockGetEvent,
+  mockGetRoundResults,
+} from "./mock-api";
+
 export async function getSeasons(): Promise<USACSeasonResponse> {
+  if (isMockMode()) return mockGetSeasons() as Promise<USACSeasonResponse>;
   return usacApiFetch("/api/v1/");
 }
 
 export async function getLiveEvents(): Promise<USACLiveResponse> {
+  if (isMockMode()) return mockGetLiveEvents() as Promise<USACLiveResponse>;
   return usacApiFetch("/api/v1/live");
 }
 
 export async function getSeasonEvents(
   seasonId: number
 ): Promise<USACSeasonEvents> {
+  if (isMockMode()) return mockGetSeasonEvents() as Promise<USACSeasonEvents>;
   return usacApiFetch(`/api/v1/seasons/${seasonId}`);
 }
 
 export async function getEvent(eventId: number): Promise<USACEvent> {
+  if (isMockMode()) return mockGetEvent() as Promise<USACEvent>;
   return usacApiFetch(`/api/v1/events/${eventId}`);
 }
 
 export async function getRoundResults(
   categoryRoundId: number
 ): Promise<USACRoundResults> {
+  if (isMockMode()) return mockGetRoundResults(categoryRoundId) as Promise<USACRoundResults>;
   return usacApiFetch(`/api/v1/category_rounds/${categoryRoundId}/results`);
 }
 
