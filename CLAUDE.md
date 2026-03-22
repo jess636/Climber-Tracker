@@ -60,11 +60,13 @@ Mock data at http://localhost:3002/comp/503 provides these states:
 | Round IDs       | Categories          | State            | What you'll see                                  |
 |-----------------|---------------------|------------------|--------------------------------------------------|
 | 11629–11631, 11633, 11637 | F-13, F-15, F-17, M/O-13, U-11 | Finished | Full results, no active climbers |
-| 11632           | F-19                | Active mid-comp  | 15 ranked, 4 actively climbing, 26 on startlist  |
+| 11632           | F-19                | Active mid-comp (live sim)  | 15 ranked + 11 unranked progressively advancing, 4 actively climbing. Each poll advances the simulation — new athletes appear, go on wall, get tops/zones. |
 | 11634           | M/O-15              | Just started     | 3 ranked, 1 climbing, rest on startlist           |
 | 11635, 11636    | M/O-17, M/O-19      | Not started      | Startlist only, no results                        |
 
 Fixtures are captured from real API data (comp 503, 2026-03-15) with anonymized athlete names, and live in `app/src/lib/fixtures/`. Each category has its own fixture file with unique athlete IDs (offset by 10000 per category to avoid collisions). The mock layer (`mock-api.ts`) maps round IDs to fixture files and adds simulated network delay (50–200ms).
+
+Round 11632 (F-19) has **live simulation**: each call to `mockGetRoundResults(11632)` advances a step, progressively moving unranked startlist athletes through boulder attempts with realistic `modified` timestamps. This enables testing the activity feed, background/foreground reconnection, and real-time UI updates without a live competition. The simulation uses predetermined outcomes modeled on real scoring patterns.
 
 To update fixtures with fresh data from a live comp:
 ```bash
@@ -148,7 +150,10 @@ Queue depth is computed from `route_start_positions` in the startlist. The posit
 - Athlete search by name or team with bulk tracking
 - Boulder scoring (top/zone/low zone/attempts), lead/speed scoring
 - Climber status with queue depth (on wall, on deck, N away)
-- Live activity feed in My Climbers (topped, zone, on wall, rank changes detected via client-side diff)
+- Live activity feed in My Climbers (topped, zone, on wall, rank changes detected via client-side diff) with real `modified` timestamps from USAC API
+- Auto-reconnect on iOS PWA background/foreground (visibilitychange triggers SSE reconnect + data refresh)
+- Team column auto-hides when no athletes have team data (common at national-level comps)
+- Cleaned up format labels (e.g. "IFSC: 2 routes" → "2 routes", "IFSC: 1 group 2025 (points)" → "Points")
 - Single-round categories hide redundant "Final" label
 - Event favorites with localStorage persistence
 - Status bar with live connection indicator, staleness timer, and refresh button (PWA-friendly)
@@ -165,7 +170,7 @@ No test framework yet. The mock system and fixtures are the foundation for addin
 
 ## Future Plans
 
-- Live activity history feed in My Climbers view (client-side diff of successive polls detects ascent changes)
+- Capture real live comp snapshots to validate mock simulation accuracy (TODO — run during next live comp)
 - Push notifications for tracked climber updates (webpush was scaffolded then removed)
 - Athlete profiles using `/api/v1/athletes/:id` (competition history, podiums, bio)
 - Database persistence (PostgreSQL/Prisma schema exists but was removed for simplicity)

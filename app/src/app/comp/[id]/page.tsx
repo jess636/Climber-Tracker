@@ -55,6 +55,7 @@ interface Ascent {
   low_zone?: boolean;
   low_zone_tries?: number;
   points?: number;
+  modified?: string;
 }
 
 interface Athlete {
@@ -137,20 +138,21 @@ function diffAthleteAscents(
   athleteId: number,
   athleteName: string,
   category: string,
-  now: Date,
 ): ActivityEvent[] {
   const events: ActivityEvent[] = [];
   const prevMap = new Map(prev.map((a) => [a.route_name, a]));
+  const now = new Date();
 
   for (const ascent of curr) {
     const old = prevMap.get(ascent.route_name);
     const routeShort = ascent.route_name.replace(/.*#/, "B");
+    const ts = ascent.modified ? new Date(ascent.modified) : now;
 
     // Newly active on wall
     if (ascent.status === "active" && old?.status !== "active") {
       events.push({
-        id: `${athleteId}-${ascent.route_name}-active-${now.getTime()}`,
-        timestamp: now,
+        id: `${athleteId}-${ascent.route_name}-active-${ts.getTime()}`,
+        timestamp: ts,
         athleteId,
         athleteName,
         category,
@@ -163,8 +165,8 @@ function diffAthleteAscents(
     // Topped (wasn't topped before)
     if (ascent.top && !old?.top) {
       events.push({
-        id: `${athleteId}-${ascent.route_name}-top-${now.getTime()}`,
-        timestamp: now,
+        id: `${athleteId}-${ascent.route_name}-top-${ts.getTime()}`,
+        timestamp: ts,
         athleteId,
         athleteName,
         category,
@@ -176,8 +178,8 @@ function diffAthleteAscents(
     // Zone (wasn't zoned before, and not topped)
     else if (ascent.zone && !old?.zone && !ascent.top) {
       events.push({
-        id: `${athleteId}-${ascent.route_name}-zone-${now.getTime()}`,
-        timestamp: now,
+        id: `${athleteId}-${ascent.route_name}-zone-${ts.getTime()}`,
+        timestamp: ts,
         athleteId,
         athleteName,
         category,
@@ -189,8 +191,8 @@ function diffAthleteAscents(
     // Low zone (wasn't low-zoned before, and not zoned/topped)
     else if (ascent.low_zone && !old?.low_zone && !ascent.zone && !ascent.top) {
       events.push({
-        id: `${athleteId}-${ascent.route_name}-lz-${now.getTime()}`,
-        timestamp: now,
+        id: `${athleteId}-${ascent.route_name}-lz-${ts.getTime()}`,
+        timestamp: ts,
         athleteId,
         athleteName,
         category,
@@ -206,8 +208,8 @@ function diffAthleteAscents(
       !ascent.top && !ascent.zone && !ascent.low_zone
     ) {
       events.push({
-        id: `${athleteId}-${ascent.route_name}-att-${now.getTime()}`,
-        timestamp: now,
+        id: `${athleteId}-${ascent.route_name}-att-${ts.getTime()}`,
+        timestamp: ts,
         athleteId,
         athleteName,
         category,
@@ -244,11 +246,17 @@ function diffTrackedActivity(
       const currAthlete = currRanking.find((a) => a.athlete_id === id);
       const prevAthlete = prevMap.get(id);
 
+      // Best available timestamp from ascent modified fields
+      const latestModified = currAthlete?.ascents
+        ?.filter((a) => a.modified)
+        .map((a) => new Date(a.modified!))
+        .sort((a, b) => b.getTime() - a.getTime())[0] ?? now;
+
       // Appeared in results
       if (currAthlete && !prevAthlete) {
         events.push({
-          id: `${id}-appeared-${r.id}-${now.getTime()}`,
-          timestamp: now,
+          id: `${id}-appeared-${r.id}-${latestModified.getTime()}`,
+          timestamp: latestModified,
           athleteId: id,
           athleteName: climber.name,
           category: r.category,
@@ -261,15 +269,15 @@ function diffTrackedActivity(
       if (currAthlete) {
         const prevAscents = prevAthlete?.ascents ?? [];
         events.push(
-          ...diffAthleteAscents(prevAscents, currAthlete.ascents, id, climber.name, r.category, now)
+          ...diffAthleteAscents(prevAscents, currAthlete.ascents, id, climber.name, r.category)
         );
 
         // Rank change
         if (prevAthlete && prevAthlete.rank !== currAthlete.rank && currAthlete.rank > 0) {
           const dir = prevAthlete.rank > currAthlete.rank ? "up" : "down";
           events.push({
-            id: `${id}-rank-${r.id}-${now.getTime()}`,
-            timestamp: now,
+            id: `${id}-rank-${r.id}-${latestModified.getTime()}`,
+            timestamp: latestModified,
             athleteId: id,
             athleteName: climber.name,
             category: r.category,
@@ -347,6 +355,18 @@ export default function CompetitionPage({
   trackedRef.current = tracked;
   eventRef.current = event;
 
+  // Reconnect SSE + refresh data when app returns from background (iOS PWA)
+  const [refreshKey, setRefreshKey] = useState(0);
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === "visible") {
+        setRefreshKey((k) => k + 1);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => document.removeEventListener("visibilitychange", onVisible);
+  }, []);
+
   // Load tracked climbers from localStorage
   useEffect(() => {
     setTracked(loadTracked(eventId));
@@ -421,7 +441,8 @@ export default function CompetitionPage({
       eventSource.close();
       setSseConnected(false);
     };
-  }, [selectedRoundId, eventId]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedRoundId, eventId, refreshKey]);
 
   // Detect ascent changes for expanded climber detail highlighting
   useEffect(() => {
@@ -494,10 +515,11 @@ export default function CompetitionPage({
     prevBatchRef.current = batchData;
   }, [batchData, event, tracked]);
 
-  // Fetch all rounds once on page load
+  // Fetch all rounds on page load + when returning from background
   useEffect(() => {
     fetchAllRounds();
-  }, [fetchAllRounds]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchAllRounds, refreshKey]);
 
   // Poll active rounds every 30s when My Climbers is open
   useEffect(() => {
@@ -617,7 +639,7 @@ export default function CompetitionPage({
       allAthletes.filter(
         (a) =>
           a.name.toLowerCase().includes(q) ||
-          a.country.toLowerCase().includes(q)
+          (a.country || '').toLowerCase().includes(q)
       )
     );
   }, [searchQuery, allAthletes]);
@@ -824,7 +846,7 @@ export default function CompetitionPage({
             </span>
           </div>
           <p className="text-sm text-gray-500">
-            {roundResults.discipline} · {roundResults.format}
+            {roundResults.discipline} · {formatRoundFormat(roundResults.format, roundResults.discipline)}
           </p>
 
           {(roundResults.ranking?.length ?? 0) > 0 ||
@@ -957,6 +979,7 @@ function StartlistTable({
   tracked: Map<number, TrackedClimber>;
   onToggleTrack: (id: number, name: string, country: string) => void;
 }) {
+  const hasTeams = startlist.some((e) => e.country);
 
   return (
     <div className="space-y-3">
@@ -972,7 +995,7 @@ function StartlistTable({
               <th className="p-2 w-8"></th>
               <th className="p-2">Bib</th>
               <th className="p-2">Climber</th>
-              <th className="p-2">Team</th>
+              {hasTeams && <th className="p-2">Team</th>}
               {routes.map((r) => (
                 <th key={r.id} className="p-2 text-center">
                   B{r.name}
@@ -1006,7 +1029,7 @@ function StartlistTable({
                   <td className="p-2">
                     <span className="font-medium">{entry.name}</span>
                   </td>
-                  <td className="p-2 text-gray-500 text-xs">{entry.country}</td>
+                  {hasTeams && <td className="p-2 text-gray-500 text-xs">{entry.country}</td>}
                   {entry.route_start_positions.map((rsp) => (
                     <td
                       key={rsp.route_id}
@@ -1035,6 +1058,16 @@ interface ClimberStatus {
   label: string;
   style: string;
   sortKey: number; // lower = higher priority in display
+}
+
+function formatRoundFormat(format: string, discipline: string): string {
+  // "IFSC: 2 routes" -> "2 routes"
+  // "IFSC: 1 group 2025 (points)" -> "Points"
+  if (/1 group.*points/i.test(format)) return "Points";
+  const m = format.match(/(\d+)\s*routes?/i);
+  if (m) return `${m[1]} route${parseInt(m[1]) > 1 ? "s" : ""}`;
+  // Strip "IFSC: " prefix if present
+  return format.replace(/^IFSC:\s*/i, "");
 }
 
 function formatRouteName(routeName: string, includeCategory: boolean): string {
@@ -1288,6 +1321,7 @@ function RoundTable({
   const hasAscents = ranking[0]?.ascents?.length > 0;
   const isActive = roundStatus === "active";
   const showStartPositions = startlist.length > 0 && routes.length > 0;
+  const hasTeams = rows.some((r) => r.country);
 
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-200">
@@ -1297,7 +1331,7 @@ function RoundTable({
             <th className="p-2 w-8"></th>
             <th className="p-2 w-12">#</th>
             <th className="p-2">Climber</th>
-            <th className="p-2">Team</th>
+            {hasTeams && <th className="p-2">Team</th>}
             {isActive && <th className="p-2">Status</th>}
             <th className="p-2 text-center">Score</th>
             {hasAscents && <th className="p-2 text-center">Routes</th>}
@@ -1307,7 +1341,7 @@ function RoundTable({
           {rows.map((row) => {
             const isTracked = tracked.has(row.athlete_id);
             const isExpanded = expandedClimberId === row.athlete_id;
-            const colCount = 4 + (isActive ? 1 : 0) + 1 + (hasAscents ? 1 : 0);
+            const colCount = 3 + (hasTeams ? 1 : 0) + (isActive ? 1 : 0) + 1 + (hasAscents ? 1 : 0);
             return (
               <Fragment key={row.athlete_id}>
               <tr
@@ -1344,7 +1378,7 @@ function RoundTable({
                     <span className="ml-2 text-xs text-orange-600">Appeal</span>
                   )}
                 </td>
-                <td className="p-2 text-gray-500 text-xs">{row.country}</td>
+                {hasTeams && <td className="p-2 text-gray-500 text-xs">{row.country}</td>}
                 {isActive && (
                   <td className="p-2">
                     <span className={`text-xs ${row.status.style}`}>

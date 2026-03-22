@@ -239,6 +239,7 @@ export interface USACAscent {
   score: string;
   rank: number;
   status: string;
+  modified?: string;
 }
 
 export interface USACRankedAthlete {
