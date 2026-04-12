@@ -1,0 +1,4065 @@
+[
+  {
+    "athlete_id": 14142,
+    "firstname": "Zara",
+    "lastname": "PINE",
+    "name": "PINE Zara",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 742,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 14399,
+    "firstname": "Harper",
+    "lastname": "VALE",
+    "name": "VALE Harper",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 999,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16692,
+    "firstname": "Morgan",
+    "lastname": "STONE",
+    "name": "STONE Morgan",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 592,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 13688,
+    "firstname": "Harper",
+    "lastname": "LARK",
+    "name": "LARK Harper",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 288,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 19163,
+    "firstname": "Jordan",
+    "lastname": "CLIFF",
+    "name": "CLIFF Jordan",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 363,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 13188,
+    "firstname": "Oakley",
+    "lastname": "BOULDER",
+    "name": "BOULDER Oakley",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 688,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 18788,
+    "firstname": "Parker",
+    "lastname": "RAIN",
+    "name": "RAIN Parker",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 888,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 19367,
+    "firstname": "Vale",
+    "lastname": "GROVE",
+    "name": "GROVE Vale",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 567,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 14632,
+    "firstname": "Winter",
+    "lastname": "LAKE",
+    "name": "LAKE Winter",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 332,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16419,
+    "firstname": "Sage",
+    "lastname": "FROST",
+    "name": "FROST Sage",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 319,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16511,
+    "firstname": "Morgan",
+    "lastname": "SWIFT",
+    "name": "SWIFT Morgan",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 411,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16586,
+    "firstname": "Reese",
+    "lastname": "CREST",
+    "name": "CREST Reese",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 486,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 14376,
+    "firstname": "Cameron",
+    "lastname": "FIELD",
+    "name": "FIELD Cameron",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 976,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16507,
+    "firstname": "Quinn",
+    "lastname": "PEAK",
+    "name": "PEAK Quinn",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 407,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16601,
+    "firstname": "Morgan",
+    "lastname": "MESA",
+    "name": "MESA Morgan",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 501,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16478,
+    "firstname": "Dana",
+    "lastname": "HILL",
+    "name": "HILL Dana",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 378,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 14237,
+    "firstname": "Casey",
+    "lastname": "CRANE",
+    "name": "CRANE Casey",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 837,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 17737,
+    "firstname": "Jordan",
+    "lastname": "CRANE",
+    "name": "CRANE Jordan",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 737,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16329,
+    "firstname": "Parker",
+    "lastname": "SWIFT",
+    "name": "SWIFT Parker",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 229,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 18783,
+    "firstname": "Lane",
+    "lastname": "GROVE",
+    "name": "GROVE Lane",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 883,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 14128,
+    "firstname": "Winter",
+    "lastname": "FIELD",
+    "name": "FIELD Winter",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 728,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 15039,
+    "firstname": "Drew",
+    "lastname": "FIELD",
+    "name": "FIELD Drew",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 739,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 21813,
+    "firstname": "Jordan",
+    "lastname": "WOOD",
+    "name": "WOOD Jordan",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 313,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16646,
+    "firstname": "Yael",
+    "lastname": "FROST",
+    "name": "FROST Yael",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 546,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16705,
+    "firstname": "Zara",
+    "lastname": "FROST",
+    "name": "FROST Zara",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 605,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 15351,
+    "firstname": "Harper",
+    "lastname": "MARSH",
+    "name": "MARSH Harper",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 151,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 16746,
+    "firstname": "Morgan",
+    "lastname": "RAIN",
+    "name": "RAIN Morgan",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 646,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 378,
+        "name": "BOULDER F-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 24142,
+    "firstname": "Jordan",
+    "lastname": "LARK",
+    "name": "LARK Jordan",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 842,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 24399,
+    "firstname": "Nova",
+    "lastname": "PEAK",
+    "name": "PEAK Nova",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 199,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26692,
+    "firstname": "Taylor",
+    "lastname": "CLIFF",
+    "name": "CLIFF Taylor",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 692,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 23688,
+    "firstname": "Yael",
+    "lastname": "PEAK",
+    "name": "PEAK Yael",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 388,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 29163,
+    "firstname": "Blake",
+    "lastname": "CRANE",
+    "name": "CRANE Blake",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 463,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 23188,
+    "firstname": "Yael",
+    "lastname": "WREN",
+    "name": "WREN Yael",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 788,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 28788,
+    "firstname": "Blair",
+    "lastname": "MARSH",
+    "name": "MARSH Blair",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 988,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 29367,
+    "firstname": "Winter",
+    "lastname": "VALE",
+    "name": "VALE Winter",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 667,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 24632,
+    "firstname": "Zara",
+    "lastname": "DOVE",
+    "name": "DOVE Zara",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 432,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26419,
+    "firstname": "Blair",
+    "lastname": "CLIFF",
+    "name": "CLIFF Blair",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 419,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26511,
+    "firstname": "Ellis",
+    "lastname": "CRANE",
+    "name": "CRANE Ellis",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 511,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26586,
+    "firstname": "Blair",
+    "lastname": "PINE",
+    "name": "PINE Blair",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 586,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 24376,
+    "firstname": "Jordan",
+    "lastname": "CLIFF",
+    "name": "CLIFF Jordan",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 176,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26507,
+    "firstname": "Alex",
+    "lastname": "GROVE",
+    "name": "GROVE Alex",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 507,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26601,
+    "firstname": "Jordan",
+    "lastname": "BOULDER",
+    "name": "BOULDER Jordan",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 601,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26478,
+    "firstname": "Gray",
+    "lastname": "BROOK",
+    "name": "BROOK Gray",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 478,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 24237,
+    "firstname": "Alex",
+    "lastname": "HILL",
+    "name": "HILL Alex",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 937,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 27737,
+    "firstname": "Oakley",
+    "lastname": "MESA",
+    "name": "MESA Oakley",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 837,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26329,
+    "firstname": "Nova",
+    "lastname": "VALE",
+    "name": "VALE Nova",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 329,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 28783,
+    "firstname": "Taylor",
+    "lastname": "DOVE",
+    "name": "DOVE Taylor",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 983,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 24128,
+    "firstname": "Gray",
+    "lastname": "CRANE",
+    "name": "CRANE Gray",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 828,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 25039,
+    "firstname": "Casey",
+    "lastname": "GROVE",
+    "name": "GROVE Casey",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 839,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 31813,
+    "firstname": "Winter",
+    "lastname": "CRANE",
+    "name": "CRANE Winter",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 413,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26646,
+    "firstname": "Taylor",
+    "lastname": "FROST",
+    "name": "FROST Taylor",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 646,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26705,
+    "firstname": "Zara",
+    "lastname": "REED",
+    "name": "REED Zara",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 705,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 25351,
+    "firstname": "Yael",
+    "lastname": "RAIN",
+    "name": "RAIN Yael",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 251,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 26746,
+    "firstname": "Casey",
+    "lastname": "WOOD",
+    "name": "WOOD Casey",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 746,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 383,
+        "name": "BOULDER F-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 4142,
+    "firstname": "Casey",
+    "lastname": "CRANE",
+    "name": "CRANE Casey",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 642,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 4399,
+    "firstname": "Quinn",
+    "lastname": "HILL",
+    "name": "HILL Quinn",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 899,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6692,
+    "firstname": "Lane",
+    "lastname": "LAKE",
+    "name": "LAKE Lane",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 492,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 3688,
+    "firstname": "Alex",
+    "lastname": "MESA",
+    "name": "MESA Alex",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 188,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 9163,
+    "firstname": "Ellis",
+    "lastname": "WOOD",
+    "name": "WOOD Ellis",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 263,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 3188,
+    "firstname": "Avery",
+    "lastname": "CLIFF",
+    "name": "CLIFF Avery",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 588,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 8788,
+    "firstname": "Cameron",
+    "lastname": "SWIFT",
+    "name": "SWIFT Cameron",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 788,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 9367,
+    "firstname": "Nova",
+    "lastname": "RIVER",
+    "name": "RIVER Nova",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 467,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 4632,
+    "firstname": "Reese",
+    "lastname": "DOVE",
+    "name": "DOVE Reese",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 232,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6419,
+    "firstname": "Drew",
+    "lastname": "FERN",
+    "name": "FERN Drew",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 219,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6511,
+    "firstname": "Finley",
+    "lastname": "FIELD",
+    "name": "FIELD Finley",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 311,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6586,
+    "firstname": "Yael",
+    "lastname": "VALE",
+    "name": "VALE Yael",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 386,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 4376,
+    "firstname": "Vale",
+    "lastname": "MESA",
+    "name": "MESA Vale",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 876,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6507,
+    "firstname": "Vale",
+    "lastname": "LAKE",
+    "name": "LAKE Vale",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 307,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6601,
+    "firstname": "Indigo",
+    "lastname": "PINE",
+    "name": "PINE Indigo",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 401,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6478,
+    "firstname": "Blair",
+    "lastname": "BROOK",
+    "name": "BROOK Blair",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 278,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 4237,
+    "firstname": "Blake",
+    "lastname": "RAIN",
+    "name": "RAIN Blake",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 737,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 7737,
+    "firstname": "Parker",
+    "lastname": "FERN",
+    "name": "FERN Parker",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 637,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6329,
+    "firstname": "Taylor",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Taylor",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 129,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 8783,
+    "firstname": "Taylor",
+    "lastname": "REED",
+    "name": "REED Taylor",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 783,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 4128,
+    "firstname": "Sage",
+    "lastname": "FERN",
+    "name": "FERN Sage",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 628,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 5039,
+    "firstname": "Dana",
+    "lastname": "RAIN",
+    "name": "RAIN Dana",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 639,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 11813,
+    "firstname": "Lane",
+    "lastname": "LARK",
+    "name": "LARK Lane",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 213,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6646,
+    "firstname": "Alex",
+    "lastname": "RIDGE",
+    "name": "RIDGE Alex",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 446,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6705,
+    "firstname": "Winter",
+    "lastname": "LARK",
+    "name": "LARK Winter",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 505,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 5351,
+    "firstname": "Blair",
+    "lastname": "LAKE",
+    "name": "LAKE Blair",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 951,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6746,
+    "firstname": "Cameron",
+    "lastname": "DALE",
+    "name": "DALE Cameron",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 546,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 388,
+        "name": "BOULDER F-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 3418,
+    "firstname": "Ellis",
+    "lastname": "RIDGE",
+    "name": "RIDGE Ellis",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 818,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 2547,
+    "firstname": "Kai",
+    "lastname": "FROST",
+    "name": "FROST Kai",
+    "gender": 1,
+    "federation": "Redpoint Gym",
+    "federation_id": 847,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 7257,
+    "firstname": "Zara",
+    "lastname": "BROOK",
+    "name": "BROOK Zara",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 157,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 8395,
+    "firstname": "Gray",
+    "lastname": "ASPEN",
+    "name": "ASPEN Gray",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 395,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6594,
+    "firstname": "Zara",
+    "lastname": "PEAK",
+    "name": "PEAK Zara",
+    "gender": 1,
+    "federation": "Apex Climbing Center",
+    "federation_id": 394,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 2898,
+    "firstname": "Finley",
+    "lastname": "CLIFF",
+    "name": "CLIFF Finley",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 298,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6101,
+    "firstname": "Nova",
+    "lastname": "RIVER",
+    "name": "RIVER Nova",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 801,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 9426,
+    "firstname": "Drew",
+    "lastname": "LAKE",
+    "name": "LAKE Drew",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 526,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6410,
+    "firstname": "Taylor",
+    "lastname": "GROVE",
+    "name": "GROVE Taylor",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 210,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 9633,
+    "firstname": "Ellis",
+    "lastname": "DALE",
+    "name": "DALE Ellis",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 733,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 7786,
+    "firstname": "Vale",
+    "lastname": "FROST",
+    "name": "FROST Vale",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 686,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6563,
+    "firstname": "Ellis",
+    "lastname": "DOVE",
+    "name": "DOVE Ellis",
+    "gender": 1,
+    "federation": "Granite Climbing Co",
+    "federation_id": 363,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 7047,
+    "firstname": "Dana",
+    "lastname": "CRANE",
+    "name": "CRANE Dana",
+    "gender": 1,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 847,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 5667,
+    "firstname": "Finley",
+    "lastname": "SWIFT",
+    "name": "SWIFT Finley",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 367,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 7923,
+    "firstname": "Oakley",
+    "lastname": "WOOD",
+    "name": "WOOD Oakley",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 823,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 9500,
+    "firstname": "Taylor",
+    "lastname": "SWIFT",
+    "name": "SWIFT Taylor",
+    "gender": 1,
+    "federation": "Vertical Limit Training",
+    "federation_id": 600,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 7865,
+    "firstname": "Sage",
+    "lastname": "FIELD",
+    "name": "FIELD Sage",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 765,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 3795,
+    "firstname": "Zara",
+    "lastname": "RAIN",
+    "name": "RAIN Zara",
+    "gender": 1,
+    "federation": "Basecamp Climbing",
+    "federation_id": 295,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 530,
+    "firstname": "Cameron",
+    "lastname": "FROST",
+    "name": "FROST Cameron",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 630,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6496,
+    "firstname": "Sage",
+    "lastname": "HILL",
+    "name": "HILL Sage",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 296,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 11316,
+    "firstname": "Jordan",
+    "lastname": "FIELD",
+    "name": "FIELD Jordan",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 616,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6240,
+    "firstname": "Zara",
+    "lastname": "VALE",
+    "name": "VALE Zara",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 940,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 5825,
+    "firstname": "Morgan",
+    "lastname": "RAIN",
+    "name": "RAIN Morgan",
+    "gender": 1,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 525,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 3311,
+    "firstname": "Harper",
+    "lastname": "CREST",
+    "name": "CREST Harper",
+    "gender": 1,
+    "federation": "Crux Climbing Club",
+    "federation_id": 711,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 11317,
+    "firstname": "Indigo",
+    "lastname": "GROVE",
+    "name": "GROVE Indigo",
+    "gender": 1,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 617,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 6867,
+    "firstname": "Drew",
+    "lastname": "RIDGE",
+    "name": "RIDGE Drew",
+    "gender": 1,
+    "federation": "Crag Athletics",
+    "federation_id": 667,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 393,
+        "name": "BOULDER F-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 34142,
+    "firstname": "Reese",
+    "lastname": "REED",
+    "name": "REED Reese",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 942,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 34399,
+    "firstname": "Cameron",
+    "lastname": "RIDGE",
+    "name": "RIDGE Cameron",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 299,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36692,
+    "firstname": "Quinn",
+    "lastname": "PINE",
+    "name": "PINE Quinn",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 792,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 33688,
+    "firstname": "Blake",
+    "lastname": "MARSH",
+    "name": "MARSH Blake",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 488,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 39163,
+    "firstname": "Unity",
+    "lastname": "REED",
+    "name": "REED Unity",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 563,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 33188,
+    "firstname": "Vale",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Vale",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 888,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 38788,
+    "firstname": "Zara",
+    "lastname": "BOULDER",
+    "name": "BOULDER Zara",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 188,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 39367,
+    "firstname": "Reese",
+    "lastname": "ASPEN",
+    "name": "ASPEN Reese",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 767,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 34632,
+    "firstname": "Avery",
+    "lastname": "CREST",
+    "name": "CREST Avery",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 532,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36419,
+    "firstname": "Cameron",
+    "lastname": "HILL",
+    "name": "HILL Cameron",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 519,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36511,
+    "firstname": "Gray",
+    "lastname": "REED",
+    "name": "REED Gray",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 611,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36586,
+    "firstname": "Taylor",
+    "lastname": "FROST",
+    "name": "FROST Taylor",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 686,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 34376,
+    "firstname": "Gray",
+    "lastname": "FERN",
+    "name": "FERN Gray",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 276,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36507,
+    "firstname": "Gray",
+    "lastname": "CLIFF",
+    "name": "CLIFF Gray",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 607,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36601,
+    "firstname": "Avery",
+    "lastname": "SWIFT",
+    "name": "SWIFT Avery",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 701,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36478,
+    "firstname": "Winter",
+    "lastname": "RAIN",
+    "name": "RAIN Winter",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 578,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 34237,
+    "firstname": "Sage",
+    "lastname": "HILL",
+    "name": "HILL Sage",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 137,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 37737,
+    "firstname": "Jordan",
+    "lastname": "RAIN",
+    "name": "RAIN Jordan",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 937,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36329,
+    "firstname": "Blake",
+    "lastname": "DALE",
+    "name": "DALE Blake",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 429,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 38783,
+    "firstname": "Dana",
+    "lastname": "PEAK",
+    "name": "PEAK Dana",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 183,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 34128,
+    "firstname": "Avery",
+    "lastname": "DALE",
+    "name": "DALE Avery",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 928,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 35039,
+    "firstname": "Vale",
+    "lastname": "FROST",
+    "name": "FROST Vale",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 939,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 41813,
+    "firstname": "Finley",
+    "lastname": "BROOK",
+    "name": "BROOK Finley",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 513,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36646,
+    "firstname": "Kai",
+    "lastname": "RAIN",
+    "name": "RAIN Kai",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 746,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36705,
+    "firstname": "Gray",
+    "lastname": "FROST",
+    "name": "FROST Gray",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 805,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 35351,
+    "firstname": "Sage",
+    "lastname": "FIELD",
+    "name": "FIELD Sage",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 351,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 36746,
+    "firstname": "Sage",
+    "lastname": "PINE",
+    "name": "PINE Sage",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 846,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 408,
+        "name": "BOULDER M/O-13",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 43418,
+    "firstname": "Alex",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Alex",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 318,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 42547,
+    "firstname": "Harper",
+    "lastname": "PINE",
+    "name": "PINE Harper",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 347,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 47257,
+    "firstname": "Cameron",
+    "lastname": "CREST",
+    "name": "CREST Cameron",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 557,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 48395,
+    "firstname": "Lane",
+    "lastname": "CLIFF",
+    "name": "CLIFF Lane",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 795,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46594,
+    "firstname": "Winter",
+    "lastname": "RIDGE",
+    "name": "RIDGE Winter",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 794,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 47047,
+    "firstname": "Gray",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Gray",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 347,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 49633,
+    "firstname": "Alex",
+    "lastname": "RAIN",
+    "name": "RAIN Alex",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 233,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46101,
+    "firstname": "Avery",
+    "lastname": "RIVER",
+    "name": "RIVER Avery",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 301,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 42898,
+    "firstname": "Kai",
+    "lastname": "RIDGE",
+    "name": "RIDGE Kai",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 698,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 45667,
+    "firstname": "Alex",
+    "lastname": "CLIFF",
+    "name": "CLIFF Alex",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 767,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 47786,
+    "firstname": "Drew",
+    "lastname": "RIDGE",
+    "name": "RIDGE Drew",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 186,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 49426,
+    "firstname": "Jordan",
+    "lastname": "ASPEN",
+    "name": "ASPEN Jordan",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 926,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46410,
+    "firstname": "Taylor",
+    "lastname": "CLIFF",
+    "name": "CLIFF Taylor",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 610,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 47923,
+    "firstname": "Nova",
+    "lastname": "ASPEN",
+    "name": "ASPEN Nova",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 323,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46563,
+    "firstname": "Blake",
+    "lastname": "WOOD",
+    "name": "WOOD Blake",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 763,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 49500,
+    "firstname": "Casey",
+    "lastname": "ASPEN",
+    "name": "ASPEN Casey",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 100,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 47865,
+    "firstname": "Alex",
+    "lastname": "RIDGE",
+    "name": "RIDGE Alex",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 265,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 43795,
+    "firstname": "Finley",
+    "lastname": "HILL",
+    "name": "HILL Finley",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 695,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 40530,
+    "firstname": "Taylor",
+    "lastname": "PINE",
+    "name": "PINE Taylor",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 130,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46496,
+    "firstname": "Vale",
+    "lastname": "RAIN",
+    "name": "RAIN Vale",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 696,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 51316,
+    "firstname": "Alex",
+    "lastname": "VALE",
+    "name": "VALE Alex",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 116,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46240,
+    "firstname": "Alex",
+    "lastname": "BOULDER",
+    "name": "BOULDER Alex",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 440,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 45825,
+    "firstname": "Unity",
+    "lastname": "BOULDER",
+    "name": "BOULDER Unity",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 925,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 43311,
+    "firstname": "Reese",
+    "lastname": "BROOK",
+    "name": "BROOK Reese",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 211,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 51317,
+    "firstname": "Parker",
+    "lastname": "HILL",
+    "name": "HILL Parker",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 117,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 46867,
+    "firstname": "Taylor",
+    "lastname": "CRANE",
+    "name": "CRANE Taylor",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 167,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 413,
+        "name": "BOULDER M/O-15",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 58395,
+    "firstname": "Kai",
+    "lastname": "LARK",
+    "name": "LARK Kai",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 895,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 53418,
+    "firstname": "Zara",
+    "lastname": "RIVER",
+    "name": "RIVER Zara",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 418,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56594,
+    "firstname": "Winter",
+    "lastname": "FERN",
+    "name": "FERN Winter",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 894,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 57047,
+    "firstname": "Blake",
+    "lastname": "GROVE",
+    "name": "GROVE Blake",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 447,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 59633,
+    "firstname": "Kai",
+    "lastname": "DALE",
+    "name": "DALE Kai",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 333,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 57257,
+    "firstname": "Parker",
+    "lastname": "ASPEN",
+    "name": "ASPEN Parker",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 657,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56101,
+    "firstname": "Dana",
+    "lastname": "STONE",
+    "name": "STONE Dana",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 401,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 52898,
+    "firstname": "Avery",
+    "lastname": "BOULDER",
+    "name": "BOULDER Avery",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 798,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 52547,
+    "firstname": "Cameron",
+    "lastname": "FIELD",
+    "name": "FIELD Cameron",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 447,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 55667,
+    "firstname": "Winter",
+    "lastname": "DOVE",
+    "name": "DOVE Winter",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 867,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 57786,
+    "firstname": "Lane",
+    "lastname": "LARK",
+    "name": "LARK Lane",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 286,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 59426,
+    "firstname": "Sage",
+    "lastname": "FERN",
+    "name": "FERN Sage",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 126,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56410,
+    "firstname": "Avery",
+    "lastname": "MARSH",
+    "name": "MARSH Avery",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 710,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 57923,
+    "firstname": "Nova",
+    "lastname": "BROOK",
+    "name": "BROOK Nova",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 423,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56563,
+    "firstname": "Reese",
+    "lastname": "RAIN",
+    "name": "RAIN Reese",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 863,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 59500,
+    "firstname": "Indigo",
+    "lastname": "MESA",
+    "name": "MESA Indigo",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 200,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 57865,
+    "firstname": "Vale",
+    "lastname": "CRANE",
+    "name": "CRANE Vale",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 365,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 53795,
+    "firstname": "Taylor",
+    "lastname": "GROVE",
+    "name": "GROVE Taylor",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 795,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 50530,
+    "firstname": "Morgan",
+    "lastname": "RIDGE",
+    "name": "RIDGE Morgan",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 230,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56496,
+    "firstname": "Dana",
+    "lastname": "RAIN",
+    "name": "RAIN Dana",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 796,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 61316,
+    "firstname": "Finley",
+    "lastname": "LAKE",
+    "name": "LAKE Finley",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 216,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56240,
+    "firstname": "Ellis",
+    "lastname": "LARK",
+    "name": "LARK Ellis",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 540,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 55825,
+    "firstname": "Jordan",
+    "lastname": "FERN",
+    "name": "FERN Jordan",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 125,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 53311,
+    "firstname": "Oakley",
+    "lastname": "DALE",
+    "name": "DALE Oakley",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 311,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 61317,
+    "firstname": "Kai",
+    "lastname": "FERN",
+    "name": "FERN Kai",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 217,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 56867,
+    "firstname": "Harper",
+    "lastname": "FROST",
+    "name": "FROST Harper",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 267,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 418,
+        "name": "BOULDER M/O-17",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 68395,
+    "firstname": "Xiomara",
+    "lastname": "CLIFF",
+    "name": "CLIFF Xiomara",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 995,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 63418,
+    "firstname": "Ellis",
+    "lastname": "FERN",
+    "name": "FERN Ellis",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 518,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66594,
+    "firstname": "Lane",
+    "lastname": "PEAK",
+    "name": "PEAK Lane",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 994,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 67047,
+    "firstname": "Blair",
+    "lastname": "MESA",
+    "name": "MESA Blair",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 547,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 69633,
+    "firstname": "Indigo",
+    "lastname": "LARK",
+    "name": "LARK Indigo",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 433,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 67257,
+    "firstname": "Reese",
+    "lastname": "RIVER",
+    "name": "RIVER Reese",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 757,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66101,
+    "firstname": "Ellis",
+    "lastname": "RAIN",
+    "name": "RAIN Ellis",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 501,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 62898,
+    "firstname": "Zara",
+    "lastname": "LAKE",
+    "name": "LAKE Zara",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 898,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 62547,
+    "firstname": "Dana",
+    "lastname": "GROVE",
+    "name": "GROVE Dana",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 547,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 65667,
+    "firstname": "Winter",
+    "lastname": "SHAW",
+    "name": "SHAW Winter",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 967,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 67786,
+    "firstname": "Morgan",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Morgan",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 386,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 69426,
+    "firstname": "Zara",
+    "lastname": "PEAK",
+    "name": "PEAK Zara",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 226,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66410,
+    "firstname": "Quinn",
+    "lastname": "FROST",
+    "name": "FROST Quinn",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 810,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 67923,
+    "firstname": "Avery",
+    "lastname": "WOOD",
+    "name": "WOOD Avery",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 523,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66563,
+    "firstname": "Alex",
+    "lastname": "RIVER",
+    "name": "RIVER Alex",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 963,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 69500,
+    "firstname": "Morgan",
+    "lastname": "LARK",
+    "name": "LARK Morgan",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 300,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 67865,
+    "firstname": "Jordan",
+    "lastname": "MESA",
+    "name": "MESA Jordan",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 465,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 63795,
+    "firstname": "Jordan",
+    "lastname": "STONE",
+    "name": "STONE Jordan",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 895,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 60530,
+    "firstname": "Alex",
+    "lastname": "PEAK",
+    "name": "PEAK Alex",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 330,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66496,
+    "firstname": "Quinn",
+    "lastname": "SHAW",
+    "name": "SHAW Quinn",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 896,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 71316,
+    "firstname": "Xiomara",
+    "lastname": "CLIFF",
+    "name": "CLIFF Xiomara",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 316,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66240,
+    "firstname": "Blake",
+    "lastname": "LARK",
+    "name": "LARK Blake",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 640,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 65825,
+    "firstname": "Blair",
+    "lastname": "DALE",
+    "name": "DALE Blair",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 225,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 63311,
+    "firstname": "Casey",
+    "lastname": "RIVER",
+    "name": "RIVER Casey",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 411,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 71317,
+    "firstname": "Zara",
+    "lastname": "PINE",
+    "name": "PINE Zara",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 317,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 66867,
+    "firstname": "Lane",
+    "lastname": "FERN",
+    "name": "FERN Lane",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 367,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 423,
+        "name": "BOULDER M/O-19",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 74142,
+    "firstname": "Oakley",
+    "lastname": "LARK",
+    "name": "LARK Oakley",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 442,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 74399,
+    "firstname": "Morgan",
+    "lastname": "DOVE",
+    "name": "DOVE Morgan",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 699,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76692,
+    "firstname": "Reese",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Reese",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 292,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 73688,
+    "firstname": "Blair",
+    "lastname": "ASPEN",
+    "name": "ASPEN Blair",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 888,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 79163,
+    "firstname": "Casey",
+    "lastname": "HILL",
+    "name": "HILL Casey",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 963,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 73188,
+    "firstname": "Lane",
+    "lastname": "PINE",
+    "name": "PINE Lane",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 388,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 78788,
+    "firstname": "Vale",
+    "lastname": "RIDGE",
+    "name": "RIDGE Vale",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 588,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 79367,
+    "firstname": "Parker",
+    "lastname": "GROVE",
+    "name": "GROVE Parker",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 267,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 74632,
+    "firstname": "Taylor",
+    "lastname": "RIDGE",
+    "name": "RIDGE Taylor",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 932,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76419,
+    "firstname": "Morgan",
+    "lastname": "FIELD",
+    "name": "FIELD Morgan",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 919,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76511,
+    "firstname": "Yael",
+    "lastname": "MESA",
+    "name": "MESA Yael",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 111,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76586,
+    "firstname": "Unity",
+    "lastname": "LARK",
+    "name": "LARK Unity",
+    "gender": 0,
+    "federation": "Crux Climbing Club",
+    "federation_id": 186,
+    "country": "Crux Climbing Club",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 74376,
+    "firstname": "Drew",
+    "lastname": "SUMMIT",
+    "name": "SUMMIT Drew",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 676,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76507,
+    "firstname": "Winter",
+    "lastname": "WREN",
+    "name": "WREN Winter",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 107,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76601,
+    "firstname": "Ellis",
+    "lastname": "WREN",
+    "name": "WREN Ellis",
+    "gender": 0,
+    "federation": "Redpoint Gym",
+    "federation_id": 201,
+    "country": "Redpoint Gym",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76478,
+    "firstname": "Oakley",
+    "lastname": "RAIN",
+    "name": "RAIN Oakley",
+    "gender": 0,
+    "federation": "Vertical Limit Training",
+    "federation_id": 978,
+    "country": "Vertical Limit Training",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 74237,
+    "firstname": "Vale",
+    "lastname": "SHAW",
+    "name": "SHAW Vale",
+    "gender": 0,
+    "federation": "Basecamp Climbing",
+    "federation_id": 537,
+    "country": "Basecamp Climbing",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 77737,
+    "firstname": "Indigo",
+    "lastname": "PEAK",
+    "name": "PEAK Indigo",
+    "gender": 0,
+    "federation": "Boulder Valley Gym",
+    "federation_id": 437,
+    "country": "Boulder Valley Gym",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76329,
+    "firstname": "Sage",
+    "lastname": "STONE",
+    "name": "STONE Sage",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 829,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 78783,
+    "firstname": "Oakley",
+    "lastname": "REED",
+    "name": "REED Oakley",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 583,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 74128,
+    "firstname": "Alex",
+    "lastname": "CREST",
+    "name": "CREST Alex",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 428,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 75039,
+    "firstname": "Ellis",
+    "lastname": "WREN",
+    "name": "WREN Ellis",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 439,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 81813,
+    "firstname": "Quinn",
+    "lastname": "SHAW",
+    "name": "SHAW Quinn",
+    "gender": 0,
+    "federation": "Granite Climbing Co",
+    "federation_id": 913,
+    "country": "Granite Climbing Co",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76646,
+    "firstname": "Morgan",
+    "lastname": "WOOD",
+    "name": "WOOD Morgan",
+    "gender": 0,
+    "federation": "Crag Athletics",
+    "federation_id": 246,
+    "country": "Crag Athletics",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76705,
+    "firstname": "Drew",
+    "lastname": "SWIFT",
+    "name": "SWIFT Drew",
+    "gender": 0,
+    "federation": "Peak Performance Climbing",
+    "federation_id": 305,
+    "country": "Peak Performance Climbing",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 75351,
+    "firstname": "Dana",
+    "lastname": "CLIFF",
+    "name": "CLIFF Dana",
+    "gender": 0,
+    "federation": "Apex Climbing Center",
+    "federation_id": 751,
+    "country": "Apex Climbing Center",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  },
+  {
+    "athlete_id": 76746,
+    "firstname": "Alex",
+    "lastname": "RAIN",
+    "name": "RAIN Alex",
+    "gender": 0,
+    "federation": "Summit Climbing Academy",
+    "federation_id": 346,
+    "country": "Summit Climbing Academy",
+    "d_cats": [
+      {
+        "id": 433,
+        "name": "BOULDER U-11",
+        "status": "confirmed"
+      }
+    ]
+  }
+]

@@ -4,6 +4,7 @@ import {
   getLiveEvents,
   getEvent,
   getSeasonEvents,
+  getEventRegistrations,
 } from "@/lib/usac-api";
 import { isRateLimited } from "@/lib/rate-limit";
 
@@ -23,6 +24,15 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
 
   try {
+    const registrations = searchParams.get("registrations");
+    if (registrations) {
+      if (isNaN(Number(registrations))) {
+        return NextResponse.json({ error: "Invalid eventId" }, { status: 400 });
+      }
+      const data = await getEventRegistrations(Number(registrations));
+      return NextResponse.json(data);
+    }
+
     const eventId = searchParams.get("eventId");
     if (eventId) {
       if (isNaN(Number(eventId))) {

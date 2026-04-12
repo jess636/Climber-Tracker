@@ -31,7 +31,10 @@ app/
       rate-limit.ts                         # Rate limiting + SSE connection limits
       diff.ts                               # Result change detection
       fixtures/                             # Mock data for different comp states
-        event.json                          # Event overview with mixed round statuses
+        event.json                          # Comp 503: boulder event with mixed round statuses
+        event-504.json                      # Comp 504: upcoming lead event, all rounds pending
+        registrations.json                  # Comp 503 registrations (239 athletes)
+        registrations-504.json              # Comp 504 registrations (70 athletes, 30 overlap)
         round-11629.json ... round-11637.json  # Per-category round fixtures (unique athlete IDs per category)
   public/
     sw.js                                   # Service worker
@@ -55,7 +58,7 @@ cd app
 MOCK_MODE=true npx next dev --port 3002   # use any free port
 ```
 
-Mock data at http://localhost:3002/comp/503 provides these states:
+**Comp 503** (http://localhost:3002/comp/503) — active boulder comp with mixed round states:
 
 | Round IDs       | Categories          | State            | What you'll see                                  |
 |-----------------|---------------------|------------------|--------------------------------------------------|
@@ -63,6 +66,14 @@ Mock data at http://localhost:3002/comp/503 provides these states:
 | 11632           | F-19                | Active mid-comp (live sim)  | 15 ranked + 11 unranked progressively advancing, 4 actively climbing. Each poll advances the simulation — new athletes appear, go on wall, get tops/zones. |
 | 11634           | M/O-15              | Just started     | 3 ranked, 1 climbing, rest on startlist           |
 | 11635, 11636    | M/O-17, M/O-19      | Not started      | Startlist only, no results                        |
+
+**Comp 504** (http://localhost:3002/comp/504) — upcoming lead comp, all rounds pending:
+
+| Round IDs       | Categories                              | State   | What you'll see                                  |
+|-----------------|-----------------------------------------|---------|--------------------------------------------------|
+| 12700–12711     | F-13, F-15, F-17, M/O-13, M/O-15, M/O-17 | Pending | No results/startlists — registration list only. 70 registered athletes (30 overlap with comp 503). Qual rounds show registered athletes with tracking; Final rounds show "Waiting for qualification results." |
+
+Both comps share some athletes (30 overlap), so tracking a climber in comp 503 and then viewing comp 504 exercises the cross-comp tracking flow.
 
 Fixtures are captured from real API data (comp 503, 2026-03-15) with anonymized athlete names, and live in `app/src/lib/fixtures/`. Each category has its own fixture file with unique athlete IDs (offset by 10000 per category to avoid collisions). The mock layer (`mock-api.ts`) maps round IDs to fixture files and adds simulated network delay (50–200ms).
 
@@ -88,7 +99,7 @@ curl -s 'http://localhost:3000/api/competitions/EVENT_ID/ROUND_ID' > app/src/lib
 - `GET /api/v1/live` — currently live category rounds
 - `GET /api/v1/seasons/:id` — all events for a season
 - `GET /api/v1/events/:id` — event detail with categories, rounds, schedules
-- `GET /api/v1/events/:id/registrations` — registered athletes (defined, not actively used)
+- `GET /api/v1/events/:id/registrations` — registered athletes (used for pre-comp athlete lists)
 - `GET /api/v1/category_rounds/:id/results` — round results with rankings and ascents
 - `GET /api/v1/routes/:id/results` — route-level results (defined, not actively used)
 - `GET /api/v1/routes/:id/startlist` — route startlist (defined, not actively used)
@@ -142,12 +153,26 @@ The `computeClimberStatus` function determines where a climber is in the rotatio
 
 Queue depth is computed from `route_start_positions` in the startlist. The position gap between routes for an athlete reveals the rest pattern (gap=2 → 1 climb + 1 rest). `computeCurrentPositions` scans ranking data to find the highest confirmed position on each route.
 
+### Lead/TR vs Boulder Differences
+
+- **Boulder**: Athletes appear in ranking with `active: true` and ascents with `status: "active"` while on wall. Queue depth and "on wall" detection work in real time.
+- **Lead/TR**: Athletes only appear in ranking once a score is posted. `active` is never true, ascent status goes straight from absent to `confirmed`. No "on wall" intermediate state. Queue depth works but lags behind reality — a climber may be physically on the wall while still showing "2 away."
+- **Lead/TR scoring**: Uses `score` field (e.g. "TOP", "39", "32+") instead of `top_tries`/`zone_tries`. `top_tries` is always null for lead.
+
+### "Active" Round vs Actually Started
+
+A round's `status` can be `"active"` long before any climber actually starts climbing. The `ranking_as_of` field on the category is `"NA"` until the first score is posted. Treat `ranking_as_of === "NA"` as "not really started yet" — don't show staleness warnings or assume the rotation is progressing.
+
+### Score Staleness Detection
+
+The `ranking_as_of` timestamp on a category only updates when the ranking actually changes (not on every poll). If `ranking_as_of` is a real timestamp and is older than ~6 minutes on an active round, scores are likely delayed. This is common for lead/TR where score entry lags behind climbing.
+
 ## Current Status
 
 - Homepage with event sections (Live Now, My Events, This Week, Upcoming, Past)
 - Competition detail with category/round selection, rankings, startlists
 - "My Climbers" always visible, tracking across rounds within an event
-- Athlete search by name or team with bulk tracking
+- Athlete search by name or team with bulk tracking (clearable search field)
 - Boulder scoring (top/zone/low zone/attempts), lead/speed scoring
 - Climber status with queue depth (on wall, on deck, N away)
 - Live activity feed in My Climbers (topped, zone, on wall, rank changes detected via client-side diff) with real `modified` timestamps from USAC API
@@ -158,18 +183,44 @@ Queue depth is computed from `route_start_positions` in the startlist. The posit
 - Event favorites with localStorage persistence
 - Status bar with live connection indicator, staleness timer, and refresh button (PWA-friendly)
 - Rate limiting (60 req/min API, 10 req/min SSE, 50 max SSE connections)
-- Mock mode for offline development and testing (anonymized fixture data)
+- Mock mode for offline development and testing (anonymized fixture data, two comps)
 - Docker deployment (stateless Next.js container)
+
+### Pre-Comp Registration Lists
+
+When a round is pending with no results or startlist, the app fetches event registrations (`/api/v1/events/:id/registrations`) and shows registered athletes for that category. Athletes can be tracked from the registration list before the comp starts, and they appear in My Climbers with "Registered — waiting for comp to start." Final rounds show "Waiting for qualification results" since the qualifier determines who advances. Registrations map to categories via `dcat_id` matching between the registration response and event data.
+
+### Share Link
+
+A "Share" button appears next to My Climbers when athletes are tracked. It copies a URL like `/comp/518?share=id1,id2,id3` to the clipboard. Recipients who open the link get those athletes auto-added to their tracked list and land on the My Climbers view. The `?share=` param is cleaned from the URL after import via `history.replaceState`.
+
+### My Climbers Ordering
+
+Tracked athletes can be reordered with ▲/▼ buttons in the My Climbers header. Order is preserved in the localStorage tracked list (Map insertion order). First/last arrows are disabled to prevent no-op taps.
+
+### View State Persistence
+
+The current view (My Climbers vs selected round) is saved to `localStorage` as `view-{eventId}` and restored on reload. URL params (`?round=`, `?share=`) take priority over saved state. The "Categories ▾/▸" toggle lets users collapse category buttons when focused on My Climbers.
+
+## localStorage Keys
+
+All client state is in localStorage, keyed per event:
+- `tracked-{eventId}` — array of `{ athlete_id, name, country }` in user-defined order
+- `view-{eventId}` — `{ filterTracked: boolean, roundId: number | null }`
+- `favorites` — set of favorited event IDs (homepage)
 
 ## Testing
 
-No test framework yet. The mock system and fixtures are the foundation for adding tests. Priority test areas:
-1. API route tests — hit endpoints in mock mode, verify response shapes
+No test framework yet. The mock system with two comps (503 active, 504 pending) is the foundation for adding tests. Priority test areas:
+1. API route tests — hit endpoints in mock mode, verify response shapes (including `/api/competitions?registrations=`)
 2. Scoring display logic — boulder top/zone/low_zone/attempts rendering
 3. Data filtering — My Climbers showing climbers across mixed round states
+4. Registration flow — pending rounds show registrations, tracking works, My Climbers shows registration-only athletes
+5. Share link — import merges with existing tracked, names resolve from available data
 
 ## Future Plans
 
+- **PDF schedule upload** — Upload a competition's PDF schedule (start times, session info, wall assignments). Server-side Claude API parses the PDF into structured JSON, stored as flat files (`schedules/event-{id}.json`). All users see the extracted times overlaid on category views. Requires an `ANTHROPIC_API_KEY` env var. Estimated ~2.5 hours to build: upload UI, Claude API parsing route, flat file storage, display integration, prompt tuning. Main risk is PDF format variation across gyms/regions.
 - Capture real live comp snapshots to validate mock simulation accuracy (TODO — run during next live comp)
 - Push notifications for tracked climber updates (webpush was scaffolded then removed)
 - Athlete profiles using `/api/v1/athletes/:id` (competition history, podiums, bio)

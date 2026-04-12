@@ -102,6 +102,17 @@ interface RoundResults {
   routes?: Route[];
 }
 
+interface Registration {
+  athlete_id: number;
+  firstname: string;
+  lastname: string;
+  name: string;
+  gender: number;
+  federation: string;
+  country: string;
+  d_cats: { id: number; name: string; status: string }[];
+}
+
 interface TrackedClimber {
   athlete_id: number;
   name: string;
@@ -113,10 +124,12 @@ interface TrackedRoundData {
   round: string;
   discipline: string;
   roundStatus: string;
+  roundId: number;
   athlete: Athlete | null;
   entry: StartlistEntry | null;
   routes: Route[];
   currentPositions: Map<number, number>;
+  athleteId?: number; // for registration-only entries where athlete/entry are null
 }
 
 // --- Activity History ---
@@ -322,12 +335,21 @@ export default function CompetitionPage({
   const { id: eventId } = use(params);
   const searchParams = useSearchParams();
   const initialRound = searchParams.get("round");
+  const shareParam = searchParams.get("share");
+
+  // Restore last view state from localStorage
+  const savedView = (() => {
+    try {
+      const raw = typeof window !== "undefined" ? localStorage.getItem(`view-${eventId}`) : null;
+      return raw ? JSON.parse(raw) as { filterTracked?: boolean; roundId?: number | null } : null;
+    } catch { return null; }
+  })();
 
   const [event, setEvent] = useState<EventData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedRoundId, setSelectedRoundId] = useState<number | null>(
-    initialRound ? Number(initialRound) : null
+    initialRound ? Number(initialRound) : shareParam ? null : savedView?.roundId ?? null
   );
   const [roundResults, setRoundResults] = useState<RoundResults | null>(null);
   const [roundLoading, setRoundLoading] = useState(false);
@@ -336,7 +358,9 @@ export default function CompetitionPage({
     new Map()
   );
   const [sseConnected, setSseConnected] = useState(false);
-  const [filterTracked, setFilterTracked] = useState(false);
+  const [filterTracked, setFilterTracked] = useState(
+    shareParam ? false : savedView?.filterTracked ?? false
+  );
   const [myClimbersData, setMyClimbersData] = useState<TrackedRoundData[]>([]);
   const [myClimbersLoading, setMyClimbersLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -348,7 +372,9 @@ export default function CompetitionPage({
   const [activityLog, setActivityLog] = useState<ActivityEvent[]>([]);
   const [expandedClimberId, setExpandedClimberId] = useState<number | null>(null);
   const [changedAscents, setChangedAscents] = useState<Set<string>>(new Set());
+  const [registrations, setRegistrations] = useState<Registration[]>([]);
   const prevBatchRef = useRef<Record<string, RoundResults> | null>(null);
+  const lastRoundChangeRef = useRef<Map<string, { time: Date; hash: string }>>(new Map());
   const prevRoundResultsRef = useRef<RoundResults | null>(null);
   const trackedRef = useRef(tracked);
   const eventRef = useRef(event);
@@ -372,7 +398,28 @@ export default function CompetitionPage({
     setTracked(loadTracked(eventId));
   }, [eventId]);
 
-  // Auto-select first active round (or first round) on load
+  // Restore staleness tracking from localStorage
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(`staleness-${eventId}`);
+      if (stored) {
+        const parsed = JSON.parse(stored) as Record<string, { time: string; hash: string }>;
+        for (const [k, v] of Object.entries(parsed)) {
+          lastRoundChangeRef.current.set(k, { time: new Date(v.time), hash: v.hash });
+        }
+      }
+    } catch { /* ignore */ }
+  }, [eventId]);
+
+  // Persist view state so reload returns to same view
+  useEffect(() => {
+    localStorage.setItem(`view-${eventId}`, JSON.stringify({
+      filterTracked,
+      roundId: selectedRoundId,
+    }));
+  }, [filterTracked, selectedRoundId, eventId]);
+
+  // Auto-select first active round (or first round) if no round is set
   useEffect(() => {
     if (!event || selectedRoundId) return;
     const allRounds = event.d_cats.flatMap((dcat) => dcat.category_rounds);
@@ -396,6 +443,23 @@ export default function CompetitionPage({
         setLoading(false);
       });
   }, [eventId]);
+
+  // Fetch registrations for pre-comp athlete list
+  useEffect(() => {
+    if (!event) return;
+    // Only fetch if there are pending rounds (no results yet)
+    const hasPending = event.d_cats.some((dcat) =>
+      dcat.category_rounds.some((cr) => cr.status === "pending")
+    );
+    if (!hasPending) return;
+
+    fetch(`/api/competitions?registrations=${eventId}`)
+      .then((res) => res.json())
+      .then((data: Registration[]) => {
+        if (Array.isArray(data)) setRegistrations(data);
+      })
+      .catch(() => {});
+  }, [event, eventId]);
 
   // Fetch round results (initial + SSE)
   useEffect(() => {
@@ -513,7 +577,29 @@ export default function CompetitionPage({
       setActivityLog((prev) => [...newEvents, ...prev].slice(0, 100));
     }
     prevBatchRef.current = batchData;
-  }, [batchData, event, tracked]);
+
+    // Track when each round's ranking actually changes
+    const now = new Date();
+    for (const r of roundMeta) {
+      const data = batchData[r.id];
+      if (!data?.ranking?.length) continue;
+      // Simple hash: ranking count + sum of scores
+      const hash = `${data.ranking.length}:${data.ranking.map((a) => a.score).join(",")}`;
+      const prev = lastRoundChangeRef.current.get(String(r.id));
+      if (!prev || prev.hash !== hash) {
+        lastRoundChangeRef.current.set(String(r.id), { time: now, hash });
+      }
+    }
+
+    // Persist staleness data to localStorage
+    try {
+      const obj: Record<string, { time: string; hash: string }> = {};
+      for (const [k, v] of lastRoundChangeRef.current) {
+        obj[k] = { time: v.time.toISOString(), hash: v.hash };
+      }
+      localStorage.setItem(`staleness-${eventId}`, JSON.stringify(obj));
+    } catch { /* ignore */ }
+  }, [batchData, event, tracked, eventId]);
 
   // Fetch all rounds on page load + when returning from background
   useEffect(() => {
@@ -548,9 +634,9 @@ export default function CompetitionPage({
     return () => clearInterval(interval);
   }, [filterTracked, event, tracked.size, selectedRoundId]);
 
-  // Derive My Climbers data from batch data
+  // Derive My Climbers data from batch data + registrations
   useEffect(() => {
-    if (!batchData || !event) return;
+    if (!event) return;
 
     const allRoundMeta = event.d_cats.flatMap((dcat) =>
       dcat.category_rounds.map((cr) => ({
@@ -559,74 +645,156 @@ export default function CompetitionPage({
         round: cr.name,
         discipline: dcat.discipline_kind,
         status: cr.status,
+        dcat_id: dcat.dcat_id,
+        singleRound: dcat.category_rounds.length === 1,
       }))
     );
 
     const results: TrackedRoundData[] = [];
+    const foundInData = new Set<number>();
 
-    for (const r of allRoundMeta) {
-      const data = batchData[r.id];
-      if (!data) continue;
-      const ranking: Athlete[] = data.ranking ?? [];
-      const startlist: StartlistEntry[] = data.startlist ?? [];
-      const routes: Route[] = data.routes ?? [];
-      const rankedIds = new Set(ranking.map((a) => a.athlete_id));
+    // First: athletes found in batch data (results/startlists)
+    if (batchData) {
+      for (const r of allRoundMeta) {
+        const data = batchData[r.id];
+        if (!data) continue;
+        const ranking: Athlete[] = data.ranking ?? [];
+        const startlist: StartlistEntry[] = data.startlist ?? [];
+        const routes: Route[] = data.routes ?? [];
 
-      const currentPositions = computeCurrentPositions(ranking, startlist);
+        const currentPositions = computeCurrentPositions(ranking, startlist);
 
-      for (const [id] of tracked) {
-        const athlete = ranking.find((a) => a.athlete_id === id) ?? null;
-        const entry = startlist.find((e) => e.athlete_id === id) ?? null;
-        if (!athlete && !entry) continue;
+        for (const [id] of tracked) {
+          const athlete = ranking.find((a) => a.athlete_id === id) ?? null;
+          const entry = startlist.find((e) => e.athlete_id === id) ?? null;
+          if (!athlete && !entry) continue;
+
+          foundInData.add(id);
+          results.push({
+            category: r.category,
+            round: r.round,
+            discipline: r.discipline,
+            roundStatus: r.status,
+            roundId: r.id,
+            athlete,
+            entry,
+            routes,
+            currentPositions,
+          });
+        }
+      }
+    }
+
+    // Second: tracked athletes from registrations not yet in any round data
+    // Show them under their registered category's qualification round
+    for (const [id, climber] of tracked) {
+      if (foundInData.has(id)) continue;
+      const reg = registrations.find((r) => r.athlete_id === id);
+      if (!reg) continue;
+
+      for (const regCat of reg.d_cats) {
+        // Find the qualification round (or single round) for this category
+        const qualRound = allRoundMeta.find(
+          (r) => r.dcat_id === regCat.id && (r.round === "Qualification" || r.singleRound)
+        );
+        if (!qualRound) continue;
 
         results.push({
-          category: r.category,
-          round: r.round,
-          discipline: r.discipline,
-          roundStatus: r.status,
-          athlete,
-          entry,
-          routes,
-          currentPositions,
+          category: qualRound.category,
+          round: qualRound.round,
+          discipline: qualRound.discipline,
+          roundStatus: qualRound.status,
+          roundId: qualRound.id,
+          athlete: null,
+          entry: null,
+          routes: [],
+          currentPositions: new Map(),
+          athleteId: id,
         });
       }
     }
 
     setMyClimbersData(results);
     setMyClimbersLoading(false);
-  }, [batchData, event, tracked]);
+  }, [batchData, event, tracked, registrations]);
 
-  // Build searchable athlete list from batch data
+  // Build searchable athlete list from batch data + registrations
   useEffect(() => {
-    if (!batchData || !event) return;
-
-    const allRoundMeta = event.d_cats.flatMap((dcat) =>
-      dcat.category_rounds.map((cr) => ({
-        id: cr.category_round_id,
-        category: dcat.category_name,
-      }))
-    );
+    if (!event) return;
 
     const seen = new Set<number>();
     const athletes: typeof allAthletes = [];
-    for (const r of allRoundMeta) {
-      const data = batchData[r.id];
-      if (!data) continue;
-      for (const a of [...(data.ranking ?? []), ...(data.startlist ?? [])]) {
-        if (!seen.has(a.athlete_id)) {
-          seen.add(a.athlete_id);
-          athletes.push({
-            athlete_id: a.athlete_id,
-            name: a.name,
-            country: a.country,
-            category: r.category,
-          });
+
+    // First add athletes from batch data (results/startlists)
+    if (batchData) {
+      const allRoundMeta = event.d_cats.flatMap((dcat) =>
+        dcat.category_rounds.map((cr) => ({
+          id: cr.category_round_id,
+          category: dcat.category_name,
+        }))
+      );
+      for (const r of allRoundMeta) {
+        const data = batchData[r.id];
+        if (!data) continue;
+        for (const a of [...(data.ranking ?? []), ...(data.startlist ?? [])]) {
+          if (!seen.has(a.athlete_id)) {
+            seen.add(a.athlete_id);
+            athletes.push({
+              athlete_id: a.athlete_id,
+              name: a.name,
+              country: a.country,
+              category: r.category,
+            });
+          }
         }
       }
     }
+
+    // Then add from registrations (for pending rounds with no data yet)
+    for (const reg of registrations) {
+      if (seen.has(reg.athlete_id)) continue;
+      seen.add(reg.athlete_id);
+      const catName = reg.d_cats[0]?.name?.replace(/^LEAD |^BOULDER |^SPEED /, "") ?? "";
+      athletes.push({
+        athlete_id: reg.athlete_id,
+        name: reg.name,
+        country: reg.federation || reg.country,
+        category: catName,
+      });
+    }
+
     athletes.sort((a, b) => a.name.localeCompare(b.name));
     setAllAthletes(athletes);
-  }, [batchData, event]);
+  }, [batchData, event, registrations]);
+
+  // Import shared athletes from URL param
+  const [shareImported, setShareImported] = useState(false);
+  const [shareCopied, setShareCopied] = useState(false);
+  const [hideCategories, setHideCategories] = useState(false);
+  useEffect(() => {
+    if (!shareParam || shareImported || allAthletes.length === 0) return;
+    const ids = shareParam.split(",").map(Number).filter((n) => !isNaN(n) && n > 0);
+    if (ids.length === 0) return;
+
+    setTracked((prev) => {
+      const next = new Map(prev);
+      for (const id of ids) {
+        if (next.has(id)) continue;
+        const athlete = allAthletes.find((a) => a.athlete_id === id);
+        if (athlete) {
+          next.set(id, { athlete_id: id, name: athlete.name, country: athlete.country });
+        }
+      }
+      saveTracked(eventId, next);
+      return next;
+    });
+    setFilterTracked(true);
+    setShareImported(true);
+    // Clean share param from URL so it doesn't linger
+    const url = new URL(window.location.href);
+    url.searchParams.delete("share");
+    window.history.replaceState({}, "", url.pathname + url.search);
+  }, [shareParam, allAthletes, shareImported, eventId]);
 
   // Filter athletes by search query
   useEffect(() => {
@@ -643,6 +811,23 @@ export default function CompetitionPage({
       )
     );
   }, [searchQuery, allAthletes]);
+
+  const moveTracked = useCallback(
+    (athleteId: number, direction: "up" | "down") => {
+      setTracked((prev) => {
+        const arr = [...prev.entries()];
+        const idx = arr.findIndex(([id]) => id === athleteId);
+        if (idx < 0) return prev;
+        const swapIdx = direction === "up" ? idx - 1 : idx + 1;
+        if (swapIdx < 0 || swapIdx >= arr.length) return prev;
+        [arr[idx], arr[swapIdx]] = [arr[swapIdx], arr[idx]];
+        const next = new Map(arr);
+        saveTracked(eventId, next);
+        return next;
+      });
+    },
+    [eventId]
+  );
 
   const toggleTrack = useCallback(
     (athleteId: number, name: string, country: string) => {
@@ -736,7 +921,30 @@ export default function CompetitionPage({
           >
             ★ My Climbers{tracked.size > 0 ? ` (${tracked.size})` : ""}
           </button>
-          {event.d_cats.map((dcat) =>
+          {tracked.size > 0 && (
+            <button
+              onClick={() => {
+                const ids = [...tracked.keys()].join(",");
+                const url = `${window.location.origin}/comp/${eventId}?share=${ids}`;
+                navigator.clipboard.writeText(url).then(() => {
+                  setShareCopied(true);
+                  setTimeout(() => setShareCopied(false), 1500);
+                });
+              }}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium border bg-gray-50 text-gray-600 border-gray-300 hover:border-gray-500 transition-all"
+            >
+              {shareCopied ? "Copied!" : "Share"}
+            </button>
+          )}
+          {filterTracked && (
+            <button
+              onClick={() => setHideCategories((v) => !v)}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium border bg-gray-50 text-gray-600 border-gray-300 hover:border-gray-500 transition-all"
+            >
+              {hideCategories ? "Categories \u25B8" : "Categories \u25BE"}
+            </button>
+          )}
+          {!(filterTracked && hideCategories) && event.d_cats.map((dcat) =>
             dcat.category_rounds.map((cr) => {
               const isLive =
                 cr.status === "active" &&
@@ -775,13 +983,23 @@ export default function CompetitionPage({
 
       {/* Search */}
       <div className="space-y-2">
-        <input
-          type="text"
-          placeholder="Search climbers or teams..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search climbers or teams..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-lg leading-none"
+            >
+              ×
+            </button>
+          )}
+        </div>
         {searchResults.length > 0 && (
           <div className="border border-gray-200 rounded-lg max-h-64 overflow-y-auto divide-y">
             {searchResults.map((a) => {
@@ -819,7 +1037,14 @@ export default function CompetitionPage({
             data={myClimbersData}
             tracked={tracked}
             onToggleTrack={toggleTrack}
+            onMoveTracked={moveTracked}
             activityLog={activityLog}
+            event={event!}
+            lastRoundChanges={lastRoundChangeRef.current}
+            onSelectRound={(roundId) => {
+              setSelectedRoundId(roundId);
+              setFilterTracked(false);
+            }}
           />
         )
       ) : roundLoading ? (
@@ -833,21 +1058,39 @@ export default function CompetitionPage({
             <h3 className="font-semibold">
               {roundResults.category} — {roundResults.round}
             </h3>
-            <span
-              className={`text-xs px-2 py-0.5 rounded-full ${
-                roundResults.status === "finished"
-                  ? "bg-amber-100 text-amber-700"
-                  : roundResults.status === "active"
-                    ? "bg-green-100 text-green-700"
-                    : "bg-gray-100 text-gray-400"
-              }`}
-            >
-              {roundResults.status === "active" ? "● Live" : roundResults.status === "finished" ? "★ Final" : "Upcoming"}
-            </span>
+            {(() => {
+              const reallyLive = roundResults.status === "active" && (roundResults.ranking?.length ?? 0) > 0;
+              return (
+                <span
+                  className={`text-xs px-2 py-0.5 rounded-full ${
+                    roundResults.status === "finished"
+                      ? "bg-amber-100 text-amber-700"
+                      : reallyLive
+                        ? "bg-green-100 text-green-700"
+                        : "bg-gray-100 text-gray-400"
+                  }`}
+                >
+                  {reallyLive ? "● Live" : roundResults.status === "finished" ? "★ Final" : "Upcoming"}
+                </span>
+              );
+            })()}
           </div>
           <p className="text-sm text-gray-500">
             {roundResults.discipline} · {formatRoundFormat(roundResults.format, roundResults.discipline)}
           </p>
+
+          {(() => {
+            if (roundResults.status !== "active" || !roundResults.ranking?.length) return null;
+            const lastChange = lastRoundChangeRef.current.get(String(selectedRoundId));
+            if (!lastChange) return null;
+            const elapsed = Date.now() - lastChange.time.getTime();
+            if (elapsed < STALE_THRESHOLD_MS) return null;
+            return (
+              <p className="text-xs text-amber-600 bg-amber-50 border border-amber-200 rounded px-2 py-1">
+                Scores may be delayed — no changes for {formatTimeAgo(lastChange.time)}
+              </p>
+            );
+          })()}
 
           {(roundResults.ranking?.length ?? 0) > 0 ||
           (roundResults.startlist?.length ?? 0) > 0 ? (
@@ -856,23 +1099,87 @@ export default function CompetitionPage({
               startlist={roundResults.startlist ?? []}
               routes={roundResults.routes ?? []}
               status={roundResults.status}
+              discipline={roundResults.discipline?.toLowerCase() ?? ""}
               tracked={tracked}
               onToggleTrack={toggleTrack}
               expandedClimberId={expandedClimberId}
               onExpandClimber={setExpandedClimberId}
               changedAscents={changedAscents}
             />
-          ) : (
-            <p className="text-gray-500 text-sm">
-              No results or startlist available yet.
-            </p>
-          )}
+          ) : (() => {
+            // Show registrations on qualification rounds when no results/startlist
+            const dcat = event!.d_cats.find((d) =>
+              d.category_rounds.some((cr) => cr.category_round_id === selectedRoundId)
+            );
+            const isQual = roundResults.round === "Qualification" || dcat?.category_rounds.length === 1;
+            const catRegs = dcat && isQual
+              ? registrations.filter((r) =>
+                  r.d_cats.some((dc) => dc.id === dcat.dcat_id)
+                )
+              : [];
+            return catRegs.length > 0 ? (
+              <RegistrationList
+                registrations={catRegs}
+                tracked={tracked}
+                onToggleTrack={toggleTrack}
+              />
+            ) : (
+              <p className="text-gray-500 text-sm">
+                {isQual ? "No results or startlist available yet." : "Waiting for qualification results."}
+              </p>
+            );
+          })()}
         </div>
       ) : (
         <p className="text-gray-500">
           Select a category round above to view results.
         </p>
       )}
+    </div>
+  );
+}
+
+// --- Registration List (pre-comp) ---
+
+function RegistrationList({
+  registrations,
+  tracked,
+  onToggleTrack,
+}: {
+  registrations: Registration[];
+  tracked: Map<number, TrackedClimber>;
+  onToggleTrack: (id: number, name: string, country: string) => void;
+}) {
+  const sorted = [...registrations].sort((a, b) => a.name.localeCompare(b.name));
+  const hasTeams = sorted.some((r) => r.federation);
+
+  return (
+    <div className="space-y-2">
+      <p className="text-sm text-gray-500">
+        {sorted.length} registered — tap ☆ to track before the comp starts
+      </p>
+      <div className="border border-gray-200 rounded-lg divide-y">
+        {sorted.map((reg) => {
+          const isTracked = tracked.has(reg.athlete_id);
+          return (
+            <div
+              key={reg.athlete_id}
+              className={`flex items-center gap-2 px-3 py-2 text-sm ${isTracked ? "bg-yellow-50" : ""}`}
+            >
+              <button
+                onClick={() => onToggleTrack(reg.athlete_id, reg.name, reg.federation || reg.country)}
+                className="text-lg leading-none shrink-0"
+              >
+                {isTracked ? "★" : "☆"}
+              </button>
+              <span className="font-medium">{reg.name}</span>
+              {hasTeams && reg.federation && (
+                <span className="text-gray-400 text-xs">{reg.federation}</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -995,12 +1302,12 @@ function StartlistTable({
               <th className="p-2 w-8"></th>
               <th className="p-2">Bib</th>
               <th className="p-2">Climber</th>
-              {hasTeams && <th className="p-2">Team</th>}
               {routes.map((r) => (
                 <th key={r.id} className="p-2 text-center">
                   B{r.name}
                 </th>
               ))}
+              {hasTeams && <th className="p-2">Team</th>}
             </tr>
           </thead>
           <tbody>
@@ -1029,7 +1336,6 @@ function StartlistTable({
                   <td className="p-2">
                     <span className="font-medium">{entry.name}</span>
                   </td>
-                  {hasTeams && <td className="p-2 text-gray-500 text-xs">{entry.country}</td>}
                   {entry.route_start_positions.map((rsp) => (
                     <td
                       key={rsp.route_id}
@@ -1038,6 +1344,7 @@ function StartlistTable({
                       {rsp.position}
                     </td>
                   ))}
+                  {hasTeams && <td className="p-2 text-gray-500 text-xs">{entry.country}</td>}
                 </tr>
               );
             })}
@@ -1058,6 +1365,14 @@ interface ClimberStatus {
   label: string;
   style: string;
   sortKey: number; // lower = higher priority in display
+}
+
+const STALE_THRESHOLD_MS = 6 * 60 * 1000; // 6 minutes
+
+function isRankingStale(rankingAsOf: string | null | undefined): boolean {
+  if (!rankingAsOf || rankingAsOf === "NA") return false;
+  const ts = new Date(rankingAsOf.replace(" UTC", "Z").replace(" ", "T"));
+  return Date.now() - ts.getTime() > STALE_THRESHOLD_MS;
 }
 
 function formatRoundFormat(format: string, discipline: string): string {
@@ -1096,7 +1411,8 @@ function computeCurrentPositions(
     if (!entry) continue;
 
     for (const ascent of athlete.ascents) {
-      if (ascent.top_tries != null || ascent.status === "active") {
+      // Boulder uses top_tries, lead/TR uses score — check both
+      if (ascent.top_tries != null || ascent.status === "active" || ascent.status === "confirmed" || (ascent.score && ascent.score !== "")) {
         const rsp = entry.route_start_positions.find(
           (r) => r.route_name === ascent.route_name
         );
@@ -1117,6 +1433,7 @@ function computeClimberStatus(
   roundStatus: string,
   includeCategory = false,
   currentPositions?: Map<number, number>,
+  discipline?: string,
 ): ClimberStatus {
   // Finished round — everyone is done
   if (roundStatus === "finished") {
@@ -1141,20 +1458,31 @@ function computeClimberStatus(
     };
   }
 
-  // Active on wall
-  if (athlete?.active) {
+  // For lead/TR in active rounds, someone is always on the wall but we can't
+  // detect who — advance currentPositions by 1 to account for the climber
+  // whose score hasn't been posted yet.
+  const isLeadTR = discipline && discipline !== "boulder";
+  const adjustedPositions = currentPositions && isLeadTR && roundStatus === "active"
+    ? new Map(Array.from(currentPositions).map(([k, v]) => [k, v + 1]))
+    : currentPositions;
+
+  // Active on wall — only trust active flag for boulder
+  // For lead/TR, the API sets active unreliably (stays true after climbing)
+  if (athlete?.active && discipline === "boulder") {
     const activeRoute = athlete.ascents.find((a) => a.status === "active");
-    const routeLabel = activeRoute ? formatRouteName(activeRoute.route_name, includeCategory) : "";
-    return {
-      label: `On wall${routeLabel ? ` — ${routeLabel}` : ""}`,
-      style: "text-blue-600 font-medium animate-pulse",
-      sortKey: 0,
-    };
+    if (activeRoute) {
+      const routeLabel = formatRouteName(activeRoute.route_name, includeCategory);
+      return {
+        label: `On wall — ${routeLabel}`,
+        style: "text-blue-600 font-medium animate-pulse",
+        sortKey: 0,
+      };
+    }
   }
 
   if (athlete) {
     // Has results but not currently climbing
-    const doneCount = athlete.ascents.filter((a) => a.top_tries != null).length;
+    const doneCount = athlete.ascents.filter((a) => a.status === "confirmed" || a.top_tries != null || (a.score && a.score !== "")).length;
     const totalRoutes = athlete.ascents.length;
 
     if (doneCount >= totalRoutes) {
@@ -1166,15 +1494,22 @@ function computeClimberStatus(
     }
 
     // Still has routes left — find next route and queue depth
-    const nextAscent = athlete.ascents.find((a) => a.top_tries == null);
-    if (nextAscent && startlistEntry && currentPositions) {
+    const nextAscent = athlete.ascents.find((a) => a.status !== "confirmed" && a.top_tries == null && !a.score);
+    if (nextAscent && startlistEntry && adjustedPositions) {
       const rsp = startlistEntry.route_start_positions.find(
         (r) => r.route_name === nextAscent.route_name
       );
       if (rsp) {
-        const currentPos = currentPositions.get(rsp.route_id) ?? 0;
+        const currentPos = adjustedPositions.get(rsp.route_id) ?? 0;
         const away = rsp.position - currentPos;
         const routeLabel = formatRouteName(nextAscent.route_name, includeCategory);
+        if (away <= 0 && isLeadTR) {
+          return {
+            label: `Likely climbing — ${routeLabel}`,
+            style: "text-blue-600 font-medium",
+            sortKey: 0,
+          };
+        }
         if (away <= 1) {
           return {
             label: `On deck — ${routeLabel}`,
@@ -1182,29 +1517,32 @@ function computeClimberStatus(
             sortKey: 1,
           };
         }
+        const notStarted = !currentPositions || currentPositions.size === 0;
         return {
           label: `${away} away — ${routeLabel}`,
-          style: "text-purple-600",
+          style: notStarted ? "text-gray-400" : "text-purple-600",
           sortKey: 2,
         };
       }
     }
 
+    const notStarted = !currentPositions || currentPositions.size === 0;
     const routeLabel = nextAscent ? formatRouteName(nextAscent.route_name, includeCategory) : "";
     return {
       label: `Next: ${routeLabel}`,
-      style: "text-purple-600",
+      style: notStarted ? "text-gray-400" : "text-purple-600",
       sortKey: 2,
     };
   }
 
   // Not in ranking yet — use startlist position to estimate queue depth
-  if (startlistEntry && currentPositions) {
+  const notReallyStarted = !adjustedPositions || adjustedPositions.size === 0;
+  if (startlistEntry && adjustedPositions) {
     // Find the route where they have the lowest position (their first route)
     let bestAway = Infinity;
     let bestRoute = "";
     for (const rsp of startlistEntry.route_start_positions) {
-      const currentPos = currentPositions.get(rsp.route_id) ?? 0;
+      const currentPos = adjustedPositions.get(rsp.route_id) ?? 0;
       const away = rsp.position - currentPos;
       if (away > 0 && away < bestAway) {
         bestAway = away;
@@ -1213,7 +1551,14 @@ function computeClimberStatus(
     }
     if (bestAway < Infinity) {
       const routeLabel = formatRouteName(bestRoute, includeCategory);
-      if (bestAway <= 1) {
+      if (bestAway <= 0 && isLeadTR && !notReallyStarted) {
+        return {
+          label: `Likely climbing — ${routeLabel}`,
+          style: "text-blue-600 font-medium",
+          sortKey: 0,
+        };
+      }
+      if (bestAway <= 1 && !notReallyStarted) {
         return {
           label: `On deck — ${routeLabel}`,
           style: "text-orange-600 font-medium",
@@ -1222,7 +1567,7 @@ function computeClimberStatus(
       }
       return {
         label: `${bestAway} away — ${routeLabel}`,
-        style: "text-purple-600",
+        style: notReallyStarted ? "text-gray-400" : "text-purple-600",
         sortKey: 2,
       };
     }
@@ -1257,6 +1602,7 @@ function RoundTable({
   startlist,
   routes,
   status: roundStatus,
+  discipline,
   tracked,
   onToggleTrack,
   expandedClimberId,
@@ -1267,6 +1613,7 @@ function RoundTable({
   startlist: StartlistEntry[];
   routes: Route[];
   status: string;
+  discipline: string;
   tracked: Map<number, TrackedClimber>;
   onToggleTrack: (id: number, name: string, country: string) => void;
   expandedClimberId: number | null;
@@ -1293,7 +1640,7 @@ function RoundTable({
       ascents: athlete.ascents,
       active: athlete.active,
       under_appeal: athlete.under_appeal,
-      status: computeClimberStatus(athlete, entry ?? null, roundStatus, false, currentPositions),
+      status: computeClimberStatus(athlete, entry ?? null, roundStatus, false, currentPositions, discipline),
       startPositions: entry?.route_start_positions ?? [],
       hasResults: true,
     });
@@ -1312,7 +1659,7 @@ function RoundTable({
       ascents: [],
       active: false,
       under_appeal: false,
-      status: computeClimberStatus(null, entry, roundStatus, false, currentPositions),
+      status: computeClimberStatus(null, entry, roundStatus, false, currentPositions, discipline),
       startPositions: entry.route_start_positions,
       hasResults: false,
     });
@@ -1331,10 +1678,10 @@ function RoundTable({
             <th className="p-2 w-8"></th>
             <th className="p-2 w-12">#</th>
             <th className="p-2">Climber</th>
-            {hasTeams && <th className="p-2">Team</th>}
             {isActive && <th className="p-2">Status</th>}
-            <th className="p-2 text-center">Score</th>
             {hasAscents && <th className="p-2 text-center">Routes</th>}
+            <th className="p-2 text-center">Score</th>
+            {hasTeams && <th className="p-2">Team</th>}
           </tr>
         </thead>
         <tbody>
@@ -1378,7 +1725,6 @@ function RoundTable({
                     <span className="ml-2 text-xs text-orange-600">Appeal</span>
                   )}
                 </td>
-                {hasTeams && <td className="p-2 text-gray-500 text-xs">{row.country}</td>}
                 {isActive && (
                   <td className="p-2">
                     <span className={`text-xs ${row.status.style}`}>
@@ -1386,9 +1732,6 @@ function RoundTable({
                     </span>
                   </td>
                 )}
-                <td className="p-2 text-center font-mono font-semibold">
-                  {row.score || "—"}
-                </td>
                 {hasAscents && (
                   <td className="p-2">
                     {row.hasResults ? (
@@ -1408,6 +1751,10 @@ function RoundTable({
                     ) : null}
                   </td>
                 )}
+                <td className="p-2 text-center font-mono font-semibold">
+                  {row.score || "—"}
+                </td>
+                {hasTeams && <td className="p-2 text-gray-500 text-xs">{row.country}</td>}
               </tr>
               {isExpanded && (
                 <tr>
@@ -1416,6 +1763,7 @@ function RoundTable({
                       row={row}
                       routes={routes}
                       roundStatus={roundStatus}
+                      discipline={discipline}
                       currentPositions={currentPositions}
                       startlistEntry={startlistMap.get(row.athlete_id) ?? null}
                       changedAscents={changedAscents}
@@ -1438,6 +1786,7 @@ function ClimberDetail({
   row,
   routes,
   roundStatus,
+  discipline,
   currentPositions,
   startlistEntry,
   changedAscents,
@@ -1445,6 +1794,7 @@ function ClimberDetail({
   row: UnifiedRow;
   routes: Route[];
   roundStatus: string;
+  discipline: string;
   currentPositions: Map<number, number>;
   startlistEntry: StartlistEntry | null;
   changedAscents: Set<string>;
@@ -1455,6 +1805,7 @@ function ClimberDetail({
     roundStatus,
     false,
     currentPositions,
+    discipline,
   );
 
   // Build route data — merge ascent results with route info
@@ -1558,12 +1909,20 @@ function MyClimbersView({
   data,
   tracked,
   onToggleTrack,
+  onMoveTracked,
   activityLog,
+  event,
+  lastRoundChanges,
+  onSelectRound,
 }: {
   data: TrackedRoundData[];
   tracked: Map<number, TrackedClimber>;
   onToggleTrack: (id: number, name: string, country: string) => void;
+  onMoveTracked: (id: number, direction: "up" | "down") => void;
   activityLog: ActivityEvent[];
+  event: EventData;
+  lastRoundChanges: Map<string, { time: Date; hash: string }>;
+  onSelectRound: (roundId: number) => void;
 }) {
   if (tracked.size === 0) {
     return (
@@ -1584,7 +1943,7 @@ function MyClimbersView({
   // Group by climber, then show each round they're in
   const byClimber = new Map<number, TrackedRoundData[]>();
   for (const d of data) {
-    const id = d.athlete?.athlete_id ?? d.entry?.athlete_id;
+    const id = d.athlete?.athlete_id ?? d.entry?.athlete_id ?? d.athleteId;
     if (!id) continue;
     if (!byClimber.has(id)) byClimber.set(id, []);
     byClimber.get(id)!.push(d);
@@ -1595,9 +1954,14 @@ function MyClimbersView({
       {/* Activity Feed */}
       {activityLog.length > 0 && <ActivityFeed events={activityLog} />}
 
-      {[...byClimber.entries()].map(([athleteId, rounds]) => {
+      {/* Render in tracked Map order (user-defined) */}
+      {[...tracked.keys()].map((athleteId, idx) => {
+        const rounds = byClimber.get(athleteId);
+        if (!rounds) return null;
         const climber = tracked.get(athleteId);
         if (!climber) return null;
+        const isFirst = idx === 0;
+        const isLast = idx === tracked.size - 1;
 
         return (
           <div
@@ -1616,34 +1980,76 @@ function MyClimbersView({
               </button>
               <span className="font-semibold">{climber.name}</span>
               <span className="text-xs text-gray-500">{climber.country}</span>
+              <div className="ml-auto flex">
+                <button
+                  onClick={() => onMoveTracked(athleteId, "up")}
+                  disabled={isFirst}
+                  className={`w-7 h-7 rounded flex items-center justify-center text-xs font-bold ${
+                    isFirst ? "text-gray-300" : "text-gray-500 hover:bg-yellow-200 active:bg-yellow-300"
+                  }`}
+                >
+                  ▲
+                </button>
+                <button
+                  onClick={() => onMoveTracked(athleteId, "down")}
+                  disabled={isLast}
+                  className={`w-7 h-7 rounded flex items-center justify-center text-xs font-bold ${
+                    isLast ? "text-gray-300" : "text-gray-500 hover:bg-yellow-200 active:bg-yellow-300"
+                  }`}
+                >
+                  ▼
+                </button>
+              </div>
             </div>
 
             {/* Round cards */}
             <div className="divide-y divide-yellow-200">
               {rounds.map((r, i) => {
-                const status = computeClimberStatus(r.athlete, r.entry, r.roundStatus, true, r.currentPositions);
+                const status = computeClimberStatus(r.athlete, r.entry, r.roundStatus, true, r.currentPositions, r.discipline);
                 const hasAscents = (r.athlete?.ascents?.length ?? 0) > 0;
+
+                // Check if scores are stale using client-side change tracking
+                const roundHasScores = r.currentPositions.size > 0;
+                const lastChange = lastRoundChanges.get(String(r.roundId));
+                const staleMins = lastChange ? (Date.now() - lastChange.time.getTime()) / 60_000 : Infinity;
+                const stale = r.roundStatus === "active" && roundHasScores && staleMins > 6;
+                // Override status for close climbers when scores are stale
+                // Only for athletes not yet in ranking (no scores at all)
+                const hasNoScores = !r.athlete || r.athlete.ascents.every((a) => !a.score && a.top_tries == null && a.status !== "confirmed");
+                const displayStatus = stale && hasNoScores && status.sortKey === 2 && status.label.match(/^\d+ away/)
+                  ? { label: "Likely climbing — score pending", style: "text-amber-600 font-medium", sortKey: 0 }
+                  : stale && hasNoScores && status.sortKey === 1
+                    ? { label: "Likely on wall — score pending", style: "text-blue-600 font-medium", sortKey: 0 }
+                    : status;
 
                 return (
                   <div key={i} className="px-3 py-2">
                     {/* Round header line */}
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium">{r.category}</span>
+                      <button
+                        onClick={() => onSelectRound(r.roundId)}
+                        className="text-sm font-medium text-blue-700 hover:underline"
+                      >{r.category}</button>
                       <span className="text-xs text-gray-400">{r.round}</span>
-                      <span
-                        className={`text-xs px-2 py-0.5 rounded-full ${
-                          r.roundStatus === "finished"
-                            ? "bg-amber-100 text-amber-700"
-                            : r.roundStatus === "active"
-                              ? "bg-green-100 text-green-700"
-                              : "bg-gray-100 text-gray-400"
-                        }`}
-                      >
-                        {r.roundStatus === "active" ? "● Live" : r.roundStatus === "finished" ? "★ Final" : "Upcoming"}
-                      </span>
-                      {status.label && (
-                        <span className={`text-xs font-medium ${status.style}`}>
-                          {status.label}
+                      {(() => {
+                        const reallyLive = r.roundStatus === "active" && roundHasScores;
+                        return (
+                          <span
+                            className={`text-xs px-2 py-0.5 rounded-full ${
+                              r.roundStatus === "finished"
+                                ? "bg-amber-100 text-amber-700"
+                                : reallyLive
+                                  ? "bg-green-100 text-green-700"
+                                  : "bg-gray-100 text-gray-400"
+                            }`}
+                          >
+                            {reallyLive ? "● Live" : r.roundStatus === "finished" ? "★ Final" : "Upcoming"}
+                          </span>
+                        );
+                      })()}
+                      {displayStatus.label && (
+                        <span className={`text-xs font-medium ${displayStatus.style}`}>
+                          {displayStatus.label}
                         </span>
                       )}
                     </div>
@@ -1676,7 +2082,9 @@ function MyClimbersView({
                           ))}
                         </div>
                       </div>
-                    ) : null}
+                    ) : (
+                      <p className="text-xs text-gray-400">Registered — waiting for comp to start</p>
+                    )}
                   </div>
                 );
               })}

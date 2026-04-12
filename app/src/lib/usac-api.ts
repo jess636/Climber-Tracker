@@ -281,6 +281,7 @@ import {
   mockGetSeasonEvents,
   mockGetEvent,
   mockGetRoundResults,
+  mockGetEventRegistrations,
 } from "./mock-api";
 
 export async function getSeasons(): Promise<USACSeasonResponse> {
@@ -301,7 +302,7 @@ export async function getSeasonEvents(
 }
 
 export async function getEvent(eventId: number): Promise<USACEvent> {
-  if (isMockMode()) return mockGetEvent() as Promise<USACEvent>;
+  if (isMockMode()) return mockGetEvent(eventId) as Promise<USACEvent>;
   return usacApiFetch(`/api/v1/events/${eventId}`);
 }
 
@@ -315,6 +316,7 @@ export async function getRoundResults(
 export async function getEventRegistrations(
   eventId: number
 ): Promise<unknown> {
+  if (isMockMode()) return mockGetEventRegistrations(eventId) as Promise<unknown>;
   return usacApiFetch(`/api/v1/events/${eventId}/registrations`);
 }
 

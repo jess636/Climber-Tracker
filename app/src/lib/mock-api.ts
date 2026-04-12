@@ -13,6 +13,9 @@
  */
 
 import eventFixture from "./fixtures/event.json";
+import event504Fixture from "./fixtures/event-504.json";
+import registrationsFixture from "./fixtures/registrations.json";
+import registrations504Fixture from "./fixtures/registrations-504.json";
 import round11629 from "./fixtures/round-11629.json";
 import round11630 from "./fixtures/round-11630.json";
 import round11631 from "./fixtures/round-11631.json";
@@ -45,9 +48,16 @@ function delay(): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-export async function mockGetEvent(): Promise<unknown> {
+const eventFixtures: Record<number, unknown> = {
+  503: eventFixture,
+  504: event504Fixture,
+};
+
+export async function mockGetEvent(eventId: number): Promise<unknown> {
   await delay();
-  return structuredClone(eventFixture);
+  const fixture = eventFixtures[eventId];
+  if (!fixture) throw new Error(`No mock fixture for event ${eventId}`);
+  return structuredClone(fixture);
 }
 
 // --- Live simulation for round 11632 ---
@@ -221,15 +231,51 @@ function simulateRound11632(): unknown {
   return base;
 }
 
+// Pending round IDs for event 504 (all-pending lead comp)
+const pendingRoundIds = new Set([12700, 12701, 12702, 12703, 12704, 12705, 12706, 12707, 12708, 12709, 12710, 12711]);
+
 export async function mockGetRoundResults(roundId: number): Promise<unknown> {
   await delay();
   if (roundId === 11632) {
     return simulateRound11632();
   }
+  if (pendingRoundIds.has(roundId)) {
+    // Return empty results for pending rounds — matches real API behavior
+    const event504 = event504Fixture as { d_cats: Array<{ category_name: string; discipline_kind: string; category_rounds: Array<{ category_round_id: number; name: string; format: string; format_identifier: string; routes: Array<{ id: number; name: string }> }> }> };
+    const dcat = event504.d_cats.find((d) => d.category_rounds.some((cr) => cr.category_round_id === roundId));
+    const cr = dcat?.category_rounds.find((r) => r.category_round_id === roundId);
+    return {
+      id: roundId,
+      event: event504Fixture.name,
+      event_id: 504,
+      discipline: dcat?.discipline_kind ?? "lead",
+      status: "pending",
+      status_as_of: "2026-03-20 00:00:00 UTC",
+      category: dcat?.category_name ?? "",
+      round: cr?.name ?? "",
+      format: cr?.format ?? "",
+      format_identifier: cr?.format_identifier ?? "",
+      routes: cr?.routes?.map((r) => ({ id: r.id, name: r.name })) ?? [],
+      ranking: [],
+      startlist: [],
+    };
+  }
   const fixture = roundFixtures[roundId];
   if (!fixture) {
     throw new Error(`No mock fixture for round ${roundId}`);
   }
+  return structuredClone(fixture);
+}
+
+const regFixtures: Record<number, unknown> = {
+  503: registrationsFixture,
+  504: registrations504Fixture,
+};
+
+export async function mockGetEventRegistrations(eventId: number): Promise<unknown> {
+  await delay();
+  const fixture = regFixtures[eventId];
+  if (!fixture) return [];
   return structuredClone(fixture);
 }
 
@@ -273,6 +319,13 @@ export async function mockGetSeasonEvents(): Promise<unknown> {
         local_start_date: eventFixture.local_start_date,
         local_end_date: eventFixture.local_end_date,
         location: eventFixture.location,
+      },
+      {
+        id: 504,
+        name: event504Fixture.name,
+        local_start_date: event504Fixture.local_start_date,
+        local_end_date: event504Fixture.local_end_date,
+        location: event504Fixture.location,
       },
     ],
   };

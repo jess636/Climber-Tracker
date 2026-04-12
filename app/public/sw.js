@@ -1,6 +1,6 @@
 // Service Worker for Climbing Tracker PWA
 
-const CACHE_NAME = "climbing-tracker-v1";
+const CACHE_NAME = "climbing-tracker-v2";
 
 // Install: cache shell assets
 self.addEventListener("install", (event) => {
@@ -30,15 +30,20 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
-  // Always go to network for API routes
-  if (url.pathname.startsWith("/api/")) {
+  // Always go to network for API routes and Next.js assets
+  if (url.pathname.startsWith("/api/") || url.pathname.startsWith("/_next/")) {
     return;
   }
 
+  // Network-first for pages, fallback to cache
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      return cached || fetch(event.request);
-    })
+    fetch(event.request)
+      .then((response) => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
 

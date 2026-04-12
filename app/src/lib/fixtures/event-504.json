@@ -1,0 +1,475 @@
+{
+  "id": 504,
+  "name": "R61 Climb On! Naperville Youth Lead Regional Championship",
+  "type": "classic",
+  "league_id": 10,
+  "rounds": [
+    {
+      "id": 1300,
+      "name": "Qualification"
+    },
+    {
+      "id": 1338,
+      "name": "Final"
+    }
+  ],
+  "league_season_id": 19,
+  "season_id": 5,
+  "starts_at": "2026-03-22 05:00:00 UTC",
+  "ends_at": "2026-03-23 04:59:00 UTC",
+  "local_start_date": "2026-03-22",
+  "local_end_date": "2026-03-22",
+  "timezone": {
+    "value": "America/Chicago"
+  },
+  "location": "Naperville",
+  "registration_url": "/api/v1/events/504/registrations",
+  "public_information": {
+    "organiser_name": "Region 61",
+    "organiser_url": "https://usaclimbing.org/compete/region-61/",
+    "venue_name": "Climb On!",
+    "description": ""
+  },
+  "cup_name": "",
+  "country": "USA",
+  "registration_deadline": "2026-03-18T18:00:00.000Z",
+  "registration_opens_at": "2026-03-08T18:00:00.000Z",
+  "removal_deadline": "2026-03-18T18:00:00.000Z",
+  "athlete_self_registration": true,
+  "team_official_self_registration": false,
+  "event_logo": null,
+  "series_logo": null,
+  "cover": null,
+  "infosheet_url": null,
+  "additional_info_url": null,
+  "is_paraclimbing_event": false,
+  "self_judged": false,
+  "dcats": [],
+  "disciplines": [
+    {
+      "kind": "lead"
+    }
+  ],
+  "computed_combined_categories": [],
+  "team_ranking_disciplines": [],
+  "team_ranking_url": "",
+  "time_rankings": false,
+  "time_ranking_url": null,
+  "custom_event_registration_fields": [],
+  "d_cats": [
+    {
+      "dcat_id": 5001,
+      "event_id": 504,
+      "dcat_name": "LEAD F-13",
+      "discipline_kind": "lead",
+      "category_id": 6001,
+      "category_name": "F-13",
+      "status": "active",
+      "status_as_of": "2026-03-20 00:00:00 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 12700,
+          "kind": "lead",
+          "name": "Qualification",
+          "category": "F-13",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12700/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 20
+          },
+          "format_identifier": "lead_one_group_two_routes",
+          "format": "IFSC: 2 routes",
+          "routes": [
+            {
+              "id": 1270000,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270000/startlist",
+              "ranking": "/api/v1/routes/1270000/results"
+            },
+            {
+              "id": 1270001,
+              "name": "2",
+              "startlist": "/api/v1/routes/1270001/startlist",
+              "ranking": "/api/v1/routes/1270001/results"
+            }
+          ]
+        },
+        {
+          "category_round_id": 12701,
+          "kind": "lead",
+          "name": "Final",
+          "category": "F-13",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12701/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 21
+          },
+          "format_identifier": "lead_one_group_one_route",
+          "format": "IFSC: 1 route",
+          "routes": [
+            {
+              "id": 1270100,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270100/startlist",
+              "ranking": "/api/v1/routes/1270100/results"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dcat_id": 5002,
+      "event_id": 504,
+      "dcat_name": "LEAD F-15",
+      "discipline_kind": "lead",
+      "category_id": 6002,
+      "category_name": "F-15",
+      "status": "active",
+      "status_as_of": "2026-03-20 00:00:00 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 12702,
+          "kind": "lead",
+          "name": "Qualification",
+          "category": "F-15",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12702/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 20
+          },
+          "format_identifier": "lead_one_group_two_routes",
+          "format": "IFSC: 2 routes",
+          "routes": [
+            {
+              "id": 1270200,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270200/startlist",
+              "ranking": "/api/v1/routes/1270200/results"
+            },
+            {
+              "id": 1270201,
+              "name": "2",
+              "startlist": "/api/v1/routes/1270201/startlist",
+              "ranking": "/api/v1/routes/1270201/results"
+            }
+          ]
+        },
+        {
+          "category_round_id": 12703,
+          "kind": "lead",
+          "name": "Final",
+          "category": "F-15",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12703/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 21
+          },
+          "format_identifier": "lead_one_group_one_route",
+          "format": "IFSC: 1 route",
+          "routes": [
+            {
+              "id": 1270300,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270300/startlist",
+              "ranking": "/api/v1/routes/1270300/results"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dcat_id": 5003,
+      "event_id": 504,
+      "dcat_name": "LEAD F-17",
+      "discipline_kind": "lead",
+      "category_id": 6003,
+      "category_name": "F-17",
+      "status": "active",
+      "status_as_of": "2026-03-20 00:00:00 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 12704,
+          "kind": "lead",
+          "name": "Qualification",
+          "category": "F-17",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12704/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 20
+          },
+          "format_identifier": "lead_one_group_two_routes",
+          "format": "IFSC: 2 routes",
+          "routes": [
+            {
+              "id": 1270400,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270400/startlist",
+              "ranking": "/api/v1/routes/1270400/results"
+            },
+            {
+              "id": 1270401,
+              "name": "2",
+              "startlist": "/api/v1/routes/1270401/startlist",
+              "ranking": "/api/v1/routes/1270401/results"
+            }
+          ]
+        },
+        {
+          "category_round_id": 12705,
+          "kind": "lead",
+          "name": "Final",
+          "category": "F-17",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12705/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 21
+          },
+          "format_identifier": "lead_one_group_one_route",
+          "format": "IFSC: 1 route",
+          "routes": [
+            {
+              "id": 1270500,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270500/startlist",
+              "ranking": "/api/v1/routes/1270500/results"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dcat_id": 5004,
+      "event_id": 504,
+      "dcat_name": "LEAD M/O-13",
+      "discipline_kind": "lead",
+      "category_id": 6004,
+      "category_name": "M/O-13",
+      "status": "active",
+      "status_as_of": "2026-03-20 00:00:00 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 12706,
+          "kind": "lead",
+          "name": "Qualification",
+          "category": "M/O-13",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12706/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 20
+          },
+          "format_identifier": "lead_one_group_two_routes",
+          "format": "IFSC: 2 routes",
+          "routes": [
+            {
+              "id": 1270600,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270600/startlist",
+              "ranking": "/api/v1/routes/1270600/results"
+            },
+            {
+              "id": 1270601,
+              "name": "2",
+              "startlist": "/api/v1/routes/1270601/startlist",
+              "ranking": "/api/v1/routes/1270601/results"
+            }
+          ]
+        },
+        {
+          "category_round_id": 12707,
+          "kind": "lead",
+          "name": "Final",
+          "category": "M/O-13",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12707/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 21
+          },
+          "format_identifier": "lead_one_group_one_route",
+          "format": "IFSC: 1 route",
+          "routes": [
+            {
+              "id": 1270700,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270700/startlist",
+              "ranking": "/api/v1/routes/1270700/results"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dcat_id": 5005,
+      "event_id": 504,
+      "dcat_name": "LEAD M/O-15",
+      "discipline_kind": "lead",
+      "category_id": 6005,
+      "category_name": "M/O-15",
+      "status": "active",
+      "status_as_of": "2026-03-20 00:00:00 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 12708,
+          "kind": "lead",
+          "name": "Qualification",
+          "category": "M/O-15",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12708/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 20
+          },
+          "format_identifier": "lead_one_group_two_routes",
+          "format": "IFSC: 2 routes",
+          "routes": [
+            {
+              "id": 1270800,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270800/startlist",
+              "ranking": "/api/v1/routes/1270800/results"
+            },
+            {
+              "id": 1270801,
+              "name": "2",
+              "startlist": "/api/v1/routes/1270801/startlist",
+              "ranking": "/api/v1/routes/1270801/results"
+            }
+          ]
+        },
+        {
+          "category_round_id": 12709,
+          "kind": "lead",
+          "name": "Final",
+          "category": "M/O-15",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12709/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 21
+          },
+          "format_identifier": "lead_one_group_one_route",
+          "format": "IFSC: 1 route",
+          "routes": [
+            {
+              "id": 1270900,
+              "name": "1",
+              "startlist": "/api/v1/routes/1270900/startlist",
+              "ranking": "/api/v1/routes/1270900/results"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dcat_id": 5006,
+      "event_id": 504,
+      "dcat_name": "LEAD M/O-17",
+      "discipline_kind": "lead",
+      "category_id": 6006,
+      "category_name": "M/O-17",
+      "status": "active",
+      "status_as_of": "2026-03-20 00:00:00 UTC",
+      "ranking_as_of": "NA",
+      "category_rounds": [
+        {
+          "category_round_id": 12710,
+          "kind": "lead",
+          "name": "Qualification",
+          "category": "M/O-17",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12710/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 20
+          },
+          "format_identifier": "lead_one_group_two_routes",
+          "format": "IFSC: 2 routes",
+          "routes": [
+            {
+              "id": 1271000,
+              "name": "1",
+              "startlist": "/api/v1/routes/1271000/startlist",
+              "ranking": "/api/v1/routes/1271000/results"
+            },
+            {
+              "id": 1271001,
+              "name": "2",
+              "startlist": "/api/v1/routes/1271001/startlist",
+              "ranking": "/api/v1/routes/1271001/results"
+            }
+          ]
+        },
+        {
+          "category_round_id": 12711,
+          "kind": "lead",
+          "name": "Final",
+          "category": "M/O-17",
+          "schedule": null,
+          "status": "pending",
+          "status_as_of": "2026-03-20 00:00:00 UTC",
+          "result_url": "/api/v1/category_rounds/12711/results",
+          "starting_groups": [],
+          "combined_stages": [],
+          "round": {
+            "league_round_id": 21
+          },
+          "format_identifier": "lead_one_group_one_route",
+          "format": "IFSC: 1 route",
+          "routes": [
+            {
+              "id": 1271100,
+              "name": "1",
+              "startlist": "/api/v1/routes/1271100/startlist",
+              "ranking": "/api/v1/routes/1271100/results"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
