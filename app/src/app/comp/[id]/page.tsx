@@ -71,6 +71,7 @@ interface Athlete {
   active: boolean;
   under_appeal: boolean;
   qualified: boolean;
+  extra_advancement: boolean;
 }
 
 interface RouteStartPosition {
@@ -159,7 +160,8 @@ function diffAthleteAscents(
   for (const ascent of curr) {
     const old = prevMap.get(ascent.route_name);
     const routeShort = ascent.route_name.replace(/.*#/, "B");
-    const ts = ascent.modified ? new Date(ascent.modified) : now;
+    const parsed = ascent.modified ? new Date(ascent.modified.replace(" ", "T").replace(" +", "+")) : now;
+    const ts = isNaN(parsed.getTime()) ? now : parsed;
 
     // Newly active on wall
     if (ascent.status === "active" && old?.status !== "active") {
@@ -260,9 +262,11 @@ function diffTrackedActivity(
       const prevAthlete = prevMap.get(id);
 
       // Best available timestamp from ascent modified fields
+      // USAC format: "2026-04-12 10:30:00 +00:00" — normalize to ISO 8601
       const latestModified = currAthlete?.ascents
         ?.filter((a) => a.modified)
-        .map((a) => new Date(a.modified!))
+        .map((a) => new Date(a.modified!.replace(" ", "T").replace(" +", "+")))
+        .filter((d) => !isNaN(d.getTime()))
         .sort((a, b) => b.getTime() - a.getTime())[0] ?? now;
 
       // Appeared in results
@@ -287,7 +291,8 @@ function diffTrackedActivity(
 
         // Rank change
         if (prevAthlete && prevAthlete.rank !== currAthlete.rank && currAthlete.rank > 0) {
-          const dir = prevAthlete.rank > currAthlete.rank ? "up" : "down";
+          const wasUnranked = !prevAthlete.rank || prevAthlete.rank === 0;
+          const dir = wasUnranked ? "in" : prevAthlete.rank > currAthlete.rank ? "up" : "down";
           events.push({
             id: `${id}-rank-${r.id}-${latestModified.getTime()}`,
             timestamp: latestModified,
@@ -295,7 +300,9 @@ function diffTrackedActivity(
             athleteName: climber.name,
             category: r.category,
             type: "rank_change",
-            detail: `Moved ${dir} to #${currAthlete.rank} in ${r.category}`,
+            detail: wasUnranked
+              ? `Ranked #${currAthlete.rank} in ${r.category}`
+              : `Moved ${dir} to #${currAthlete.rank} in ${r.category}`,
           });
         }
       }
@@ -365,7 +372,7 @@ export default function CompetitionPage({
   const [myClimbersLoading, setMyClimbersLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<{ athlete_id: number; name: string; country: string; category: string }[]>([]);
-  const [allAthletes, setAllAthletes] = useState<{ athlete_id: number; name: string; country: string; category: string }[]>([]);
+  const [allAthletes, setAllAthletes] = useState<{ athlete_id: number; name: string; country: string; category: string; bib: string }[]>([]);
   const [batchData, setBatchData] = useState<Record<string, RoundResults> | null>(null);
   const [batchLoading, setBatchLoading] = useState(false);
   const [batchFetchedAt, setBatchFetchedAt] = useState<Date | null>(null);
@@ -482,8 +489,6 @@ export default function CompetitionPage({
     );
     setSseConnected(true);
 
-    let prevSSEResults: RoundResults | null = null;
-
     eventSource.addEventListener("results", (e) => {
       const data: RoundResults = JSON.parse(e.data);
       setRoundResults(data);
@@ -491,8 +496,6 @@ export default function CompetitionPage({
 
       // Merge SSE data into batchData so My Climbers updates too
       setBatchData((prev) => prev ? { ...prev, [selectedRoundId!]: data } : prev);
-
-      prevSSEResults = data;
     });
 
     eventSource.addEventListener("heartbeat", () => {
@@ -744,6 +747,7 @@ export default function CompetitionPage({
               name: a.name,
               country: a.country,
               category: r.category,
+              bib: a.bib || "",
             });
           }
         }
@@ -760,6 +764,7 @@ export default function CompetitionPage({
         name: reg.name,
         country: reg.federation || reg.country,
         category: catName,
+        bib: "",
       });
     }
 
@@ -770,7 +775,7 @@ export default function CompetitionPage({
   // Import shared athletes from URL param
   const [shareImported, setShareImported] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
-  const [hideCategories, setHideCategories] = useState(false);
+  const [hideCategories, setHideCategories] = useState(true);
   useEffect(() => {
     if (!shareParam || shareImported || allAthletes.length === 0) return;
     const ids = shareParam.split(",").map(Number).filter((n) => !isNaN(n) && n > 0);
@@ -807,7 +812,8 @@ export default function CompetitionPage({
       allAthletes.filter(
         (a) =>
           a.name.toLowerCase().includes(q) ||
-          (a.country || '').toLowerCase().includes(q)
+          (a.country || '').toLowerCase().includes(q) ||
+          a.bib === q
       )
     );
   }, [searchQuery, allAthletes]);
@@ -912,7 +918,12 @@ export default function CompetitionPage({
         <h2 className="text-lg font-semibold">Categories & Rounds</h2>
         <div className="flex flex-wrap gap-2">
           <button
-            onClick={() => setFilterTracked((v) => !v)}
+            onClick={() => {
+              setFilterTracked((v) => {
+                if (!v) setHideCategories(true);
+                return !v;
+              });
+            }}
             className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${
               filterTracked
                 ? "bg-yellow-500 text-white border-yellow-500"
@@ -936,20 +947,26 @@ export default function CompetitionPage({
               {shareCopied ? "Copied!" : "Share"}
             </button>
           )}
-          {filterTracked && (
-            <button
-              onClick={() => setHideCategories((v) => !v)}
-              className="px-3 py-1.5 rounded-lg text-sm font-medium border bg-gray-50 text-gray-600 border-gray-300 hover:border-gray-500 transition-all"
-            >
-              {hideCategories ? "Categories \u25B8" : "Categories \u25BE"}
-            </button>
-          )}
-          {!(filterTracked && hideCategories) && event.d_cats.map((dcat) =>
+          <button
+            onClick={() => setHideCategories((v) => !v)}
+            className="px-3 py-1.5 rounded-lg text-sm font-medium border bg-gray-50 text-gray-600 border-gray-300 hover:border-gray-500 transition-all"
+          >
+            Categories <span className="text-gray-800">{hideCategories ? "\u25B6" : "\u25BC"}</span>
+          </button>
+          {!hideCategories && [...event.d_cats]
+            .sort((a, b) => {
+              // Extract age number from category name (e.g., "F-13" → 13, "M/O-15" → 15)
+              const ageA = parseInt(a.category_name.match(/\d+/)?.[0] ?? "99");
+              const ageB = parseInt(b.category_name.match(/\d+/)?.[0] ?? "99");
+              if (ageA !== ageB) return ageA - ageB;
+              // Then by sex prefix (F before M)
+              return a.category_name.localeCompare(b.category_name);
+            })
+            .map((dcat) =>
             dcat.category_rounds.map((cr) => {
-              const isLive =
-                cr.status === "active" &&
-                dcat.ranking_as_of != null &&
-                dcat.ranking_as_of !== "NA";
+              const roundData = batchData?.[cr.category_round_id];
+              const hasScores = roundData?.ranking?.some((a: Athlete) => a.score && a.score !== "") ?? false;
+              const isLive = cr.status === "active" && hasScores;
               const singleRound = dcat.category_rounds.length === 1;
               const label = singleRound
                 ? dcat.category_name
@@ -1041,6 +1058,7 @@ export default function CompetitionPage({
             activityLog={activityLog}
             event={event!}
             lastRoundChanges={lastRoundChangeRef.current}
+            batchData={batchData}
             onSelectRound={(roundId) => {
               setSelectedRoundId(roundId);
               setFilterTracked(false);
@@ -1081,6 +1099,10 @@ export default function CompetitionPage({
 
           {(() => {
             if (roundResults.status !== "active" || !roundResults.ranking?.length) return null;
+            // Don't show staleness if everyone has scored
+            const allScored = roundResults.ranking.every((a) => a.score && a.score !== "")
+              && (!roundResults.startlist?.length || roundResults.startlist.every((s) => roundResults.ranking!.some((a) => a.athlete_id === s.athlete_id)));
+            if (allScored) return null;
             const lastChange = lastRoundChangeRef.current.get(String(selectedRoundId));
             if (!lastChange) return null;
             const elapsed = Date.now() - lastChange.time.getTime();
@@ -1099,6 +1121,7 @@ export default function CompetitionPage({
               startlist={roundResults.startlist ?? []}
               routes={roundResults.routes ?? []}
               status={roundResults.status}
+              roundName={roundResults.round}
               discipline={roundResults.discipline?.toLowerCase() ?? ""}
               tracked={tracked}
               onToggleTrack={toggleTrack}
@@ -1369,12 +1392,6 @@ interface ClimberStatus {
 
 const STALE_THRESHOLD_MS = 6 * 60 * 1000; // 6 minutes
 
-function isRankingStale(rankingAsOf: string | null | undefined): boolean {
-  if (!rankingAsOf || rankingAsOf === "NA") return false;
-  const ts = new Date(rankingAsOf.replace(" UTC", "Z").replace(" ", "T"));
-  return Date.now() - ts.getTime() > STALE_THRESHOLD_MS;
-}
-
 function formatRoundFormat(format: string, discipline: string): string {
   // "IFSC: 2 routes" -> "2 routes"
   // "IFSC: 1 group 2025 (points)" -> "Points"
@@ -1493,6 +1510,8 @@ function computeClimberStatus(
       };
     }
 
+    const roundNotStarted = !currentPositions || currentPositions.size === 0;
+
     // Still has routes left — find next route and queue depth
     const nextAscent = athlete.ascents.find((a) => a.status !== "confirmed" && a.top_tries == null && !a.score);
     if (nextAscent && startlistEntry && adjustedPositions) {
@@ -1503,11 +1522,19 @@ function computeClimberStatus(
         const currentPos = adjustedPositions.get(rsp.route_id) ?? 0;
         const away = rsp.position - currentPos;
         const routeLabel = formatRouteName(nextAscent.route_name, includeCategory);
-        if (away <= 0 && isLeadTR) {
+        if (away === 0 && isLeadTR) {
           return {
             label: `Likely climbing — ${routeLabel}`,
             style: "text-blue-600 font-medium",
             sortKey: 0,
+          };
+        }
+        if (away < 0 && isLeadTR) {
+          // Position is behind the current climber — already went, score pending
+          return {
+            label: "Score pending",
+            style: "text-amber-600",
+            sortKey: 3,
           };
         }
         if (away <= 1) {
@@ -1517,26 +1544,24 @@ function computeClimberStatus(
             sortKey: 1,
           };
         }
-        const notStarted = !currentPositions || currentPositions.size === 0;
         return {
           label: `${away} away — ${routeLabel}`,
-          style: notStarted ? "text-gray-400" : "text-purple-600",
+          style: roundNotStarted ? "text-gray-400" : "text-purple-600",
           sortKey: 2,
         };
       }
     }
 
-    const notStarted = !currentPositions || currentPositions.size === 0;
     const routeLabel = nextAscent ? formatRouteName(nextAscent.route_name, includeCategory) : "";
     return {
       label: `Next: ${routeLabel}`,
-      style: notStarted ? "text-gray-400" : "text-purple-600",
+      style: roundNotStarted ? "text-gray-400" : "text-purple-600",
       sortKey: 2,
     };
   }
 
   // Not in ranking yet — use startlist position to estimate queue depth
-  const notReallyStarted = !adjustedPositions || adjustedPositions.size === 0;
+  const roundNotStarted = !adjustedPositions || adjustedPositions.size === 0;
   if (startlistEntry && adjustedPositions) {
     // Find the route where they have the lowest position (their first route)
     let bestAway = Infinity;
@@ -1551,14 +1576,7 @@ function computeClimberStatus(
     }
     if (bestAway < Infinity) {
       const routeLabel = formatRouteName(bestRoute, includeCategory);
-      if (bestAway <= 0 && isLeadTR && !notReallyStarted) {
-        return {
-          label: `Likely climbing — ${routeLabel}`,
-          style: "text-blue-600 font-medium",
-          sortKey: 0,
-        };
-      }
-      if (bestAway <= 1 && !notReallyStarted) {
+      if (bestAway <= 1 && !roundNotStarted) {
         return {
           label: `On deck — ${routeLabel}`,
           style: "text-orange-600 font-medium",
@@ -1567,7 +1585,7 @@ function computeClimberStatus(
       }
       return {
         label: `${bestAway} away — ${routeLabel}`,
-        style: notReallyStarted ? "text-gray-400" : "text-purple-600",
+        style: roundNotStarted ? "text-gray-400" : "text-purple-600",
         sortKey: 2,
       };
     }
@@ -1592,6 +1610,7 @@ interface UnifiedRow {
   ascents: Ascent[];
   active: boolean;
   under_appeal: boolean;
+  extra_advancement: boolean;
   status: ClimberStatus;
   startPositions: RouteStartPosition[];
   hasResults: boolean;
@@ -1602,6 +1621,7 @@ function RoundTable({
   startlist,
   routes,
   status: roundStatus,
+  roundName,
   discipline,
   tracked,
   onToggleTrack,
@@ -1613,6 +1633,7 @@ function RoundTable({
   startlist: StartlistEntry[];
   routes: Route[];
   status: string;
+  roundName: string;
   discipline: string;
   tracked: Map<number, TrackedClimber>;
   onToggleTrack: (id: number, name: string, country: string) => void;
@@ -1640,6 +1661,7 @@ function RoundTable({
       ascents: athlete.ascents,
       active: athlete.active,
       under_appeal: athlete.under_appeal,
+      extra_advancement: athlete.extra_advancement,
       status: computeClimberStatus(athlete, entry ?? null, roundStatus, false, currentPositions, discipline),
       startPositions: entry?.route_start_positions ?? [],
       hasResults: true,
@@ -1659,11 +1681,41 @@ function RoundTable({
       ascents: [],
       active: false,
       under_appeal: false,
+      extra_advancement: false,
       status: computeClimberStatus(null, entry, roundStatus, false, currentPositions, discipline),
       startPositions: entry.route_start_positions,
       hasResults: false,
     });
   }
+
+  // For non-qualification rounds (finals, semis), sort by start order
+  // so the list reflects climbing order rather than current rank
+  const isFinalOrSemi = roundName !== "Qualification";
+  if (isFinalOrSemi && startlist.length > 0) {
+    const startOrderMap = new Map(
+      startlist.map((e) => [e.athlete_id, Math.min(...e.route_start_positions.map((r) => r.position))])
+    );
+    rows.sort((a, b) => {
+      // Finished climbers (have a score) first, sorted by rank
+      const aHasScore = a.score && a.score !== "" && a.score !== "0";
+      const bHasScore = b.score && b.score !== "" && b.score !== "0";
+      if (aHasScore && !bHasScore) return -1;
+      if (!aHasScore && bHasScore) return 1;
+      if (aHasScore && bHasScore) return (a.rank ?? Infinity) - (b.rank ?? Infinity);
+      // Remaining athletes by start order
+      const posA = startOrderMap.get(a.athlete_id) ?? Infinity;
+      const posB = startOrderMap.get(b.athlete_id) ?? Infinity;
+      return posA - posB;
+    });
+  }
+
+  // Qualification indicator: show * when a rank is mathematically locked in.
+  // qualifyCount = total qualifying spots (from API's qualified flag)
+  // remaining = athletes who haven't scored yet
+  // guaranteed = qualifyCount - remaining (if > 0, top N ranks are locked)
+  const qualifyCount = ranking.filter((a) => a.qualified).length;
+  const remaining = rows.filter((r) => !r.score || r.score === "").length;
+  const guaranteedRank = qualifyCount > 0 && remaining < qualifyCount ? qualifyCount - remaining : 0;
 
   const hasAscents = ranking[0]?.ascents?.length > 0;
   const isActive = roundStatus === "active";
@@ -1718,9 +1770,15 @@ function RoundTable({
                 </td>
                 <td className="p-2 text-gray-500 font-mono">
                   {row.rank || "—"}
+                  {row.rank && row.rank <= guaranteedRank && (
+                    <span className="text-green-600 ml-0.5" title="Qualified">*</span>
+                  )}
                 </td>
                 <td className="p-2">
                   <span className={row.hasResults ? "font-medium" : ""}>{row.name}</span>
+                  {row.extra_advancement && row.rank && row.rank <= guaranteedRank && (
+                    <span className="ml-1 text-xs text-green-600" title="Extra Advancement">(EA)</span>
+                  )}
                   {row.under_appeal && (
                     <span className="ml-2 text-xs text-orange-600">Appeal</span>
                   )}
@@ -1913,6 +1971,7 @@ function MyClimbersView({
   activityLog,
   event,
   lastRoundChanges,
+  batchData,
   onSelectRound,
 }: {
   data: TrackedRoundData[];
@@ -1922,6 +1981,7 @@ function MyClimbersView({
   activityLog: ActivityEvent[];
   event: EventData;
   lastRoundChanges: Map<string, { time: Date; hash: string }>;
+  batchData: Record<string, RoundResults> | null;
   onSelectRound: (roundId: number) => void;
 }) {
   if (tracked.size === 0) {
@@ -2059,6 +2119,18 @@ function MyClimbersView({
                       <div className="flex items-center gap-3">
                         <span className="text-sm text-gray-500">
                           Rank <span className="font-mono font-semibold text-gray-800">{r.athlete.rank || "—"}</span>
+                          {(() => {
+                            if (!r.athlete?.rank || !batchData) return null;
+                            const rd = batchData[r.roundId];
+                            if (!rd?.ranking) return null;
+                            const qualifyCount = rd.ranking.filter((a: Athlete) => a.qualified).length;
+                            const remaining = rd.ranking.filter((a: Athlete) => !a.score || a.score === "").length
+                              + (rd.startlist?.filter((s: StartlistEntry) => !rd.ranking!.some((a: Athlete) => a.athlete_id === s.athlete_id)).length ?? 0);
+                            const guaranteed = qualifyCount > 0 && remaining < qualifyCount ? qualifyCount - remaining : 0;
+                            return r.athlete!.rank <= guaranteed
+                              ? <span className="text-green-600 ml-0.5" title="Qualified">*</span>
+                              : null;
+                          })()}
                         </span>
                         <span className="text-sm text-gray-500">
                           Score <span className="font-mono font-semibold text-gray-800">{r.athlete.score || "—"}</span>
